@@ -20,7 +20,7 @@
     "url": "https://github.com/pairohit16/helper/issues"
   },
   "author": "PaiRohit",
-  "license": "Open Source",
+  "license": "MIT",
   "dependencies": {
     "moment-timezone": "^0.5.31",
     "uuid": "^8.2.0"
