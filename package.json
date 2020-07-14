@@ -8,7 +8,6 @@
     "build": "tsc -p ."
   },
   "homepage": "https://github.com/pairohit16/helper",
-  "private": false,
   "maintainers": [
     "PaiRohit"
   ],
