@@ -1,6 +1,6 @@
 {
   "name": "@pairohit/helper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Many Helper function to save time!",
   "main": "lib/index.js",
   "types": "lib",
@@ -20,7 +20,7 @@
     "url": "https://github.com/pairohit16/helper/issues"
   },
   "author": "PaiRohit",
-  "license": "MIT",
+  "license": "Open Source",
   "dependencies": {
     "moment-timezone": "^0.5.31",
     "uuid": "^8.2.0"

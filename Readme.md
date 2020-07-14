@@ -25,6 +25,7 @@ Time:
 
 - toISTstring
 - toIST2day
+- UTC2Local
 
 Uid:
 
