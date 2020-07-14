@@ -1,3 +1,31 @@
 `Helper function available:`
 
-1. httpReqValidatorAsync
+Express:
+
+- httpReqValidatorAsync
+
+Email:
+
+- validateEmail
+
+HTML:
+
+- plainText2HTML
+
+Math:
+
+- Mod
+- searchCount
+
+Supercell:
+
+- validatePlayerTag
+
+Time:
+
+- toISTstring
+- toIST2day
+
+Uid:
+
+- genUniqueId

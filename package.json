@@ -1,12 +1,19 @@
 {
   "name": "@pairohit/helper",
   "version": "1.0.0",
-  "description": "Some Helper function to save time!",
+  "description": "Usefull Helper function to save time!",
   "main": "lib/index.js",
   "types": "lib",
   "scripts": {
     "build": "tsc -p ."
   },
   "author": "PaiRohit",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "moment-timezone": "^0.5.31",
+    "uuid": "^8.2.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.0.0"
+  }
 }
