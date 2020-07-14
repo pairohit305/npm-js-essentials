@@ -1,0 +1,12 @@
+{
+  "name": "@pairohit/helper",
+  "version": "1.0.0",
+  "description": "Some Helper function to save time!",
+  "main": "lib/index.js",
+  "types": "lib",
+  "scripts": {
+    "build": "tsc -p ."
+  },
+  "author": "PaiRohit",
+  "license": "ISC"
+}
