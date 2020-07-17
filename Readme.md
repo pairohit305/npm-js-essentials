@@ -34,3 +34,8 @@ Uid:
 Text:
 
 - textLimitor
+
+Parser:
+
+- videoORImage
+- imageMarkdown2Interatable

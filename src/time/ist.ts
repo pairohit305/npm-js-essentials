@@ -5,7 +5,7 @@ export function toISTstring() {
   return moment.tz("Asia/Kolkata").format("YYYY:MM:DDTHH:mm:ss");
 }
 /**
- // prettier-ignore  
+ // prettier-ignore
  * Example:  
  *  default : o/p => 202010**15**  
  *  dayModifier = **10** : o/p => 202010**25**  
