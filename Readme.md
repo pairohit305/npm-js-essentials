@@ -30,3 +30,7 @@ Time:
 Uid:
 
 - genUniqueId
+
+Text:
+
+- textLimitor
