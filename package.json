@@ -1,6 +1,6 @@
 {
   "name": "@pairohit/helper",
-  "version": "1.0.22",
+  "version": "1.0.3",
   "description": "Many Helper function to save time!",
   "main": "lib/index.js",
   "types": "lib",

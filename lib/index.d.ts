@@ -6,4 +6,5 @@ export * from "./html";
 export * from "./uid";
 export * from "./email";
 export * from "./text";
+export * from "./parser";
 //# sourceMappingURL=index.d.ts.map
