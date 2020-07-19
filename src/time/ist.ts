@@ -23,3 +23,7 @@ export function toIST2day(dayModifier?: number) {
     return moment.tz("Asia/Kolkata").format("YYYYMMDD");
   }
 }
+
+export function toIST2Hour() {
+  return moment.tz("Asia/Kolkata").format("HH");
+}

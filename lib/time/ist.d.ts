@@ -7,4 +7,5 @@ export declare function toISTstring(): string;
  *  dayModifier = **-10** : o/p => 202010**05**
  */
 export declare function toIST2day(dayModifier?: number): string;
+export declare function toIST2Hour(): string;
 //# sourceMappingURL=ist.d.ts.map
