@@ -40,3 +40,7 @@ Parser:
 
 - videoORImage
 - imageMarkdown2Interatable
+
+Array:
+
+- splitArrayInto
