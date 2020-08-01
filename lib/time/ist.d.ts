@@ -8,4 +8,5 @@ export declare function toISTstring(): string;
  */
 export declare function toIST2day(dayModifier?: number): string;
 export declare function toIST2Hour(): string;
+export declare function toIST2HourLeft(): string;
 //# sourceMappingURL=ist.d.ts.map

@@ -25,5 +25,9 @@ export function toIST2day(dayModifier?: number) {
 }
 
 export function toIST2Hour() {
-  return moment.tz("Asia/Kolkata").format("HH");
+  return moment.tz("Asia/Kolkata").format("HHmmss");
+}
+
+export function toIST2HourLeft() {
+  return (240000 - parseInt(toIST2Hour())).toString();
 }
