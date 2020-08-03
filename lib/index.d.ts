@@ -8,4 +8,5 @@ export * from "./email";
 export * from "./text";
 export * from "./parser";
 export * from "./array";
+export * from "./sleep";
 //# sourceMappingURL=index.d.ts.map
