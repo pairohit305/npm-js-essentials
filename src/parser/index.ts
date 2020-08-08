@@ -1,15 +1,17 @@
 // return video if it's video url formate , image ...
 // warning currently only detecting common formats
 export function videoORImage(link: string) {
-  const response = link.match(/(mp4|jpg|png|jpeg|webp)/g);
-  if (response) {
+  try {
+    const response = link.match(/(mp4|jpg|png|jpeg|webp)/g);
+    if (!response) return null;
+
     switch (response[0]) {
       case "mp4":
         return "video";
       default:
         return "image";
     }
-  } else {
+  } catch (err) {
     return null;
   }
 }
