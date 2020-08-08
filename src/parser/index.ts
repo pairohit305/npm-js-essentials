@@ -2,6 +2,8 @@
 // warning currently only detecting common formats
 export function videoORImage(link: string) {
   try {
+    if (typeof link !== "string" || link.length <= 0) return null;
+
     const response = link.match(/(mp4|jpg|png|jpeg|webp)/g);
     if (!response) return null;
 
