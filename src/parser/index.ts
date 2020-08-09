@@ -9,9 +9,9 @@ export function videoORImage(link: string) {
 
     switch (response[0]) {
       case "mp4":
-        return "video";
+        return "VIDEO";
       default:
-        return "image";
+        return "IMAGE";
     }
   } catch (err) {
     return null;

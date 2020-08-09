@@ -1,4 +1,4 @@
-export declare function videoORImage(link: string): "video" | "image" | null;
+export declare function videoORImage(link: string): "VIDEO" | "IMAGE" | null;
 declare type TYPE = "Text" | "Image";
 declare type OPDICT = ([TYPE, number, string] | undefined)[];
 /**
