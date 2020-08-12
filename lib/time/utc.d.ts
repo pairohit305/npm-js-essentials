@@ -6,6 +6,7 @@
  *  dayModifier = **-10** : o/p => 202010**05**
  */
 export declare function toUTC2day(dayModifier?: number): string;
+export declare function UTC2daytoUTCString(UTC2day: string): string;
 export declare function toUTC2Hour(): string;
 export declare function toUTC2HourLeft(): string;
 //# sourceMappingURL=utc.d.ts.map

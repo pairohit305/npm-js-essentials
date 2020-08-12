@@ -1,1 +1,1 @@
-{"version":3,"file":"utc.d.ts","sourceRoot":"","sources":["../../src/time/utc.ts"],"names":[],"mappings":"AAEA;;;;;;GAMG;AACH,wBAAgB,SAAS,CAAC,WAAW,CAAC,EAAE,MAAM,UAQ7C;AAED,wBAAgB,UAAU,WAEzB;AAED,wBAAgB,cAAc,WAE7B"}
+{"version":3,"file":"utc.d.ts","sourceRoot":"","sources":["../../src/time/utc.ts"],"names":[],"mappings":"AAEA;;;;;;GAMG;AACH,wBAAgB,SAAS,CAAC,WAAW,CAAC,EAAE,MAAM,UAQ7C;AAGD,wBAAgB,kBAAkB,CAAC,OAAO,EAAE,MAAM,UAQjD;AAED,wBAAgB,UAAU,WAEzB;AAED,wBAAgB,cAAc,WAE7B"}
