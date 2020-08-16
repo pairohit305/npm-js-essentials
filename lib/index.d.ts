@@ -9,4 +9,5 @@ export * from "./text";
 export * from "./parser";
 export * from "./array";
 export * from "./sleep";
+export * from "./random";
 //# sourceMappingURL=index.d.ts.map
