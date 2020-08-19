@@ -22,7 +22,9 @@ export async function httpReqValidatorAsync(
   // validate
   Object.entries(httpReq).some(([k, v]) => {
     if (
-      (typeof v === "string" || typeof v === "number") &&
+      (typeof v === "string" ||
+        typeof v === "number" ||
+        typeof v === "object") &&
       v.toString().length > 0 &&
       httpReq[k] !== undefined &&
       params.includes(k)
