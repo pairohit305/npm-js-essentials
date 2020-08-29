@@ -1,5 +1,4 @@
-import moment from "moment-timezone";
-
+import { format, addDays, subDays } from "date-fns";
 /**
  // prettier-ignore
  * Example:  
@@ -9,29 +8,17 @@ import moment from "moment-timezone";
  */
 export function toUTC2day(dayModifier?: number) {
   if (dayModifier && dayModifier > 0) {
-    return moment.utc().add(dayModifier, "d").format("YYYYMMDD");
+    return format(addDays(new Date(new Date().toUTCString()), dayModifier), "yyyyMMdd");
   } else if (dayModifier && dayModifier < 0) {
-    return moment.utc().subtract(-dayModifier, "d").format("YYYYMMDD");
+    return format(subDays(new Date(new Date().toUTCString()), -dayModifier), "yyyyMMdd");
   } else {
-    return moment.utc().format("YYYYMMDD");
+    return format(new Date(new Date().toUTCString()), "yyyyMMdd");
   }
 }
 
 /* 20201010 -> "Tue, 10 Nov 2020 00:00:00 GMT" */
 export function UTC2daytoUTCString(UTC2day: string) {
   return new Date(
-    Date.UTC(
-      Number(UTC2day.slice(0, 4)),
-      Number(UTC2day.slice(4, 6)),
-      Number(UTC2day.slice(-2))
-    )
+    Date.UTC(Number(UTC2day.slice(0, 4)), Number(UTC2day.slice(4, 6)), Number(UTC2day.slice(-2)))
   ).toUTCString();
-}
-
-export function toUTC2Hour() {
-  return moment.utc().format("HHmmss");
-}
-
-export function toUTC2HourLeft() {
-  return (240000 - parseInt(toUTC2Hour())).toString();
 }

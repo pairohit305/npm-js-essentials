@@ -1,5 +1,5 @@
 export declare function videoORImage(link: string): "VIDEO" | "IMAGE" | null;
-declare type TYPE = "Text" | "Image";
+declare type TYPE = "TEXT" | "IMAGE";
 declare type OPDICT = ([TYPE, number, string] | undefined)[];
 /**
  // prettier-ignore
@@ -7,9 +7,9 @@ declare type OPDICT = ([TYPE, number, string] | undefined)[];
  *  Before: Pai has [image](https..*)God Power.
  *  After:
  *  [
- *  ["Text", 0, "Pai has "],
- *  ["Image", 1, "https..*"],
- *  ["Text", 2, "God Power."]
+ *  ["TEXT", 0, "Pai has "],
+ *  ["IMAGE", 1, "https..*"],
+ *  ["TEXT", 2, "God Power."]
  * ]
  */
 export declare function imageMarkdown2Interatable(text: string): OPDICT;

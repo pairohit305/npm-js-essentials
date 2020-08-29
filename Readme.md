@@ -1,14 +1,23 @@
 `Helper function available:`
 
-Express:
+Array:
 
-- httpReqValidatorAsync
+- splitArrayInto
+
+Country:
+
+- getCountry
+- getCountryList
 
 Email:
 
 - validateEmail
 
-HTML:
+Express:
+
+- httpReqValidatorAsync
+
+html:
 
 - plainText2HTML
 
@@ -17,30 +26,32 @@ Math:
 - Mod
 - searchCount
 
-Supercell:
-
-- validatePlayerTag
-
-Time:
-
-- toISTstring
-- toIST2day
-- UTC2Local
-- toIST2Hour
-
-Uid:
-
-- genUniqueId
-
-Text:
-
-- textLimitor
-
 Parser:
 
 - videoORImage
 - imageMarkdown2Interatable
 
-Array:
+Text:
 
-- splitArrayInto
+- textLimitor
+
+Time:
+
+- UTC2Local
+- UTC2daytoUTCString
+- toUTC2day
+
+Uid:
+
+- genUniqueId
+- genRandomUniqueId
+
+Random
+
+- randomInteger
+- randomFloat
+- randomAlphabet
+
+Sleep
+
+- sleep

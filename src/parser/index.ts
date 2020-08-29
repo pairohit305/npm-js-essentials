@@ -18,7 +18,7 @@ export function videoORImage(link: string) {
   }
 }
 
-type TYPE = "Text" | "Image";
+type TYPE = "TEXT" | "IMAGE";
 type OPDICT = ([TYPE, number, string] | undefined)[];
 /**
  // prettier-ignore  
@@ -26,9 +26,9 @@ type OPDICT = ([TYPE, number, string] | undefined)[];
  *  Before: Pai has [image](https..*)God Power.  
  *  After:  
  *  [  
- *  ["Text", 0, "Pai has "],  
- *  ["Image", 1, "https..*"],  
- *  ["Text", 2, "God Power."]  
+ *  ["TEXT", 0, "Pai has "],  
+ *  ["IMAGE", 1, "https..*"],  
+ *  ["TEXT", 2, "God Power."]  
  * ]  
  */
 export function imageMarkdown2Interatable(text: string): OPDICT {
@@ -44,7 +44,7 @@ export function imageMarkdown2Interatable(text: string): OPDICT {
   textCopy1.replace(/\[image\]\(.+?\)/g, (replacedText: string): string => {
     let key: TYPE, index, startRange, endRange, value;
     // key
-    key = "Image";
+    key = "IMAGE";
     // range
     startRange = textCopy2.indexOf(replacedText, lastSearchedIndex);
     endRange = startRange + replacedText.length - 1;
@@ -54,11 +54,7 @@ export function imageMarkdown2Interatable(text: string): OPDICT {
     index = iamgeStringCount;
 
     // trace the before text
-    map.push([
-      "Text",
-      mapIndex,
-      textCopy1.slice(lastSearchedIndex + 1, startRange),
-    ]);
+    map.push(["TEXT", mapIndex, textCopy1.slice(lastSearchedIndex + 1, startRange)]);
     mapIndex++;
     map.push([key, mapIndex, value]);
     lastSearchedIndex = endRange;
@@ -66,10 +62,6 @@ export function imageMarkdown2Interatable(text: string): OPDICT {
     mapIndex++;
     return "";
   });
-  map.push([
-    "Text",
-    mapIndex + 1,
-    textCopy2.slice(lastSearchedIndex + 1, textCopy2.length),
-  ]);
+  map.push(["TEXT", mapIndex + 1, textCopy2.slice(lastSearchedIndex + 1, textCopy2.length)]);
   return map;
 }

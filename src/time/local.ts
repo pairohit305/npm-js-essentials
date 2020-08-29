@@ -1,5 +1,5 @@
-import moment from "moment-timezone";
+import { format } from "date-fns";
 
 export function UTC2Local(UTC: string) {
-  return moment.utc(UTC).format("MMM DD, YYYY");
+  return format(new Date(UTC), "do MMM, yyyy");
 }
