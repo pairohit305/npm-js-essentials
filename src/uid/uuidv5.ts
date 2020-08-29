@@ -1,5 +1,5 @@
 import { v5 as uuidv5 } from "uuid";
-import crypto from "crypto";
+import { randomInteger } from "../random";
 
 // generate uid base on version uuid v5
 export function genUniqueId(appName: string, key: string) {
@@ -8,5 +8,5 @@ export function genUniqueId(appName: string, key: string) {
 }
 
 export function genRandomUniqueId() {
-  return uuidv5(crypto.randomBytes(8).toString("hex"), uuidv5.URL);
+  return uuidv5(randomInteger(Math.pow(2, 64)).toString(), uuidv5.URL);
 }
