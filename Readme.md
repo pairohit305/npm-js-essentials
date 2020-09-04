@@ -30,6 +30,7 @@ Parser:
 
 - videoORImage
 - imageMarkdown2Interatable
+- domaincomDetector
 
 Text:
 

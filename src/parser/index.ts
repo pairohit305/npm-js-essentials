@@ -1,3 +1,5 @@
+import { URL } from "url";
+
 // return video if it's video url formate , image ...
 // warning currently only detecting common formats
 export function videoORImage(link: string) {
@@ -64,4 +66,22 @@ export function imageMarkdown2Interatable(text: string): OPDICT {
   });
   map.push(["TEXT", mapIndex + 1, textCopy2.slice(lastSearchedIndex + 1, textCopy2.length)]);
   return map;
+}
+
+// detect the domain with .com
+// eg: https://www.instagram.com => instagram
+// only detect .com
+export function domaincomDetector(url: string) {
+  if (typeof url !== "string" || !url.includes(".com")) return null;
+  try {
+    let hostname = new URL(url).hostname.split(".com")[0];
+    if (hostname.includes(".")) {
+      const length = hostname.split(".")["length"];
+      hostname = hostname.split(".")[length];
+    }
+
+    return hostname;
+  } catch (err) {
+    return null;
+  }
 }

@@ -13,5 +13,6 @@ declare type OPDICT = ([TYPE, number, string] | undefined)[];
  * ]
  */
 export declare function imageMarkdown2Interatable(text: string): OPDICT;
+export declare function domaincomDetector(url: string): string | null;
 export {};
 //# sourceMappingURL=index.d.ts.map
