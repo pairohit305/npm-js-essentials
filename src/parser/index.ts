@@ -77,7 +77,7 @@ export function domaincomDetector(url: string) {
     let hostname = new URL(url).hostname.split(".com")[0];
     if (hostname.includes(".")) {
       const length = hostname.split(".")["length"];
-      hostname = hostname.split(".")[length];
+      hostname = hostname.split(".")[length - 1];
     }
 
     return hostname;
