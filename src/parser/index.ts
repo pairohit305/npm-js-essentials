@@ -1,4 +1,4 @@
-import { URL } from "url";
+import parse from "url-parse";
 
 // return video if it's video url formate , image ...
 // warning currently only detecting common formats
@@ -74,7 +74,8 @@ export function imageMarkdown2Interatable(text: string): OPDICT {
 export function domaincomDetector(url: string) {
   if (typeof url !== "string" || !url.includes(".com")) return null;
   try {
-    let hostname = new URL(url).hostname.split(".com")[0];
+    const parser = parse(url, {});
+    let hostname = parser.hostname.split(".com")[0];
     if (hostname.includes(".")) {
       const length = hostname.split(".")["length"];
       hostname = hostname.split(".")[length - 1];

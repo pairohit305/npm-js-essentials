@@ -1,6 +1,6 @@
 {
   "name": "@pairohit/helper",
-  "version": "2.1.10",
+  "version": "2.1.11",
   "description": "Many Helper function to save time!",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -25,10 +25,12 @@
   "license": "Open Source",
   "dependencies": {
     "date-fns": "^2.16.0",
+    "url-parse": "^1.4.7",
     "uuid": "^8.2.0"
   },
   "devDependencies": {
     "@types/node": "*",
+    "@types/url-parse": "^1.4.3",
     "@types/uuid": "^8.0.0",
     "ts-node": "*",
     "typescript": "*"
