@@ -1,13 +1,13 @@
 {
   "name": "@pairohit/helper",
-  "version": "2.1.11",
+  "version": "2.1.12",
   "description": "Many Helper function to save time!",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc -p .",
     "test": "ts-node playground/index.ts",
-    "publish": "npm publish"
+    "publish:npm": "npm publish"
   },
   "homepage": "https://github.com/pairohit16/helper",
   "maintainers": [
