@@ -7,4 +7,5 @@
  */
 export declare function toUTC2day(dayModifier?: number): string;
 export declare function UTC2daytoUTCString(UTC2day: string): string;
+export declare function toUTCNumber(dayModifier?: number): number;
 //# sourceMappingURL=utc.d.ts.map

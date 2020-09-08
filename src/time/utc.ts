@@ -7,12 +7,18 @@ import { format, addDays, subDays } from "date-fns";
  *  dayModifier = **-10** : o/p => 202010**05**  
  */
 export function toUTC2day(dayModifier?: number) {
+  const utcnumber = Date.UTC(
+    new Date().getUTCFullYear(),
+    new Date().getUTCMonth(),
+    new Date().getUTCDate()
+  );
+
   if (dayModifier && dayModifier > 0) {
-    return format(addDays(new Date(new Date().toUTCString()), dayModifier), "yyyyMMdd");
+    return format(addDays(utcnumber, dayModifier), "yyyyMMdd");
   } else if (dayModifier && dayModifier < 0) {
-    return format(subDays(new Date(new Date().toUTCString()), -dayModifier), "yyyyMMdd");
+    return format(subDays(utcnumber, -dayModifier), "yyyyMMdd");
   } else {
-    return format(new Date(new Date().toUTCString()), "yyyyMMdd");
+    return format(utcnumber, "yyyyMMdd");
   }
 }
 
@@ -29,4 +35,20 @@ export function UTC2daytoUTCString(UTC2day: string) {
       999
     )
   ).toUTCString();
+}
+
+export function toUTCNumber(dayModifier?: number) {
+  const utcnumber = Date.UTC(
+    new Date().getUTCFullYear(),
+    new Date().getUTCMonth(),
+    new Date().getUTCDate()
+  );
+
+  if (dayModifier && dayModifier > 0) {
+    return addDays(utcnumber, dayModifier).getTime();
+  } else if (dayModifier && dayModifier < 0) {
+    return subDays(utcnumber, -dayModifier).getTime();
+  } else {
+    return utcnumber;
+  }
 }
