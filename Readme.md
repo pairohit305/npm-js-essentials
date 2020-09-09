@@ -29,7 +29,7 @@ Math:
 Parser:
 
 - videoORImage
-- imageMarkdown2Interatable
+- img2DMatrix
 - domaincomDetector
 
 Text:

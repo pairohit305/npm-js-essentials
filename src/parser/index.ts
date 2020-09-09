@@ -21,7 +21,8 @@ export function videoORImage(link: string) {
 }
 
 type TYPE = "TEXT" | "IMAGE";
-type OPDICT = ([TYPE, number, string] | undefined)[];
+type INVDICT = [TYPE, number, string];
+type OPDICT = INVDICT[] | [];
 /**
  // prettier-ignore  
  * This function convert similar how markdown syntax work! 
@@ -33,20 +34,19 @@ type OPDICT = ([TYPE, number, string] | undefined)[];
  *  ["TEXT", 2, "God Power."]  
  * ]  
  */
-export function imageMarkdown2Interatable(text: string): OPDICT {
+export function img2DMatrix(text: string): OPDICT {
   if (typeof text !== "string") return [];
 
   let textCopy1 = text;
   let textCopy2 = text;
 
-  let map: OPDICT = [];
+  let map: INVDICT[] = [];
   let mapIndex = 0;
   let iamgeStringCount = 0;
   let lastSearchedIndex = -1;
   textCopy1.replace(/\[image\]\(.+?\)/g, (replacedText: string): string => {
-    let key: TYPE, index, startRange, endRange, value;
-    // key
-    key = "IMAGE";
+    let index, startRange, endRange, value;
+
     // range
     startRange = textCopy2.indexOf(replacedText, lastSearchedIndex);
     endRange = startRange + replacedText.length - 1;
@@ -58,13 +58,13 @@ export function imageMarkdown2Interatable(text: string): OPDICT {
     // trace the before text
     map.push(["TEXT", mapIndex, textCopy1.slice(lastSearchedIndex + 1, startRange)]);
     mapIndex++;
-    map.push([key, mapIndex, value]);
+    map.push(["IMAGE", mapIndex, value]);
     lastSearchedIndex = endRange;
     iamgeStringCount++;
     mapIndex++;
     return "";
   });
-  map.push(["TEXT", mapIndex + 1, textCopy2.slice(lastSearchedIndex + 1, textCopy2.length)]);
+  map.push(["TEXT", mapIndex, textCopy2.slice(lastSearchedIndex + 1, textCopy2.length)]);
   return map;
 }
 

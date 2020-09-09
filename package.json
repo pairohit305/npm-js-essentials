@@ -1,9 +1,9 @@
 {
   "name": "@pairohit/helper",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Many Helper function to save time!",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -p .",
     "test": "ts-node playground/index.ts",
@@ -24,9 +24,9 @@
   "author": "PaiRohit",
   "license": "Open Source",
   "dependencies": {
-    "date-fns": "^2.16.0",
+    "date-fns": "^2.16.1",
     "url-parse": "^1.4.7",
-    "uuid": "^8.2.0"
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
     "@types/node": "*",

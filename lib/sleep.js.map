@@ -1,1 +1,0 @@
-{"version":3,"file":"sleep.js","sourceRoot":"","sources":["../src/sleep.ts"],"names":[],"mappings":";;;AAAO,KAAK,UAAU,KAAK,CAAC,OAAe;IACzC,OAAO,MAAM,IAAI,OAAO,CAAC,CAAC,OAAO,EAAE,EAAE;QACnC,UAAU,CAAC,GAAG,EAAE;YACd,OAAO,EAAE,CAAC;QACZ,CAAC,EAAE,OAAO,CAAC,CAAC;IACd,CAAC,CAAC,CAAC;AACL,CAAC;AAND,sBAMC"}

@@ -1,6 +1,7 @@
 export declare function videoORImage(link: string): "VIDEO" | "IMAGE" | null;
 declare type TYPE = "TEXT" | "IMAGE";
-declare type OPDICT = ([TYPE, number, string] | undefined)[];
+declare type INVDICT = [TYPE, number, string];
+declare type OPDICT = INVDICT[] | [];
 /**
  // prettier-ignore
  * This function convert similar how markdown syntax work!
@@ -12,7 +13,7 @@ declare type OPDICT = ([TYPE, number, string] | undefined)[];
  *  ["TEXT", 2, "God Power."]
  * ]
  */
-export declare function imageMarkdown2Interatable(text: string): OPDICT;
+export declare function img2DMatrix(text: string): OPDICT;
 export declare function domaincomDetector(url: string): string | null;
 export {};
 //# sourceMappingURL=index.d.ts.map
