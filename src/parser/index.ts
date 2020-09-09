@@ -22,7 +22,8 @@ export function videoORImage(link: string) {
 
 type TYPE = "TEXT" | "IMAGE";
 type INVDICT = [TYPE, number, string];
-type OPDICT = INVDICT[] | [];
+type OPDICT = Array<INVDICT>;
+
 /**
  // prettier-ignore  
  * This function convert similar how markdown syntax work! 
@@ -46,7 +47,6 @@ export function img2DMatrix(text: string): OPDICT {
   let lastSearchedIndex = -1;
   textCopy1.replace(/\[image\]\(.+?\)/g, (replacedText: string): string => {
     let index, startRange, endRange, value;
-
     // range
     startRange = textCopy2.indexOf(replacedText, lastSearchedIndex);
     endRange = startRange + replacedText.length - 1;

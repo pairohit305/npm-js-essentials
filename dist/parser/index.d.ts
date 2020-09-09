@@ -1,7 +1,7 @@
 export declare function videoORImage(link: string): "VIDEO" | "IMAGE" | null;
 declare type TYPE = "TEXT" | "IMAGE";
 declare type INVDICT = [TYPE, number, string];
-declare type OPDICT = INVDICT[] | [];
+declare type OPDICT = Array<INVDICT>;
 /**
  // prettier-ignore
  * This function convert similar how markdown syntax work!
