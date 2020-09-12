@@ -1,7 +1,7 @@
 {
   "name": "@pairohit/helper",
-  "version": "3.0.11",
-  "description": "Many Helper function to save time!",
+  "version": "3.0.2",
+  "description": "Many Usefull Helper function to save time!",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -29,7 +29,7 @@
     "uuid": "^8.3.0"
   },
   "devDependencies": {
-    "@types/node": "*",
+    "@types/node": "^14.10.1",
     "@types/url-parse": "^1.4.3",
     "@types/uuid": "^8.0.0",
     "ts-node": "*",

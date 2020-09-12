@@ -5,8 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.domaincomDetector = exports.img2DMatrix = exports.videoORImage = void 0;
 const url_parse_1 = __importDefault(require("url-parse"));
-// return video if it's video url formate , image ...
-// warning currently only detecting common formats
+/**
+ *
+ * @param link url
+ */
 function videoORImage(link) {
     try {
         if (typeof link !== "string" || link.length <= 0)

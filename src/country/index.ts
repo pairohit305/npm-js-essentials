@@ -1,5 +1,8 @@
 import countryJSON from "./country.json";
 
+/**
+ * Get the all country code list
+ */
 export function getCountryList() {
   return countryJSON as { [key in CountryCode]: string };
 }
@@ -256,6 +259,10 @@ type CountryCode =
   | "ZM"
   | "ZW";
 
+/**
+ * By providing country code you get full name
+ * @param countrycode Country Code
+ */
 export function getCountry(countrycode: CountryCode) {
   return countryJSON[countrycode];
 }

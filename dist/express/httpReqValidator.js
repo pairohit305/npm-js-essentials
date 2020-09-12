@@ -14,6 +14,9 @@ const errorObject = {
     code: 400,
     message: "Provided incorrect parameters for the request",
 };
+/**
+ * Check the example folder
+ */
 function httpReqValidatorAsync(params, httpReq) {
     return __awaiter(this, void 0, void 0, function* () {
         const checkCount = params.length;
@@ -28,9 +31,7 @@ function httpReqValidatorAsync(params, httpReq) {
         }
         // validate
         Object.entries(httpReq).some(([k, v]) => {
-            if ((typeof v === "string" ||
-                typeof v === "number" ||
-                typeof v === "object") &&
+            if ((typeof v === "string" || typeof v === "number" || typeof v === "object") &&
                 v.toString().length > 0 &&
                 httpReq[k] !== undefined &&
                 params.includes(k)) {

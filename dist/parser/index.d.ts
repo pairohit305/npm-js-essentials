@@ -1,3 +1,7 @@
+/**
+ *
+ * @param link url
+ */
 export declare function videoORImage(link: string): "VIDEO" | "IMAGE" | null;
 declare type TYPE = "TEXT" | "IMAGE";
 declare type INVDICT = [TYPE, number, string];

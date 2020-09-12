@@ -1,7 +1,9 @@
 import parse from "url-parse";
 
-// return video if it's video url formate , image ...
-// warning currently only detecting common formats
+/**
+ *
+ * @param link url
+ */
 export function videoORImage(link: string) {
   try {
     if (typeof link !== "string" || link.length <= 0) return null;

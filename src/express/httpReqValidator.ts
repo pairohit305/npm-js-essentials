@@ -5,10 +5,11 @@ const errorObject = {
 type HttpReq = {
   [key: string]: any;
 };
-export async function httpReqValidatorAsync(
-  params: string[],
-  httpReq: HttpReq
-) {
+
+/**
+ * Check the example folder
+ */
+export async function httpReqValidatorAsync(params: string[], httpReq: HttpReq) {
   const checkCount = params.length;
   let checked = checkCount;
   // check weather req body is json type
@@ -22,9 +23,7 @@ export async function httpReqValidatorAsync(
   // validate
   Object.entries(httpReq).some(([k, v]) => {
     if (
-      (typeof v === "string" ||
-        typeof v === "number" ||
-        typeof v === "object") &&
+      (typeof v === "string" || typeof v === "number" || typeof v === "object") &&
       v.toString().length > 0 &&
       httpReq[k] !== undefined &&
       params.includes(k)

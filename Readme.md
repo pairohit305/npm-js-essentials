@@ -53,6 +53,7 @@ Random
 - randomInteger
 - randomFloat
 - randomAlphabet
+- randomNaturalArray
 
 Sleep
 
