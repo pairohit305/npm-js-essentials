@@ -42,6 +42,7 @@ Time:
 - UTC2Local
 - UTC2daytoUTCString
 - toUTC2day
+- UTCDiffdays
 
 Uid:
 

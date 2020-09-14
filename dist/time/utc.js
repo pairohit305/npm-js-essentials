@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.toUTCNumber = exports.UTC2daytoUTCString = exports.toUTC2day = void 0;
+exports.UTCDiffdays = exports.toUTCNumber = exports.UTC2daytoNumber = exports.UTC2daytoUTCString = exports.toUTC2day = void 0;
 const date_fns_1 = require("date-fns");
 /**
  // prettier-ignore
@@ -27,6 +27,11 @@ function UTC2daytoUTCString(UTC2day) {
     return new Date(Date.UTC(Number(UTC2day.slice(0, 4)), Number(UTC2day.slice(4, 6)) - 1, Number(UTC2day.slice(-2)), 23, 59, 59, 999)).toUTCString();
 }
 exports.UTC2daytoUTCString = UTC2daytoUTCString;
+/* 20201010 -> 123123012312012 */
+function UTC2daytoNumber(UTC2day) {
+    return Date.UTC(Number(UTC2day.slice(0, 4)), Number(UTC2day.slice(4, 6)) - 1, Number(UTC2day.slice(-2)));
+}
+exports.UTC2daytoNumber = UTC2daytoNumber;
 function toUTCNumber(dayModifier) {
     const utcnumber = Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate());
     if (dayModifier && dayModifier > 0) {
@@ -40,4 +45,13 @@ function toUTCNumber(dayModifier) {
     }
 }
 exports.toUTCNumber = toUTCNumber;
+/**
+ * Returns the differences in days between two UTC2day
+ * @param UTC2day1 UTC2day string
+ * @param UTC2day2 UTC2day string
+ */
+function UTCDiffdays(UTC2day1, UTC2day2) {
+    return Math.abs(date_fns_1.differenceInDays(UTC2daytoNumber(UTC2day1), UTC2daytoNumber(UTC2day2)));
+}
+exports.UTCDiffdays = UTCDiffdays;
 //# sourceMappingURL=utc.js.map

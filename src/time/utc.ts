@@ -1,4 +1,4 @@
-import { format, addDays, subDays } from "date-fns";
+import { format, addDays, subDays, differenceInDays } from "date-fns";
 /**
  // prettier-ignore
  * Example:  
@@ -37,6 +37,15 @@ export function UTC2daytoUTCString(UTC2day: string) {
   ).toUTCString();
 }
 
+/* 20201010 -> 123123012312012 */
+export function UTC2daytoNumber(UTC2day: string) {
+  return Date.UTC(
+    Number(UTC2day.slice(0, 4)),
+    Number(UTC2day.slice(4, 6)) - 1,
+    Number(UTC2day.slice(-2))
+  );
+}
+
 export function toUTCNumber(dayModifier?: number) {
   const utcnumber = Date.UTC(
     new Date().getUTCFullYear(),
@@ -51,4 +60,12 @@ export function toUTCNumber(dayModifier?: number) {
   } else {
     return utcnumber;
   }
+}
+/**
+ * Returns the differences in days between two UTC2day
+ * @param UTC2day1 UTC2day string
+ * @param UTC2day2 UTC2day string
+ */
+export function UTCDiffdays(UTC2day1: string, UTC2day2: string) {
+  return Math.abs(differenceInDays(UTC2daytoNumber(UTC2day1), UTC2daytoNumber(UTC2day2)));
 }
