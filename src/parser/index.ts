@@ -88,3 +88,77 @@ export function domaincomDetector(url: string) {
     return null;
   }
 }
+
+/**
+ * Detect the argument name of a given function
+ * @param func Function
+ */
+export function jsfuncArgDetector(func: Function) {
+  // @ts-ignore
+  // First match everything inside the function argument parens.
+  var args = func.toString().match(/function\s.*?\(([^)]*)\)/)[1];
+
+  // Split the arguments string into an array comma delimited.
+  return args
+    .split(",")
+    .map(function (arg) {
+      // Ensure no inline comments are parsed and trim the whitespace.
+      return arg.replace(/\/\*.*\*\//, "").trim();
+    })
+    .filter(function (arg) {
+      // Ensure no undefined values are added.
+      return arg;
+    });
+}
+
+export function jsFuncErrDetector(
+  typeArr: (
+    | "string"
+    | "number"
+    | "bigint"
+    | "boolean"
+    | "symbol"
+    | "undefined"
+    | "object"
+    | "function"
+  )[],
+  args: IArguments,
+  func: Function
+) {
+  const name = func.name;
+  Object.values(args).forEach((val, index) => {
+    if (typeof val !== typeArr[index]) {
+      console.log(
+        `@function:${name} expected @type:${typeArr[index]} for @arg:${
+          jsfuncArgDetector(func)[index]
+        }, but received @type:${typeof val}`
+      );
+    }
+  });
+}
+type a = Function;
+export function jsFuncErrDetector2(
+  typeArr: (
+    | "string"
+    | "number"
+    | "boolean"
+    | "undefined"
+    | "object"
+    | "Array"
+    | "Function"
+    | "function"
+  )[],
+  args: IArguments,
+  func: Function
+) {
+  const name = func.name;
+  Object.values(args).forEach((val, index) => {
+    if (typeof val !== typeArr[index]) {
+      console.log(
+        `@function:${name} expected @type:${typeArr[index]} for @arg:${
+          jsfuncArgDetector(func)[index]
+        }, but received @type:${typeof val}`
+      );
+    }
+  });
+}
