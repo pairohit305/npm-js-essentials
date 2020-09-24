@@ -22,4 +22,5 @@ __exportStar(require("./array"), exports);
 __exportStar(require("./sleep"), exports);
 __exportStar(require("./random"), exports);
 __exportStar(require("./country"), exports);
+__exportStar(require("./halt"), exports);
 //# sourceMappingURL=index.js.map

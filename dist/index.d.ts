@@ -10,4 +10,5 @@ export * from "./array";
 export * from "./sleep";
 export * from "./random";
 export * from "./country";
+export * from "./halt";
 //# sourceMappingURL=index.d.ts.map

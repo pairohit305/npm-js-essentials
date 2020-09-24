@@ -59,3 +59,7 @@ Random
 Sleep
 
 - sleep
+
+Halt
+
+- Halt

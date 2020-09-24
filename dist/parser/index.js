@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.domaincomDetector = exports.img2DMatrix = exports.videoORImage = void 0;
+exports.jsFuncErrDetector2 = exports.jsFuncErrDetector = exports.jsfuncArgDetector = exports.domaincomDetector = exports.img2DMatrix = exports.videoORImage = void 0;
 const url_parse_1 = __importDefault(require("url-parse"));
 /**
  *
@@ -90,4 +90,43 @@ function domaincomDetector(url) {
     }
 }
 exports.domaincomDetector = domaincomDetector;
+/**
+ * Detect the argument name of a given function
+ * @param func Function
+ */
+function jsfuncArgDetector(func) {
+    // @ts-ignore
+    // First match everything inside the function argument parens.
+    var args = func.toString().match(/function\s.*?\(([^)]*)\)/)[1];
+    // Split the arguments string into an array comma delimited.
+    return args
+        .split(",")
+        .map(function (arg) {
+        // Ensure no inline comments are parsed and trim the whitespace.
+        return arg.replace(/\/\*.*\*\//, "").trim();
+    })
+        .filter(function (arg) {
+        // Ensure no undefined values are added.
+        return arg;
+    });
+}
+exports.jsfuncArgDetector = jsfuncArgDetector;
+function jsFuncErrDetector(typeArr, args, func) {
+    const name = func.name;
+    Object.values(args).forEach((val, index) => {
+        if (typeof val !== typeArr[index]) {
+            console.log(`@function:${name} expected @type:${typeArr[index]} for @arg:${jsfuncArgDetector(func)[index]}, but received @type:${typeof val}`);
+        }
+    });
+}
+exports.jsFuncErrDetector = jsFuncErrDetector;
+function jsFuncErrDetector2(typeArr, args, func) {
+    const name = func.name;
+    Object.values(args).forEach((val, index) => {
+        if (typeof val !== typeArr[index]) {
+            console.log(`@function:${name} expected @type:${typeArr[index]} for @arg:${jsfuncArgDetector(func)[index]}, but received @type:${typeof val}`);
+        }
+    });
+}
+exports.jsFuncErrDetector2 = jsFuncErrDetector2;
 //# sourceMappingURL=index.js.map

@@ -1,7 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateEmail = void 0;
+const parser_1 = require("../parser");
 function validateEmail(email) {
+    parser_1.jsFuncErrDetector(["string"], arguments, validateEmail);
     let tester = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
     if (!email)
         return false;
