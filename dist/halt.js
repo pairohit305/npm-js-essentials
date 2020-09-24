@@ -23,7 +23,6 @@ function halt(couter, tobe, options) {
             let timeout = (options === null || options === void 0 ? void 0 : options.every) || 1000;
             let loop = setInterval(() => {
                 totalTimepassed += timeout;
-                console.log(couter, totalTimepassed);
                 // if maxtimeout has passed reject it
                 if ((options === null || options === void 0 ? void 0 : options.maxTimeout) && totalTimepassed >= options.maxTimeout) {
                     clearInterval(loop);

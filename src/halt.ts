@@ -18,7 +18,6 @@ export async function halt(
 
     let loop = setInterval(() => {
       totalTimepassed += timeout;
-      console.log(couter, totalTimepassed);
       // if maxtimeout has passed reject it
       if (options?.maxTimeout && totalTimepassed >= options.maxTimeout) {
         clearInterval(loop);
