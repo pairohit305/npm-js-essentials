@@ -1,8 +1,9 @@
 /**
- *
- * @param link url
+ * Given an url, it will detect weather it's an VIDEO or IMAGE
+ * @param url url
  */
-export declare function videoORImage(link: string): "VIDEO" | "IMAGE" | null;
+export declare function videoORImage(url: string): "VIDEO" | "IMAGE" | null | undefined;
+export declare function plainText2HTML(text: string): string;
 declare type TYPE = "TEXT" | "IMAGE";
 declare type INVDICT = [TYPE, number, string];
 declare type OPDICT = Array<INVDICT>;
@@ -19,12 +20,9 @@ declare type OPDICT = Array<INVDICT>;
  */
 export declare function img2DMatrix(text: string): OPDICT;
 export declare function domaincomDetector(url: string): string | null;
+export {};
 /**
  * Detect the argument name of a given function
  * @param func Function
  */
-export declare function jsfuncArgDetector(func: Function): string[];
-export declare function jsFuncErrDetector(typeArr: ("string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function")[], args: IArguments, func: Function): void;
-export declare function jsFuncErrDetector2(typeArr: ("string" | "number" | "boolean" | "undefined" | "object" | "Array" | "Function" | "function")[], args: IArguments, func: Function): void;
-export {};
 //# sourceMappingURL=index.d.ts.map

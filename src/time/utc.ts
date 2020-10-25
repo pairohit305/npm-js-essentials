@@ -1,4 +1,8 @@
 import { format, addDays, subDays, differenceInDays } from "date-fns";
+
+export function utcDate() {
+  return new Date().toUTCString();
+}
 /**
  // prettier-ignore
  * Example:  
@@ -6,7 +10,7 @@ import { format, addDays, subDays, differenceInDays } from "date-fns";
  *  dayModifier = **10** : o/p => 202010**25**  
  *  dayModifier = **-10** : o/p => 202010**05**  
  */
-export function toUTC2day(dayModifier?: number) {
+export function dateString(dayModifier?: number) {
   const utcnumber = Date.UTC(
     new Date().getUTCFullYear(),
     new Date().getUTCMonth(),
@@ -23,12 +27,12 @@ export function toUTC2day(dayModifier?: number) {
 }
 
 /* 20201010 -> "Tue, 10 Oct 2020 23:59:59 GMT" */
-export function UTC2daytoUTCString(UTC2day: string) {
+export function toLateDate(dateString: string) {
   return new Date(
     Date.UTC(
-      Number(UTC2day.slice(0, 4)),
-      Number(UTC2day.slice(4, 6)) - 1,
-      Number(UTC2day.slice(-2)),
+      Number(dateString.slice(0, 4)),
+      Number(dateString.slice(4, 6)) - 1,
+      Number(dateString.slice(-2)),
       23,
       59,
       59,
@@ -37,16 +41,32 @@ export function UTC2daytoUTCString(UTC2day: string) {
   ).toUTCString();
 }
 
+/* 20201010 -> "Tue, 10 Oct 2020 00:00:00 GMT" */
+export function toEarlyDate(dateString: string) {
+  return new Date(
+    Date.UTC(
+      Number(dateString.slice(0, 4)),
+      Number(dateString.slice(4, 6)) - 1,
+      Number(dateString.slice(-2)),
+      0,
+      0,
+      0,
+      0
+    )
+  ).toUTCString();
+}
+
 /* 20201010 -> 123123012312012 */
-export function UTC2daytoNumber(UTC2day: string) {
+export function toDateInt(dateString: string) {
   return Date.UTC(
-    Number(UTC2day.slice(0, 4)),
-    Number(UTC2day.slice(4, 6)) - 1,
-    Number(UTC2day.slice(-2))
+    Number(dateString.slice(0, 4)),
+    Number(dateString.slice(4, 6)) - 1,
+    Number(dateString.slice(-2))
   );
 }
 
-export function toUTCNumber(dayModifier?: number) {
+/* op: 123123012312012 */
+export function toDateInt2(dayModifier?: number) {
   const utcnumber = Date.UTC(
     new Date().getUTCFullYear(),
     new Date().getUTCMonth(),
@@ -62,10 +82,10 @@ export function toUTCNumber(dayModifier?: number) {
   }
 }
 /**
- * Returns the differences in days between two UTC2day
- * @param UTC2day1 UTC2day string
- * @param UTC2day2 UTC2day string
+ * Returns the differences in days between two dateString in days
+ * @param dateString1 dateString
+ * @param dateString2 dateString
  */
-export function UTCDiffdays(UTC2day1: string, UTC2day2: string) {
-  return Math.abs(differenceInDays(UTC2daytoNumber(UTC2day1), UTC2daytoNumber(UTC2day2)));
+export function dateStringDifference(dateString1: string, dateString2: string) {
+  return Math.abs(differenceInDays(toDateInt(dateString1), toDateInt(dateString2)));
 }

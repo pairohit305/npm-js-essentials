@@ -2,7 +2,7 @@ declare type HttpReq = {
     [key: string]: any;
 };
 /**
- * Check the example folder
+ * Validate the http's request query-parameter
  */
 export declare function httpReqValidatorAsync(params: string[], httpReq: HttpReq): Promise<boolean>;
 export {};

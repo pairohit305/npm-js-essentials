@@ -1,6 +1,6 @@
 {
   "name": "@pairohit/helper",
-  "version": "3.0.24",
+  "version": "4.0.0",
   "description": "Many Usefull Helper function to save time!",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -34,14 +34,5 @@
     "@types/uuid": "^8.0.0",
     "ts-node": "*",
     "typescript": "*"
-  },
-  "keywords": [
-    "halt",
-    "uid",
-    "email-validator",
-    "ist",
-    "mod",
-    "express-request-validator",
-    "text-to-html"
-  ]
+  }
 }

@@ -1,13 +1,15 @@
+import { httpStatusCode } from "../httpStatusCode";
+
 const errorObject = {
   code: 400,
-  message: "Provided incorrect parameters for the request",
+  message: httpStatusCode[400],
 };
 type HttpReq = {
   [key: string]: any;
 };
 
 /**
- * Check the example folder
+ * Validate the http's request query-parameter
  */
 export async function httpReqValidatorAsync(params: string[], httpReq: HttpReq) {
   const checkCount = params.length;

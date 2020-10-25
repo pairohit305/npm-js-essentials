@@ -13,6 +13,14 @@ export function splitArrayInto(array: any[], into: number): any[][] {
   return array2d;
 }
 
+
+/** Count the given element in an array */
+export function arrayElmCounter(list: any[], searcher: any): number {
+  let count = 0;
+  list.forEach((elm) => (elm === searcher ? count++ : undefined));
+  return count;
+}
+
 /**
  * includes++
  * @param array Array of numbers only supported currently
@@ -22,15 +30,15 @@ export function contains(
   array: number[],
   val: { searchElements: number[]; exact: boolean } | number
 ) {
+  // not tested yet!
   if (typeof val === "object") {
-    const { searchElements: searchElement, exact } = val;
-    if (searchElement.length <= 0)
-      throw new Error("contains function expects searchElement length more than 1");
+    const { searchElements = [], exact } = val;
+
     return exact
-      ? searchElement.every((value) => {
+      ? searchElements.every((value) => {
           return array.includes(value);
         })
-      : searchElement.some((value) => {
+      : searchElements.some((value) => {
           return array.includes(value);
         });
   } else if (typeof val === "number") {
@@ -38,4 +46,36 @@ export function contains(
   } else {
     throw new Error("contains function expects typeof val to be Object or Number");
   }
+}
+
+export function isDistinctiveArray(array: any[]) {
+  return !array.some((value) => {
+    return arrayElmCounter(array, value) > 1
+  })
+}
+
+/**
+ * Find the minimum interger in an array
+ * @param array 
+ */
+export function minArray(array: number[]) {
+  let min = Number.MAX_VALUE;
+  array.forEach(value => {
+    if(value < min) min = value;
+  })
+
+  return min;
+}
+
+/**
+ * Find the minimum interger in an array
+ * @param array 
+ */
+export function maxArray(array: number[]) {
+  let max = Number.MIN_VALUE;
+  array.forEach(value => {
+    if(value > max) max = value;
+  })
+
+  return max;
 }

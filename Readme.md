@@ -2,33 +2,42 @@
 
 `Available functions`
 
-| Core    | Function              |
-| ------- | --------------------- |
-| Array   | splitArrayInto        |
-| Country | getCountry            |
-|         | getCountryList        |
-| Email   | validateEmail         |
-| Express | httpReqValidatorAsync |
-| Halt    | halt d-> HaltCounter  |
-| html    | plainText2HTML        |
-| Math    | mod                   |
-|         | searchCount           |
-| Parser  | videoORImage          |
-|         | img2DMatrix           |
-|         | domaincomDetector     |
-| Text    | textLimitor           |
-|         | toStartCase           |
-| Time    | UTC2Local             |
-|         | UTC2daytoUTCString    |
-|         | toUTC2day             |
-|         | UTCDiffdays           |
-| Uid     | genUniqueId           |
-|         | genRandomUniqueId     |
-| Random  | randomInteger         |
-|         | randomFloat           |
-|         | randomAlphabet        |
-|         | randomNaturalArray    |
-| Sleep   | sleep                 |
+| Core           | Function              |
+| -------------- | --------------------- |
+| Array          | splitArrayInto        |
+|                | arrayElmCounter       |
+|                | contains              |
+|                | isDistinctiveArray    |
+|                | minArray              |
+|                | maxArray              |
+| Country        | getCountryFullname    |
+|                | getCountryList        |
+| Email          | isEmail               |
+| Express        | httpReqValidatorAsync |
+| Halt           | halt d-> HaltCounter  |
+| HttpStatusCode | httpStatusCode        |
+| Math           | mod                   |
+| Parser         | videoORImage          |
+|                | img2DMatrix           |
+|                | plainText2HTML        |
+|                | domaincomDetector     |
+| Text           | textLimitor           |
+|                | toStartCase           |
+| Time           | dateString            |
+|                | utcDate               |
+|                | toLateDate            |
+|                | toEarlyDate           |
+|                | toFormateDate         |
+|                | toDateInt             |
+|                | toDateInt2            |
+|                | dateStringDifference  |
+| Uid            | genUniqueId           |
+|                | genRandomUniqueId     |
+| Random         | randomInteger         |
+|                | randomFloat           |
+|                | randomAlphabet        |
+|                | randomNaturalArray    |
+| Sleep          | sleep                 |
 
 d-> = depent on
 

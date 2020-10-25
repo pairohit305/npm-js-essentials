@@ -1,8 +1,4 @@
-import { jsFuncErrDetector } from "../parser";
-
 export function textLimitor(text: string, limit: number = 60, content = "...") {
-  jsFuncErrDetector(["string", "number", "string"], arguments, textLimitor);
-
   if (text.length > limit) {
     return text.slice(0, limit) + content;
   }

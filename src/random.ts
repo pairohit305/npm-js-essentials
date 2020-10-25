@@ -1,4 +1,4 @@
-import { contains } from "./array";
+import { contains, isDistinctiveArray, maxArray, minArray } from "./array";
 
 export function randomInteger(upper: number, lower = 0) {
   // error checking
@@ -32,12 +32,39 @@ export function randomAlphabet(includeCapital = false) {
 export function randomNaturalArray(
   upper: number,
   count: number,
-  repeat = false,
-  exclude?: number[]
+  modifiers?: {
+    distinctive?: boolean;
+    /**
+     * acceptable values = {x∈ N | x≤ count}
+     */
+    exclude?: number[];
+    sorted?: boolean;
+  }
 ) {
+  // default
+  modifiers = {
+    exclude: modifiers?.exclude || [],
+    distinctive: modifiers?.distinctive || false,
+    sorted: modifiers?.sorted || false,
+  };
+  const { exclude, distinctive, sorted } = modifiers;
+  if (
+    exclude &&
+    exclude?.length >= 2 &&
+    (!isDistinctiveArray(exclude) ||
+      minArray(exclude) < 1 ||
+      maxArray(exclude) > upper ||
+      exclude.length === upper)
+  ) {
+    throw new Error(
+      `randomNaturalArray function expect values of exclude to be = {x∈ N | x≤ count}`
+    );
+  }
   const array: number[] = [];
 
-  if (!repeat && !exclude) {
+  if (distinctive && !exclude?.length) {
+    if (count > upper)
+      throw new Error(`randomNaturalArray function expect count ≤ ${upper} for your requirement`);
     for (let i = 0; i < count; i++) {
       let random: number;
       while (true) {
@@ -48,12 +75,10 @@ export function randomNaturalArray(
       }
       array.push(random);
     }
-  } else if (!repeat && exclude) {
+  } else if (distinctive && exclude?.length) {
     if (count > upper - exclude.length)
       throw new Error(
-        `randomNaturalArray function expect count to be less than or equal to ${
-          upper - exclude.length
-        } for your requirement`
+        `randomNaturalArray function expect count ≤ ${upper - exclude.length} for your requirement`
       );
     for (let i = 0; i < count; i++) {
       let random: number;
@@ -65,12 +90,14 @@ export function randomNaturalArray(
       }
       array.push(random);
     }
-  } else if (repeat && !exclude) {
+  } else if (!distinctive && !exclude?.length) {
     for (let i = 0; i < count; i++) {
       let random = randomInteger(upper, 1);
       array.push(random);
     }
-  } else if (repeat && exclude) {
+  } else if (!distinctive && exclude?.length) {
+    if (exclude[0] === 1 && count === 1)
+      throw new Error(`randomNaturalArray function expect count ≥ 2 for your requirement`);
     for (let i = 0; i < count; i++) {
       let random: number;
       while (true) {
@@ -81,5 +108,5 @@ export function randomNaturalArray(
     }
   }
 
-  return array;
+  return sorted ? array.sort((a, b) => a - b) : array;
 }

@@ -10,12 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.httpReqValidatorAsync = void 0;
+const httpStatusCode_1 = require("../httpStatusCode");
 const errorObject = {
     code: 400,
-    message: "Provided incorrect parameters for the request",
+    message: httpStatusCode_1.httpStatusCode[400],
 };
 /**
- * Check the example folder
+ * Validate the http's request query-parameter
  */
 function httpReqValidatorAsync(params, httpReq) {
     return __awaiter(this, void 0, void 0, function* () {

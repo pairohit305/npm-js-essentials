@@ -1,7 +1,6 @@
 export * from "./express";
 export * from "./math";
 export * from "./time";
-export * from "./html";
 export * from "./uid";
 export * from "./email";
 export * from "./text";
@@ -11,3 +10,4 @@ export * from "./sleep";
 export * from "./random";
 export * from "./country";
 export * from "./halt";
+export * from './httpStatusCode';

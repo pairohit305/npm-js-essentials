@@ -13,7 +13,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./express"), exports);
 __exportStar(require("./math"), exports);
 __exportStar(require("./time"), exports);
-__exportStar(require("./html"), exports);
 __exportStar(require("./uid"), exports);
 __exportStar(require("./email"), exports);
 __exportStar(require("./text"), exports);
@@ -23,4 +22,5 @@ __exportStar(require("./sleep"), exports);
 __exportStar(require("./random"), exports);
 __exportStar(require("./country"), exports);
 __exportStar(require("./halt"), exports);
+__exportStar(require("./httpStatusCode"), exports);
 //# sourceMappingURL=index.js.map

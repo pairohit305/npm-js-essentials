@@ -261,8 +261,8 @@ type CountryCode =
 
 /**
  * By providing country code you get full name
- * @param countrycode Country Code
+ * @param code Country Code
  */
-export function getCountry(countrycode: CountryCode) {
-  return countryJSON[countrycode];
+export function getCountryFullname(code: CountryCode) {
+  return countryJSON[code];
 }

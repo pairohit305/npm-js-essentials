@@ -1,8 +1,4 @@
-import { jsFuncErrDetector } from "../parser";
-
-export function validateEmail(email: string) {
-  jsFuncErrDetector(["string"], arguments, validateEmail);
-
+export function isEmail(email: string) {
   let tester = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
   if (!email) return false;
 

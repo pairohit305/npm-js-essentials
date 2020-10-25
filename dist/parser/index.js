@@ -3,23 +3,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.jsFuncErrDetector2 = exports.jsFuncErrDetector = exports.jsfuncArgDetector = exports.domaincomDetector = exports.img2DMatrix = exports.videoORImage = void 0;
+exports.domaincomDetector = exports.img2DMatrix = exports.plainText2HTML = exports.videoORImage = void 0;
 const url_parse_1 = __importDefault(require("url-parse"));
 /**
- *
- * @param link url
+ * Given an url, it will detect weather it's an VIDEO or IMAGE
+ * @param url url
  */
-function videoORImage(link) {
+function videoORImage(url) {
     try {
-        if (typeof link !== "string" || link.length <= 0)
+        if (typeof url !== "string" || url.length <= 0)
             return null;
-        const response = link.match(/(mp4|jpg|png|jpeg|webp)/g);
+        const response = url.toLowerCase().match(/(mp4|mov|wmv|flv|avi|avchd|webm|mkv|jpg|png|jpeg|webp|gif)/g);
         if (!response)
             return null;
         switch (response[0]) {
             case "mp4":
+            case "mov":
+            case "wmv":
+            case "flv":
+            case "avi":
+            case "avchd":
+            case "webm":
+            case "mkv":
                 return "VIDEO";
-            default:
+            case "jpg":
+            case "png":
+            case "jpeg":
+            case "webp":
+            case "gif":
                 return "IMAGE";
         }
     }
@@ -28,6 +39,10 @@ function videoORImage(link) {
     }
 }
 exports.videoORImage = videoORImage;
+function plainText2HTML(text) {
+    return text.replace(/\n/g, "<br />");
+}
+exports.plainText2HTML = plainText2HTML;
 /**
  // prettier-ignore
  * This function convert similar how markdown syntax work!
@@ -94,39 +109,70 @@ exports.domaincomDetector = domaincomDetector;
  * Detect the argument name of a given function
  * @param func Function
  */
-function jsfuncArgDetector(func) {
-    // @ts-ignore
-    // First match everything inside the function argument parens.
-    var args = func.toString().match(/function\s.*?\(([^)]*)\)/)[1];
-    // Split the arguments string into an array comma delimited.
-    return args
-        .split(",")
-        .map(function (arg) {
-        // Ensure no inline comments are parsed and trim the whitespace.
-        return arg.replace(/\/\*.*\*\//, "").trim();
-    })
-        .filter(function (arg) {
-        // Ensure no undefined values are added.
-        return arg;
-    });
-}
-exports.jsfuncArgDetector = jsfuncArgDetector;
-function jsFuncErrDetector(typeArr, args, func) {
-    const name = func.name;
-    Object.values(args).forEach((val, index) => {
-        if (typeof val !== typeArr[index]) {
-            console.log(`@function:${name} expected @type:${typeArr[index]} for @arg:${jsfuncArgDetector(func)[index]}, but received @type:${typeof val}`);
-        }
-    });
-}
-exports.jsFuncErrDetector = jsFuncErrDetector;
-function jsFuncErrDetector2(typeArr, args, func) {
-    const name = func.name;
-    Object.values(args).forEach((val, index) => {
-        if (typeof val !== typeArr[index]) {
-            console.log(`@function:${name} expected @type:${typeArr[index]} for @arg:${jsfuncArgDetector(func)[index]}, but received @type:${typeof val}`);
-        }
-    });
-}
-exports.jsFuncErrDetector2 = jsFuncErrDetector2;
+// export function jsfuncArgDetector(func: Function) {
+//   // @ts-ignore
+//   // First match everything inside the function argument parens.
+//   var args = func.toString().match(/function\s.*?\(([^)]*)\)/)[1];
+//   // Split the arguments string into an array comma delimited.
+//   return args
+//     .split(",")
+//     .map(function (arg) {
+//       // Ensure no inline comments are parsed and trim the whitespace.
+//       return arg.replace(/\/\*.*\*\//, "").trim();
+//     })
+//     .filter(function (arg) {
+//       // Ensure no undefined values are added.
+//       return arg;
+//     });
+// }
+// export function jsFuncErrDetector(
+//   typeArr: (
+//     | "string"
+//     | "number"
+//     | "bigint"
+//     | "boolean"
+//     | "symbol"
+//     | "undefined"
+//     | "object"
+//     | "function"
+//   )[],
+//   args: IArguments,
+//   func: Function
+// ) {
+//   const name = func.name;
+//   Object.values(args).forEach((val, index) => {
+//     if (typeof val !== typeArr[index]) {
+//       console.log(
+//         `@function:${name} expected @type:${typeArr[index]} for @arg:${
+//           jsfuncArgDetector(func)[index]
+//         }, but received @type:${typeof val}`
+//       );
+//     }
+//   });
+// }
+// export function jsFuncErrDetector2(
+//   typeArr: (
+//     | "string"
+//     | "number"
+//     | "boolean"
+//     | "undefined"
+//     | "object"
+//     | "Array"
+//     | "Function"
+//     | "function"
+//   )[],
+//   args: IArguments,
+//   func: Function
+// ) {
+//   const name = func.name;
+//   Object.values(args).forEach((val, index) => {
+//     if (typeof val !== typeArr[index]) {
+//       console.log(
+//         `@function:${name} expected @type:${typeArr[index]} for @arg:${
+//           jsfuncArgDetector(func)[index]
+//         }, but received @type:${typeof val}`
+//       );
+//     }
+//   });
+// }
 //# sourceMappingURL=index.js.map

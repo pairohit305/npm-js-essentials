@@ -1,3 +1,4 @@
+export declare function utcDate(): string;
 /**
  // prettier-ignore
  * Example:
@@ -5,14 +6,15 @@
  *  dayModifier = **10** : o/p => 202010**25**
  *  dayModifier = **-10** : o/p => 202010**05**
  */
-export declare function toUTC2day(dayModifier?: number): string;
-export declare function UTC2daytoUTCString(UTC2day: string): string;
-export declare function UTC2daytoNumber(UTC2day: string): number;
-export declare function toUTCNumber(dayModifier?: number): number;
+export declare function dateString(dayModifier?: number): string;
+export declare function toLateDate(dateString: string): string;
+export declare function toEarlyDate(dateString: string): string;
+export declare function toDateInt(dateString: string): number;
+export declare function toDateInt2(dayModifier?: number): number;
 /**
- * Returns the differences in days between two UTC2day
- * @param UTC2day1 UTC2day string
- * @param UTC2day2 UTC2day string
+ * Returns the differences in days between two dateString in days
+ * @param dateString1 dateString
+ * @param dateString2 dateString
  */
-export declare function UTCDiffdays(UTC2day1: string, UTC2day2: string): number;
+export declare function dateStringDifference(dateString1: string, dateString2: string): number;
 //# sourceMappingURL=utc.d.ts.map

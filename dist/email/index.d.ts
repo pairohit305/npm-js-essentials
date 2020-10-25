@@ -1,2 +1,2 @@
-export declare function validateEmail(email: string): boolean;
+export declare function isEmail(email: string): boolean;
 //# sourceMappingURL=index.d.ts.map

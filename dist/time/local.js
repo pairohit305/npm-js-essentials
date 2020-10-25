@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UTC2Local = void 0;
+exports.toFormateDate = void 0;
 const date_fns_1 = require("date-fns");
-function UTC2Local(UTC) {
-    return date_fns_1.format(new Date(UTC), "do MMM, yyyy");
+function toFormateDate(utcDate) {
+    return date_fns_1.format(new Date(utcDate), "do MMM, yyyy");
 }
-exports.UTC2Local = UTC2Local;
+exports.toFormateDate = toFormateDate;
 //# sourceMappingURL=local.js.map
