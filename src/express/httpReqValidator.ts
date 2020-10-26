@@ -11,35 +11,33 @@ type HttpReq = {
 /**
  * Validate the http's request query-parameter
  */
-export async function httpReqValidatorAsync(params: string[], httpReq: HttpReq) {
-  const checkCount = params.length;
-  let checked = checkCount;
+export async function httpReqValidatorAsync(
+  params: string[],
+  httpReq: HttpReq,
+  options?: { optionalParams?: string[] }
+) {
   // check weather req body is json type
   if (typeof httpReq !== "object") {
     return Promise.reject(errorObject);
   }
-  // check httpReq has correct no of params which is required
-  if (Object.keys(httpReq).length !== checkCount) {
+
+  const httpKeys = Object.keys(httpReq).length;
+  if (
+    httpKeys < params.length ||
+    (options?.optionalParams && httpKeys > options.optionalParams.length + params.length)
+  )
     return Promise.reject(errorObject);
-  }
-  // validate
-  Object.entries(httpReq).some(([k, v]) => {
-    if (
-      (typeof v === "string" || typeof v === "number" || typeof v === "object") &&
-      v.toString().length > 0 &&
-      httpReq[k] !== undefined &&
-      params.includes(k)
-    ) {
-      checked--;
-      return false;
-    } else {
-      return true;
-    }
+
+  // validating the params
+  const result = Object.entries(httpReq).some(([k, v]) => {
+    // if any value is falsy
+    if (!v?.toString().length) return true;
+
+    // if key in not present in params or optional params
+    return !(params.includes(k) || options?.optionalParams?.includes(k));
   });
 
-  if (!(checked === 0)) {
-    return Promise.reject(errorObject);
-  }
+  if (result) return Promise.reject(errorObject);
 
   return true;
 }
