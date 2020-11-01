@@ -81,6 +81,11 @@ export function toDateInt2(dayModifier?: number) {
     return utcnumber;
   }
 }
+
+/* op: 1604247241 */
+export function toDateInt3() {
+  return Math.floor(new Date().getTime() / 1000);
+}
 /**
  * Returns the differences in days between two dateString in days
  * @param dateString1 dateString

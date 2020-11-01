@@ -11,6 +11,7 @@ export declare function toLateDate(dateString: string): string;
 export declare function toEarlyDate(dateString: string): string;
 export declare function toDateInt(dateString: string): number;
 export declare function toDateInt2(dayModifier?: number): number;
+export declare function toDateInt3(): number;
 /**
  * Returns the differences in days between two dateString in days
  * @param dateString1 dateString
