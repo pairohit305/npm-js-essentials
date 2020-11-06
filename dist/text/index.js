@@ -8,9 +8,10 @@ function textLimitor(text, limit = 60, content = "...") {
     return text;
 }
 exports.textLimitor = textLimitor;
-function toStartCase(text) {
-    if (typeof text !== "string" || !text)
-        console.error("string not provided");
+function toStartCase(text, options) {
+    if (options.handleUnderscore) {
+        text = text.split("_").join(" ");
+    }
     text = text.toLowerCase();
     text = text.charAt(0).toUpperCase() + text.slice(1);
     return text;

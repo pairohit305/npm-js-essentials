@@ -5,9 +5,10 @@ export function textLimitor(text: string, limit: number = 60, content = "...") {
   return text;
 }
 
-export function toStartCase(text: string) {
-  if (typeof text !== "string" || !text) console.error("string not provided");
-
+export function toStartCase(text: string, options: { handleUnderscore: boolean }) {
+  if (options.handleUnderscore) {
+    text = text.split("_").join(" ");
+  }
   text = text.toLowerCase();
   text = text.charAt(0).toUpperCase() + text.slice(1);
   return text;
