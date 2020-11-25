@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.lastseen = void 0;
 const utc_1 = require("./utc");
-function lastseen(utcTimeStamp) {
-    var differenceTime = utc_1.utcTimestamp() - utcTimeStamp;
+function lastseen(timestamp) {
+    var differenceTime = utc_1.timestamp() - timestamp;
     var seconds = differenceTime;
     var minutes = Math.floor(seconds / 60); // value 60 is seconds
     var hours = Math.floor(seconds / 3600); //value 3600 is 60 minutes * 60 sec

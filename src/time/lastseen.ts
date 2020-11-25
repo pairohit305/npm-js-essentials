@@ -1,7 +1,7 @@
-import { utcTimestamp } from "./utc";
+import { timestamp as Ctimestamp } from "./utc";
 
-export function lastseen(utcTimeStamp: number) {
-  var differenceTime = utcTimestamp() - utcTimeStamp;
+export function lastseen(timestamp: number) {
+  var differenceTime = Ctimestamp() - timestamp;
   var seconds = differenceTime;
   var minutes = Math.floor(seconds / 60); // value 60 is seconds
   var hours = Math.floor(seconds / 3600); //value 3600 is 60 minutes * 60 sec

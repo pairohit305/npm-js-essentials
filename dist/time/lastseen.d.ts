@@ -1,2 +1,2 @@
-export declare function lastseen(utcTimeStamp: number): string;
+export declare function lastseen(timestamp: number): string;
 //# sourceMappingURL=lastseen.d.ts.map

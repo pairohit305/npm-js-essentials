@@ -1,1 +1,1 @@
-{"version":3,"file":"lastseen.d.ts","sourceRoot":"","sources":["../../src/time/lastseen.ts"],"names":[],"mappings":"AAEA,wBAAgB,QAAQ,CAAC,YAAY,EAAE,MAAM,UAkD5C"}
+{"version":3,"file":"lastseen.d.ts","sourceRoot":"","sources":["../../src/time/lastseen.ts"],"names":[],"mappings":"AAEA,wBAAgB,QAAQ,CAAC,SAAS,EAAE,MAAM,UAkDzC"}
