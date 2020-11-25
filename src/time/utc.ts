@@ -83,7 +83,7 @@ export function toDateInt2(dayModifier?: number) {
 }
 
 /* op: 1604247241 */
-export function toDateInt3() {
+export function utcTimestamp() {
   return Math.floor(new Date().getTime() / 1000);
 }
 /**

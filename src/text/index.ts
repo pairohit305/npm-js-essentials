@@ -5,8 +5,8 @@ export function textLimitor(text: string, limit: number = 60, content = "...") {
   return text;
 }
 
-export function toStartCase(text: string, options: { handleUnderscore: boolean }) {
-  if (options.handleUnderscore) {
+export function toStartCase(text: string, options?: { handleUnderscore: boolean }) {
+  if (options?.handleUnderscore) {
     text = text.split("_").join(" ");
   }
   text = text.toLowerCase();

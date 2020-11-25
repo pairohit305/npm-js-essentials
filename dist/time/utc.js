@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.dateStringDifference = exports.toDateInt3 = exports.toDateInt2 = exports.toDateInt = exports.toEarlyDate = exports.toLateDate = exports.dateString = exports.utcDate = void 0;
+exports.dateStringDifference = exports.utcTimestamp = exports.toDateInt2 = exports.toDateInt = exports.toEarlyDate = exports.toLateDate = exports.dateString = exports.utcDate = void 0;
 const date_fns_1 = require("date-fns");
 function utcDate() {
     return new Date().toUTCString();
@@ -56,10 +56,10 @@ function toDateInt2(dayModifier) {
 }
 exports.toDateInt2 = toDateInt2;
 /* op: 1604247241 */
-function toDateInt3() {
+function utcTimestamp() {
     return Math.floor(new Date().getTime() / 1000);
 }
-exports.toDateInt3 = toDateInt3;
+exports.utcTimestamp = utcTimestamp;
 /**
  * Returns the differences in days between two dateString in days
  * @param dateString1 dateString

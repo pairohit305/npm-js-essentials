@@ -9,7 +9,7 @@ function textLimitor(text, limit = 60, content = "...") {
 }
 exports.textLimitor = textLimitor;
 function toStartCase(text, options) {
-    if (options.handleUnderscore) {
+    if (options === null || options === void 0 ? void 0 : options.handleUnderscore) {
         text = text.split("_").join(" ");
     }
     text = text.toLowerCase();

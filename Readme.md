@@ -30,7 +30,8 @@
 |                | toFormateDate         |
 |                | toDateInt             |
 |                | toDateInt2            |
-|                | toDateInt3            |
+|                | utcTimestamp          |
+|                | lastseen              |
 |                | dateStringDifference  |
 | Uid            | genUniqueId           |
 |                | genRandomUniqueId     |
