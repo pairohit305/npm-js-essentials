@@ -1,5 +1,6 @@
 import { timestamp as Ctimestamp } from "./utc";
 
+/** 1604247241_000 -> yesterday */
 export function lastseen(timestamp: number) {
   var differenceTime = Ctimestamp() - timestamp;
   var seconds = differenceTime;

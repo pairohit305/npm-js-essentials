@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.lastseen = void 0;
 const utc_1 = require("./utc");
+/** 1604247241_000 -> yesterday */
 function lastseen(timestamp) {
     var differenceTime = utc_1.timestamp() - timestamp;
     var seconds = differenceTime;

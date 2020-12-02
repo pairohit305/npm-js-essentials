@@ -1,3 +1,4 @@
+/** op: Wed, 02 Dec 2020 05:47:41 GMT */
 export declare function utcDate(): string;
 /**
  // prettier-ignore
@@ -7,15 +8,20 @@ export declare function utcDate(): string;
  *  dayModifier = **-10** : o/p => 202010**05**
  */
 export declare function dateString(dayModifier?: number): string;
+/** 1604247241_000 -> 20201202*/
+export declare function toDateString(timestamp: number): string;
 export declare function toLateDate(dateString: string): string;
 export declare function toEarlyDate(dateString: string): string;
-export declare function toDateInt(dateString: string): number;
-export declare function toDateInt2(dayModifier?: number): number;
-export declare function timestamp(): number;
+export declare function timestamp(dateString?: string, 
+/** output in seconds  */
+s?: boolean): number;
 /**
  * Returns the differences in days between two dateString in days
- * @param dateString1 dateString
- * @param dateString2 dateString
+ * @param dateStringA dateString
+ * @param dateStringB dateString
  */
-export declare function dateStringDifference(dateString1: string, dateString2: string): number;
+export declare function dateStringDifference(dateStringA: string, dateStringB: string): number;
+/** Give the last Date String of current Month */
+export declare function lastDateStringOfMonth(): string;
+export declare function firstDateStringOfMonth(): string;
 //# sourceMappingURL=utc.d.ts.map

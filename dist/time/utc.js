@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.dateStringDifference = exports.timestamp = exports.toDateInt2 = exports.toDateInt = exports.toEarlyDate = exports.toLateDate = exports.dateString = exports.utcDate = void 0;
+exports.firstDateStringOfMonth = exports.lastDateStringOfMonth = exports.dateStringDifference = exports.timestamp = exports.toEarlyDate = exports.toLateDate = exports.toDateString = exports.dateString = exports.utcDate = void 0;
 const date_fns_1 = require("date-fns");
+/** op: Wed, 02 Dec 2020 05:47:41 GMT */
 function utcDate() {
     return new Date().toUTCString();
 }
@@ -26,6 +27,11 @@ function dateString(dayModifier) {
     }
 }
 exports.dateString = dateString;
+/** 1604247241_000 -> 20201202*/
+function toDateString(timestamp) {
+    return date_fns_1.format(timestamp, "yyyyMMdd");
+}
+exports.toDateString = toDateString;
 /* 20201010 -> "Tue, 10 Oct 2020 23:59:59 GMT" */
 function toLateDate(dateString) {
     return new Date(Date.UTC(Number(dateString.slice(0, 4)), Number(dateString.slice(4, 6)) - 1, Number(dateString.slice(-2)), 23, 59, 59, 999)).toUTCString();
@@ -36,37 +42,38 @@ function toEarlyDate(dateString) {
     return new Date(Date.UTC(Number(dateString.slice(0, 4)), Number(dateString.slice(4, 6)) - 1, Number(dateString.slice(-2)), 0, 0, 0, 0)).toUTCString();
 }
 exports.toEarlyDate = toEarlyDate;
-/* 20201010 -> 123123012312012 */
-function toDateInt(dateString) {
-    return Date.UTC(Number(dateString.slice(0, 4)), Number(dateString.slice(4, 6)) - 1, Number(dateString.slice(-2)));
-}
-exports.toDateInt = toDateInt;
-/* op: 123123012312012 */
-function toDateInt2(dayModifier) {
-    const utcnumber = Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate());
-    if (dayModifier && dayModifier > 0) {
-        return date_fns_1.addDays(utcnumber, dayModifier).getTime();
+/* op: 1604247241_000
+            or
+  20201010 -> 1606867200_000
+*/
+function timestamp(dateString, 
+/** output in seconds  */
+s) {
+    if (dateString) {
+        const num = Date.UTC(Number(dateString.slice(0, 4)), Number(dateString.slice(4, 6)) - 1, Number(dateString.slice(-2)));
+        return s ? num / 1000 : num;
     }
-    else if (dayModifier && dayModifier < 0) {
-        return date_fns_1.subDays(utcnumber, -dayModifier).getTime();
-    }
-    else {
-        return utcnumber;
-    }
-}
-exports.toDateInt2 = toDateInt2;
-/* op: 1604247241 */
-function timestamp() {
-    return Math.floor(new Date().getTime() / 1000);
+    const num = new Date().getTime();
+    return Math.floor(num / (s ? 1000 : 1));
 }
 exports.timestamp = timestamp;
+// UTILS
 /**
  * Returns the differences in days between two dateString in days
- * @param dateString1 dateString
- * @param dateString2 dateString
+ * @param dateStringA dateString
+ * @param dateStringB dateString
  */
-function dateStringDifference(dateString1, dateString2) {
-    return Math.abs(date_fns_1.differenceInDays(toDateInt(dateString1), toDateInt(dateString2)));
+function dateStringDifference(dateStringA, dateStringB) {
+    return Math.abs(date_fns_1.differenceInDays(timestamp(dateStringA), timestamp(dateStringB)));
 }
 exports.dateStringDifference = dateStringDifference;
+/** Give the last Date String of current Month */
+function lastDateStringOfMonth() {
+    return date_fns_1.format(date_fns_1.lastDayOfMonth(timestamp()), "yyyyMMdd");
+}
+exports.lastDateStringOfMonth = lastDateStringOfMonth;
+function firstDateStringOfMonth() {
+    return dateString().slice(0, 6) + "01";
+}
+exports.firstDateStringOfMonth = firstDateStringOfMonth;
 //# sourceMappingURL=utc.js.map

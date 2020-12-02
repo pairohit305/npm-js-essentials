@@ -14,7 +14,7 @@ function sleep(timeout) {
     return __awaiter(this, void 0, void 0, function* () {
         return yield new Promise((resolve) => {
             setTimeout(() => {
-                resolve();
+                resolve(1);
             }, timeout);
         });
     });

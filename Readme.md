@@ -2,44 +2,44 @@
 
 `Available functions`
 
-| Core           | Function              |
-| -------------- | --------------------- |
-| Array          | splitArrayInto        |
-|                | arrayElmCounter       |
-|                | contains              |
-|                | isDistinctiveArray    |
-|                | minArray              |
-|                | maxArray              |
-| Country        | getCountryFullname    |
-|                | getCountryList        |
-| Email          | isEmail               |
-| Express        | httpReqValidatorAsync |
-| Halt           | halt d-> HaltCounter  |
-| HttpStatusCode | httpStatusCode        |
-| Math           | mod                   |
-| Parser         | videoORImage          |
-|                | img2DMatrix           |
-|                | plainText2HTML        |
-|                | domaincomDetector     |
-| Text           | textLimitor           |
-|                | toStartCase           |
-| Time           | dateString            |
-|                | utcDate               |
-|                | toLateDate            |
-|                | toEarlyDate           |
-|                | toFormateDate         |
-|                | toDateInt             |
-|                | toDateInt2            |
-|                | timestamp             |
-|                | lastseen              |
-|                | dateStringDifference  |
-| Uid            | genUniqueId           |
-|                | genRandomUniqueId     |
-| Random         | randomInteger         |
-|                | randomFloat           |
-|                | randomAlphabet        |
-|                | randomNaturalArray    |
-| Sleep          | sleep                 |
+| Core           | Function               |
+| -------------- | ---------------------- |
+| Array          | splitArrayInto         |
+|                | arrayElmCounter        |
+|                | contains               |
+|                | isDistinctiveArray     |
+|                | minArray               |
+|                | maxArray               |
+| Country        | getCountryFullname     |
+|                | getCountryList         |
+| Email          | isEmail                |
+| Express        | httpReqValidatorAsync  |
+| Halt           | halt d-> HaltCounter   |
+| HttpStatusCode | httpStatusCode         |
+| Math           | mod                    |
+| Parser         | videoORImage           |
+|                | img2DMatrix            |
+|                | plainText2HTML         |
+|                | domaincomDetector      |
+| Text           | textLimitor            |
+|                | toStartCase            |
+| Time           | dateString             |
+|                | utcDate                |
+|                | toLateDate             |
+|                | toEarlyDate            |
+|                | toFormateDate          |
+|                | timestamp              |
+|                | lastseen               |
+|                | dateStringDifference   |
+|                | lastDateStringOfMonth  |
+|                | firstDateStringOfMonth |
+| Uid            | genUniqueId            |
+|                | genRandomUniqueId      |
+| Random         | randomInteger          |
+|                | randomFloat            |
+|                | randomAlphabet         |
+|                | randomNaturalArray     |
+| Sleep          | sleep                  |
 
 d-> = depent on
 
