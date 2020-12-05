@@ -24,4 +24,5 @@ export declare function dateStringDifference(dateStringA: string, dateStringB: s
 /** Give the last Date String of current Month */
 export declare function lastDateStringOfMonth(): string;
 export declare function firstDateStringOfMonth(): string;
+export declare function timeLeft24h(s?: boolean): number;
 //# sourceMappingURL=utc.d.ts.map

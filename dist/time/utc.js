@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.firstDateStringOfMonth = exports.lastDateStringOfMonth = exports.dateStringDifference = exports.timestamp = exports.toEarlyDate = exports.toLateDate = exports.toDateString = exports.dateString = exports.utcDate = void 0;
+exports.timeLeft24h = exports.firstDateStringOfMonth = exports.lastDateStringOfMonth = exports.dateStringDifference = exports.timestamp = exports.toEarlyDate = exports.toLateDate = exports.toDateString = exports.dateString = exports.utcDate = void 0;
 const date_fns_1 = require("date-fns");
 /** op: Wed, 02 Dec 2020 05:47:41 GMT */
 function utcDate() {
@@ -76,4 +76,9 @@ function firstDateStringOfMonth() {
     return dateString().slice(0, 6) + "01";
 }
 exports.firstDateStringOfMonth = firstDateStringOfMonth;
+function timeLeft24h(s) {
+    const timeleft = timestamp(dateString(1)) - timestamp();
+    return Math.round(s ? timeleft / 1000 : timeleft);
+}
+exports.timeLeft24h = timeLeft24h;
 //# sourceMappingURL=utc.js.map

@@ -101,3 +101,8 @@ export function lastDateStringOfMonth() {
 export function firstDateStringOfMonth() {
   return dateString().slice(0, 6) + "01";
 }
+
+export function timeLeft24h(s?: boolean) {
+  const timeleft = timestamp(dateString(1)) - timestamp();
+  return Math.round(s ? timeleft / 1000 : timeleft);
+}

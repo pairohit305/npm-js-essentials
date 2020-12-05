@@ -29,6 +29,7 @@
 |                | toEarlyDate            |
 |                | toFormateDate          |
 |                | timestamp              |
+|                | timeLeft24h            |
 |                | lastseen               |
 |                | dateStringDifference   |
 |                | lastDateStringOfMonth  |
