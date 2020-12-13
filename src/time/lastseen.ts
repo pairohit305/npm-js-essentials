@@ -1,4 +1,4 @@
-import { timestamp as Ctimestamp } from "./utc";
+import { timestamp as Ctimestamp, dateString as today, dateStringDifference } from "./utc";
 
 /** 1604247241_000 -> yesterday */
 export function lastseen(timestamp: number) {
@@ -50,5 +50,19 @@ export function lastseen(timestamp: number) {
     } else {
       return `${years} years ago`;
     }
+  }
+}
+
+export function timeline(startDateString: string, endDateString: string) {
+  if(startDateString > endDateString) return "Invalid";
+  
+  const aj = today();
+  
+  if(startDateString > aj) {
+    return "Starts in " + dateStringDifference(aj, startDateString) + "d";
+  }else if(aj >= startDateString && aj <= endDateString) {
+    return "Ends in " + dateStringDifference(aj, endDateString) + "d";
+  }else if(aj > endDateString) {
+    return "Ended";
   }
 }

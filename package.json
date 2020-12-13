@@ -1,6 +1,6 @@
 {
   "name": "@pairohit/helper",
-  "version": "4.0.21",
+  "version": "4.0.3",
   "description": "Many Usefull Helper function to save time!",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,7 +22,7 @@
     "url": "https://github.com/pairohit16/helper/issues"
   },
   "author": "PaiRohit",
-  "license": "Open Source",
+  "license": "MIT",
   "dependencies": {
     "date-fns": "^2.16.1",
     "url-parse": "^1.4.7",

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.lastseen = void 0;
+exports.timeline = exports.lastseen = void 0;
 const utc_1 = require("./utc");
 /** 1604247241_000 -> yesterday */
 function lastseen(timestamp) {
@@ -66,4 +66,19 @@ function lastseen(timestamp) {
     }
 }
 exports.lastseen = lastseen;
+function timeline(startDateString, endDateString) {
+    if (startDateString > endDateString)
+        return "Invalid";
+    const aj = utc_1.dateString();
+    if (startDateString > aj) {
+        return "Starts in " + utc_1.dateStringDifference(aj, startDateString) + "d";
+    }
+    else if (aj >= startDateString && aj <= endDateString) {
+        return "Ends in " + utc_1.dateStringDifference(aj, endDateString) + "d";
+    }
+    else if (aj > endDateString) {
+        return "Ended";
+    }
+}
+exports.timeline = timeline;
 //# sourceMappingURL=lastseen.js.map
