@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.timeline = exports.lastseen = void 0;
+exports.timeline = exports.TIMELINE_STATUS = exports.lastseen = void 0;
 const utc_1 = require("./utc");
 /** 1604247241_000 -> yesterday */
 function lastseen(timestamp) {
@@ -66,18 +66,68 @@ function lastseen(timestamp) {
     }
 }
 exports.lastseen = lastseen;
+exports.TIMELINE_STATUS = {
+    NOT_STARTED: 0,
+    STARTS_TOMARROW: 1,
+    STARTED: 2,
+    ENDS_TODAY: 3,
+    ENDED: 4,
+    INVALID: 5,
+};
 function timeline(startDateString, endDateString) {
     if (startDateString > endDateString)
-        return "Invalid";
+        return {
+            status: exports.TIMELINE_STATUS.INVALID,
+            value: "Invalid"
+        };
     const aj = utc_1.dateString();
-    if (startDateString > aj) {
-        return "Starts in " + utc_1.dateStringDifference(aj, startDateString) + "d";
+    if (endDateString === aj) {
+        return {
+            status: exports.TIMELINE_STATUS.ENDS_TODAY,
+            value: "Ends today"
+        };
+    }
+    else if (startDateString > aj) {
+        const diff = utc_1.dateStringDifference(aj, startDateString);
+        if (diff === 1) {
+            return {
+                status: exports.TIMELINE_STATUS.STARTS_TOMARROW,
+                value: "Starts tomarrow",
+            };
+        }
+        else {
+            return {
+                status: exports.TIMELINE_STATUS.NOT_STARTED,
+                value: "Starts in " + diff + "d",
+            };
+        }
     }
     else if (aj >= startDateString && aj <= endDateString) {
-        return "Ends in " + utc_1.dateStringDifference(aj, endDateString) + "d";
+        const diff = utc_1.dateStringDifference(aj, endDateString) + 1;
+        if (diff === 2) {
+            return {
+                status: exports.TIMELINE_STATUS.STARTED,
+                value: "Ends tomarrow"
+            };
+        }
+        else {
+            return {
+                status: exports.TIMELINE_STATUS.STARTED,
+                value: "Ends in " + diff + "d"
+            };
+        }
     }
     else if (aj > endDateString) {
-        return "Ended";
+        return {
+            status: exports.TIMELINE_STATUS.ENDED,
+            value: "Ended"
+        };
+    }
+    else {
+        return {
+            status: exports.TIMELINE_STATUS.INVALID,
+            value: "Invalid"
+        };
     }
 }
 exports.timeline = timeline;
