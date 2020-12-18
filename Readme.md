@@ -10,7 +10,8 @@
 |                | isDistinctiveArray     |
 |                | minArray               |
 |                | maxArray               |
-| Country        | getCountryFullname     |
+| Country        | getCountryEntries      |
+|                | getCountryFullname     |
 |                | getCountryList         |
 | Email          | isEmail                |
 | Express        | httpReqValidatorAsync  |

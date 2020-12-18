@@ -1,25 +1,25 @@
 {
   "name": "@pairohit/helper",
-  "version": "4.0.32",
+  "version": "4.0.41",
   "description": "Many Usefull Helper function to save time!",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -p .",
     "test": "ts-node playground/index.ts",
-    "publish:npm": "npm publish"
+    "upload": "npm publish"
   },
-  "homepage": "https://github.com/pairohit16/helper",
+  "homepage": "https://github.com/pairohit305/helper",
   "maintainers": [
     "PaiRohit"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pairohit16/helper"
+    "url": "https://github.com/pairohit305/helper"
   },
   "bugs": {
     "email": "pairohit16@gmail.com",
-    "url": "https://github.com/pairohit16/helper/issues"
+    "url": "https://github.com/pairohit305/helper/issues"
   },
   "author": "PaiRohit",
   "license": "MIT",
