@@ -172,6 +172,32 @@ class Timeline {
             }
         }
     }
+    static getStatus(startDateString, endDateString) {
+        const aj = utc_1.dateString();
+        if (startDateString > endDateString)
+            return exports.TIMELINE_STATUS.INVALID;
+        if (endDateString === aj) {
+            return exports.TIMELINE_STATUS.ENDS_TODAY;
+        }
+        else if (startDateString > aj) {
+            const diff = utc_1.dateStringDifference(aj, startDateString);
+            if (diff === 1) {
+                return exports.TIMELINE_STATUS.STARTS_TOMARROW;
+            }
+            else {
+                return exports.TIMELINE_STATUS.NOT_STARTED;
+            }
+        }
+        else if (aj >= startDateString && aj <= endDateString) {
+            return exports.TIMELINE_STATUS.STARTED_IN_BETWEEN;
+        }
+        else if (aj > endDateString) {
+            return exports.TIMELINE_STATUS.ENDED;
+        }
+        else {
+            return exports.TIMELINE_STATUS.INVALID;
+        }
+    }
     getStatus() {
         const { startDateString, endDateString } = this;
         const aj = utc_1.dateString();

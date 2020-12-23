@@ -183,6 +183,27 @@ export class Timeline {
       }
     }
   }
+  static getStatus(startDateString: string, endDateString: string) {
+    const aj = today();
+
+    if (startDateString > endDateString) return TIMELINE_STATUS.INVALID;
+    if (endDateString === aj) {
+      return TIMELINE_STATUS.ENDS_TODAY;
+    } else if (startDateString > aj) {
+      const diff = dateStringDifference(aj, startDateString);
+      if (diff === 1) {
+        return TIMELINE_STATUS.STARTS_TOMARROW;
+      } else {
+        return TIMELINE_STATUS.NOT_STARTED;
+      }
+    } else if (aj >= startDateString && aj <= endDateString) {
+      return TIMELINE_STATUS.STARTED_IN_BETWEEN;
+    } else if (aj > endDateString) {
+      return TIMELINE_STATUS.ENDED;
+    } else {
+      return TIMELINE_STATUS.INVALID;
+    }
+  }
   private getStatus() {
     const { startDateString, endDateString } = this;
     const aj = today();

@@ -69,6 +69,7 @@ export declare class Timeline {
         ENDED?: string | undefined;
     } | undefined);
     private init;
+    static getStatus(startDateString: string, endDateString: string): number;
     private getStatus;
     private updateTime;
     private updateTimeString;
