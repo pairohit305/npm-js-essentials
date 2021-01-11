@@ -1,14 +1,16 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./mod"), exports);
+exports.minmax = exports.mod = void 0;
+/**XmodY **3mod5=2** */
+function mod(X, Y) {
+    return Math.round(parseFloat("0." +
+        parseFloat((X / Y).toString())
+            .toString()
+            .split(".")[1]) * Y);
+}
+exports.mod = mod;
+function minmax(num, min, max) {
+    return Math.min(max, Math.max(min, num));
+}
+exports.minmax = minmax;
 //# sourceMappingURL=index.js.map

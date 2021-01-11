@@ -17,7 +17,8 @@
 | Express        | httpReqValidatorAsync  |
 | Halt           | halt d-> HaltCounter   |
 | HttpStatusCode | httpStatusCode         |
-| Math           | mod                    |
+| Math           | minmax                 |
+|                | mod                    |
 | Parser         | videoORImage           |
 |                | img2DMatrix            |
 |                | plainText2HTML         |
