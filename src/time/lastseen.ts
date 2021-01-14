@@ -3,7 +3,7 @@ import {
   dateString as today,
   dateStringDifference,
   timeLeft24h,
-} from "./utc";
+} from "./dates";
 
 /** 1604247241_000 -> yesterday */
 export function lastseen(timestamp: number) {
@@ -125,7 +125,7 @@ export class Timeline {
   }
   private init() {
 
-    if(this.COUNTDOWN_SECONDS) {
+    if (this.COUNTDOWN_SECONDS) {
       this.STATUS = TIMELINE_STATUS.ENDS_TODAY;
       this.MODE = 0;
       this.time = this.COUNTDOWN_SECONDS;
@@ -136,7 +136,7 @@ export class Timeline {
       // set MODE
       this.MODE =
         this.STATUS === TIMELINE_STATUS.STARTS_TOMARROW ||
-        this.STATUS === TIMELINE_STATUS.ENDS_TODAY
+          this.STATUS === TIMELINE_STATUS.ENDS_TODAY
           ? 0
           : 1;
       // set time
@@ -253,7 +253,7 @@ export class Timeline {
       this.timeString = ' - ';
 
       if (this.updateCB)
-      this.updateCB({ time: this.timeString, status: this.STATUS });
+        this.updateCB({ time: this.timeString, status: this.STATUS });
 
       if (this.finishCB) {
         this.finishCB();
@@ -292,13 +292,11 @@ export class Timeline {
     seconds = this.setDoubleDigit(seconds, "s");
 
     if (this.STATUS === TIMELINE_STATUS.ENDS_TODAY) {
-      this.timeString = `${
-        this.text?.ENDS_TODAY || "Ends in"
-      } ${hours}${minutes}${seconds}`.trim();
+      this.timeString = `${this.text?.ENDS_TODAY || "Ends in"
+        } ${hours}${minutes}${seconds}`.trim();
     } else {
-      this.timeString = `${
-        this.text?.STARTS_TOMARROW || "Starts in"
-      } ${hours}${minutes}${seconds}`.trim();
+      this.timeString = `${this.text?.STARTS_TOMARROW || "Starts in"
+        } ${hours}${minutes}${seconds}`.trim();
     }
   }
   private setDoubleDigit(digit: number | null, append: string) {
@@ -309,7 +307,7 @@ export class Timeline {
       " "
     );
   }
-
+  /** events */
   onStart(callback?: Timeline["startCB"]) {
     this.startCB = callback;
   }
@@ -320,25 +318,26 @@ export class Timeline {
     this.finishCB = callback;
   }
   /** pause the time */
-  pause() {
+  public pause() {
     clearInterval(this.timer);
   }
   /** resume the time */
-  resume() {
+  public resume() {
     this.init();
   }
   /** start the time */
-  start() {
-    if(this.startCB) {
+  public start() {
+    if (this.startCB) {
       this.startCB();
     }
     this.init();
   }
-  stop() {
+  /** stop the time */
+  public stop() {
     clearInterval(this.timer);
   }
   /** Restart the timer with new */
-  restart(startDateString: string, endDateString: string) {
+  public restart(startDateString: string, endDateString: string) {
     this.startDateString = startDateString;
     this.endDateString = endDateString;
 

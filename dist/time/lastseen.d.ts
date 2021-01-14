@@ -74,6 +74,7 @@ export declare class Timeline {
     private updateTime;
     private updateTimeString;
     private setDoubleDigit;
+    /** events */
     onStart(callback?: Timeline["startCB"]): void;
     onUpdate(callback?: Timeline["updateCB"]): void;
     onFinish(callback: Timeline["finishCB"]): void;
@@ -83,6 +84,7 @@ export declare class Timeline {
     resume(): void;
     /** start the time */
     start(): void;
+    /** stop the time */
     stop(): void;
     /** Restart the timer with new */
     restart(startDateString: string, endDateString: string): void;

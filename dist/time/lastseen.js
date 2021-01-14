@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Timeline = exports.TIMELINE_STATUS = exports.lastseen = void 0;
-const utc_1 = require("./utc");
+const dates_1 = require("./dates");
 /** 1604247241_000 -> yesterday */
 function lastseen(timestamp) {
-    var differenceTime = utc_1.timestamp() - timestamp;
+    var differenceTime = dates_1.timestamp() - timestamp;
     var seconds = differenceTime;
     var minutes = Math.floor(seconds / 60); // value 60 is seconds
     var hours = Math.floor(seconds / 3600); //value 3600 is 60 minutes * 60 sec
@@ -132,7 +132,7 @@ class Timeline {
                     ? 0
                     : 1;
             // set time
-            this.time = utc_1.timeLeft24h(true) + 100;
+            this.time = dates_1.timeLeft24h(true) + 100;
             //  set interval
             this.intervalPeriod =
                 this.MODE === 0
@@ -153,12 +153,12 @@ class Timeline {
             // no timer required hence static o/p
             switch (this.STATUS) {
                 case exports.TIMELINE_STATUS.NOT_STARTED: {
-                    const diff = utc_1.dateStringDifference(utc_1.dateString(), this.startDateString);
+                    const diff = dates_1.dateStringDifference(dates_1.dateString(), this.startDateString);
                     this.timeString = `${((_a = this.text) === null || _a === void 0 ? void 0 : _a.NOT_STARTED) || "Starts in"} ${diff}d`;
                     break;
                 }
                 case exports.TIMELINE_STATUS.STARTED_IN_BETWEEN: {
-                    const diff = utc_1.dateStringDifference(utc_1.dateString(), this.endDateString);
+                    const diff = dates_1.dateStringDifference(dates_1.dateString(), this.endDateString);
                     this.timeString = `${((_b = this.text) === null || _b === void 0 ? void 0 : _b.STARTED) || "Ends in"} ${diff + 1}d`;
                     break;
                 }
@@ -173,14 +173,14 @@ class Timeline {
         }
     }
     static getStatus(startDateString, endDateString) {
-        const aj = utc_1.dateString();
+        const aj = dates_1.dateString();
         if (startDateString > endDateString)
             return exports.TIMELINE_STATUS.INVALID;
         if (endDateString === aj) {
             return exports.TIMELINE_STATUS.ENDS_TODAY;
         }
         else if (startDateString > aj) {
-            const diff = utc_1.dateStringDifference(aj, startDateString);
+            const diff = dates_1.dateStringDifference(aj, startDateString);
             if (diff === 1) {
                 return exports.TIMELINE_STATUS.STARTS_TOMARROW;
             }
@@ -200,14 +200,14 @@ class Timeline {
     }
     getStatus() {
         const { startDateString, endDateString } = this;
-        const aj = utc_1.dateString();
+        const aj = dates_1.dateString();
         if (startDateString > endDateString)
             return exports.TIMELINE_STATUS.INVALID;
         if (endDateString === aj) {
             return exports.TIMELINE_STATUS.ENDS_TODAY;
         }
         else if (startDateString > aj) {
-            const diff = utc_1.dateStringDifference(aj, startDateString);
+            const diff = dates_1.dateStringDifference(aj, startDateString);
             if (diff === 1) {
                 return exports.TIMELINE_STATUS.STARTS_TOMARROW;
             }
@@ -297,6 +297,7 @@ class Timeline {
             append +
             " ");
     }
+    /** events */
     onStart(callback) {
         this.startCB = callback;
     }
@@ -321,6 +322,7 @@ class Timeline {
         }
         this.init();
     }
+    /** stop the time */
     stop() {
         clearInterval(this.timer);
     }

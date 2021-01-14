@@ -45,7 +45,6 @@ export function toLateDate(dateString: string) {
     )
   ).toUTCString();
 }
-
 /* 20201010 -> "Tue, 10 Oct 2020 00:00:00 GMT" */
 export function toEarlyDate(dateString: string) {
   return new Date(
@@ -81,9 +80,16 @@ export function timestamp(
   const num = new Date().getTime();
   return Math.floor(num / (s ? 1000 : 1));
 }
+/** "Tue, 10 Oct 2020 00:00:00 GMT" -> 1604247241_000 or 1604247241 */
+export function toTimestamp(utcDate: string,
+  /** output in seconds */
+  s?: boolean
+) {
+  const num = new Date(utcDate).getTime();
+  return Math.floor(num / (s ? 1000 : 1));
+}
 
 // UTILS
-
 /**
  * Returns the differences in days between two dateString in days
  * @param dateStringA dateString
