@@ -61,7 +61,7 @@ exports.timestamp = timestamp;
 function toTimestamp(utcDate, 
 /** output in seconds */
 s) {
-    const num = new Date(utcDate).getTime();
+    const num = Date.parse(utcDate);
     return Math.floor(num / (s ? 1000 : 1));
 }
 exports.toTimestamp = toTimestamp;

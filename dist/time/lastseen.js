@@ -5,7 +5,7 @@ const dates_1 = require("./dates");
 /** 1604247241_000 -> yesterday */
 function lastseen(timestamp) {
     var differenceTime = dates_1.timestamp() - timestamp;
-    var seconds = differenceTime;
+    var seconds = differenceTime / 1000;
     var minutes = Math.floor(seconds / 60); // value 60 is seconds
     var hours = Math.floor(seconds / 3600); //value 3600 is 60 minutes * 60 sec
     var days = Math.floor(seconds / 86400); //86400 = 24 * 60 * 60;

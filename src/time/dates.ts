@@ -85,7 +85,7 @@ export function toTimestamp(utcDate: string,
   /** output in seconds */
   s?: boolean
 ) {
-  const num = new Date(utcDate).getTime();
+  const num = Date.parse(utcDate);
   return Math.floor(num / (s ? 1000 : 1));
 }
 
