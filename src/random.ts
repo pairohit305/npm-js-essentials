@@ -30,9 +30,9 @@ export function randomAlphabet(includeCapital = false) {
 }
 
 export function randomNaturalArray(
-  upper: number,
-  count: number,
-  modifiers?: {
+  opt: {
+    upper: number,
+    count: number,
     distinctive?: boolean;
     /**
      * acceptable values = {x∈ N | x≤ count}
@@ -42,12 +42,16 @@ export function randomNaturalArray(
   }
 ) {
   // default
-  modifiers = {
-    exclude: modifiers?.exclude || [],
-    distinctive: modifiers?.distinctive || false,
-    sorted: modifiers?.sorted || false,
+  const modifiers = {
+    exclude: opt?.exclude || [],
+    distinctive: opt?.distinctive || false,
+    sorted: opt?.sorted || false,
   };
+  const upper = opt.upper;
+  const count = opt.count;
   const { exclude, distinctive, sorted } = modifiers;
+
+  // err checking 
   if (
     exclude &&
     exclude?.length >= 2 &&
@@ -60,6 +64,8 @@ export function randomNaturalArray(
       `randomNaturalArray function expect values of exclude to be = {x∈ N | x≤ count}`
     );
   }
+
+  // real code starts here
   const array: number[] = [];
 
   if (distinctive && !exclude?.length) {

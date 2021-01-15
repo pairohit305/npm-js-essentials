@@ -33,14 +33,17 @@ function randomAlphabet(includeCapital = false) {
     return alphabets.charAt(randomInteger(includeCapital ? 52 : 26));
 }
 exports.randomAlphabet = randomAlphabet;
-function randomNaturalArray(upper, count, modifiers) {
+function randomNaturalArray(opt) {
     // default
-    modifiers = {
-        exclude: (modifiers === null || modifiers === void 0 ? void 0 : modifiers.exclude) || [],
-        distinctive: (modifiers === null || modifiers === void 0 ? void 0 : modifiers.distinctive) || false,
-        sorted: (modifiers === null || modifiers === void 0 ? void 0 : modifiers.sorted) || false,
+    const modifiers = {
+        exclude: (opt === null || opt === void 0 ? void 0 : opt.exclude) || [],
+        distinctive: (opt === null || opt === void 0 ? void 0 : opt.distinctive) || false,
+        sorted: (opt === null || opt === void 0 ? void 0 : opt.sorted) || false,
     };
+    const upper = opt.upper;
+    const count = opt.count;
     const { exclude, distinctive, sorted } = modifiers;
+    // err checking 
     if (exclude &&
         (exclude === null || exclude === void 0 ? void 0 : exclude.length) >= 2 &&
         (!array_1.isDistinctiveArray(exclude) ||
@@ -49,6 +52,7 @@ function randomNaturalArray(upper, count, modifiers) {
             exclude.length === upper)) {
         throw new Error(`randomNaturalArray function expect values of exclude to be = {x∈ N | x≤ count}`);
     }
+    // real code starts here
     const array = [];
     if (distinctive && !(exclude === null || exclude === void 0 ? void 0 : exclude.length)) {
         if (count > upper)

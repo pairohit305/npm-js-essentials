@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.domaincomDetector = exports.img2DMatrix = exports.plainText2HTML = exports.videoORImage = void 0;
+exports.domaincomDetector = exports.videoORImage = void 0;
 const url_parse_1 = __importDefault(require("url-parse"));
 /**
  * Given an url, it will detect weather it's an VIDEO or IMAGE
@@ -39,52 +39,6 @@ function videoORImage(url) {
     }
 }
 exports.videoORImage = videoORImage;
-function plainText2HTML(text) {
-    return text.replace(/\n/g, "<br />");
-}
-exports.plainText2HTML = plainText2HTML;
-/**
- // prettier-ignore
- * This function convert similar how markdown syntax work!
- *  Before: Pai has [image](https..*)God Power.
- *  After:
- *  [
- *  ["TEXT", 0, "Pai has "],
- *  ["IMAGE", 1, "https..*"],
- *  ["TEXT", 2, "God Power."]
- * ]
- */
-function img2DMatrix(text) {
-    if (typeof text !== "string")
-        return [];
-    let textCopy1 = text;
-    let textCopy2 = text;
-    let map = [];
-    let mapIndex = 0;
-    let iamgeStringCount = 0;
-    let lastSearchedIndex = -1;
-    textCopy1.replace(/\[image\]\(.+?\)/g, (replacedText) => {
-        let index, startRange, endRange, value;
-        // range
-        startRange = textCopy2.indexOf(replacedText, lastSearchedIndex);
-        endRange = startRange + replacedText.length - 1;
-        // value
-        value = replacedText.split("[image](")[1].slice(0, -1);
-        // index
-        index = iamgeStringCount;
-        // trace the before text
-        map.push(["TEXT", mapIndex, textCopy1.slice(lastSearchedIndex + 1, startRange)]);
-        mapIndex++;
-        map.push(["IMAGE", mapIndex, value]);
-        lastSearchedIndex = endRange;
-        iamgeStringCount++;
-        mapIndex++;
-        return "";
-    });
-    map.push(["TEXT", mapIndex, textCopy2.slice(lastSearchedIndex + 1, textCopy2.length)]);
-    return map;
-}
-exports.img2DMatrix = img2DMatrix;
 // detect the domain with .com
 // eg: https://www.instagram.com => instagram
 // only detect .com
