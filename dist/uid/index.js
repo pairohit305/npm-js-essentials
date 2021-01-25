@@ -1,14 +1,16 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./uuidv5"), exports);
+exports.genRandomUniqueId = exports.genUniqueId = void 0;
+const uuid_1 = require("uuid");
+const random_1 = require("../random");
+// generate uid base on version uuid v5
+function genUniqueId(appName, key) {
+    let uid = uuid_1.v5(appName + key, uuid_1.v5.URL);
+    return uid;
+}
+exports.genUniqueId = genUniqueId;
+function genRandomUniqueId() {
+    return uuid_1.v5(random_1.randomInteger(Math.pow(2, 64)).toString(), uuid_1.v5.URL);
+}
+exports.genRandomUniqueId = genRandomUniqueId;
 //# sourceMappingURL=index.js.map

@@ -4,7 +4,7 @@
  * @param into slice into how many parts
  */
 
-export function splitArrayInto(array: any[], into: number): any[][] {
+export function splitArrayInto<T>(array: T[], into: number): T[][] {
   const array2d = [];
   let loopCount = Math.ceil(array.length / into);
   for (let i = 0; i < loopCount; i++) {
@@ -36,11 +36,11 @@ export function contains(
 
     return exact
       ? searchElements.every((value) => {
-          return array.includes(value);
-        })
+        return array.includes(value);
+      })
       : searchElements.some((value) => {
-          return array.includes(value);
-        });
+        return array.includes(value);
+      });
   } else if (typeof val === "number") {
     return array.includes(val);
   } else {
@@ -61,7 +61,7 @@ export function isDistinctiveArray(array: any[]) {
 export function minArray(array: number[]) {
   let min = Number.MAX_VALUE;
   array.forEach(value => {
-    if(value < min) min = value;
+    if (value < min) min = value;
   })
 
   return min;
@@ -74,7 +74,7 @@ export function minArray(array: number[]) {
 export function maxArray(array: number[]) {
   let max = Number.MIN_VALUE;
   array.forEach(value => {
-    if(value > max) max = value;
+    if (value > max) max = value;
   })
 
   return max;

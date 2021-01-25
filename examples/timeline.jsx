@@ -1,33 +1,36 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {Timeline, TIMELINE_STATUS, dateString} from '@pairohit/helper'
+import React, { useState, useEffect, useRef, useMemo } from "react";
+import { Timeline, TIMELINE_STATUS, dateString, sleep, timeLeft24h } from "@pairohit/helper";
 
-// Example 1 
-function Deadline24h() {
-  const today = dateString();
+// Example 1
+export function Deadline24h() {
+  const today = useMemo(() => dateString(), []);
 
   const [time, updateTime] = useState("");
   const timeline = useRef(
-    new Timeline(today, today, undefined, undefined, {
-      ENDS_TODAY: "Ends in"
-    })
+    new Timeline(today, today, 120, 0, ["", "Refreshs in", ""])
   ).current;
 
-  timeline.onStart(() => {
-    console.log("Starting now");
-  });
-  timeline.onUpdate(({ time, status }) => {
-    console.log("Updating", time, status);
-    updateTime(time);
-  });
-  timeline.onFinish(() => {
-    console.log("Finished.");
-  });
-
   useEffect(() => {
-    timeline.start();
+    const stopTimeline = timeline
+      .onStart(() => {
+        console.log("Starting now");
+      })
+      .onUpdate(({ time, status }) => {
+        console.log("Updating", time, status);
+
+        updateTime(time);
+      }).onFinish(async () => {
+        console.log("Finished.");
+
+        console.log("Restarting in 2 secs");
+        await sleep(2000);
+
+        const today = dateString();
+        timeline.restart(today, today);
+      }).start();
 
     return () => {
-      timeline.stop();
+      stopTimeline();
     };
   }, []);
 
@@ -37,34 +40,39 @@ function Deadline24h() {
     </div>
   );
 }
-// Example 2
-function Coolddown150s() {
+// if you want to use as countdown 
+export function Countdown20S({
+  countdown = 20
+}) {
+  const today = useMemo(() => dateString(), []);
+
   const [time, updateTime] = useState("");
   const timeline = useRef(
-    /** Remember to put same value in SWITCH_SECONDS as COUNTDOWN_SECONDS
-     *  as SWITCH_SECONDS is responsible for switching interval per 1s
-     */
-    new Timeline("", "", 150, 150, {
-      ENDS_TODAY: "Ends in"
-    })
+    new Timeline(today, today, 120, -timeLeft24h(true) + countdown, ["", "Time:", ""])
   ).current;
 
-  timeline.onStart(() => {
-    console.log("Starting now");
-  });
-  timeline.onUpdate(({ time, status }) => {
-    console.log("Updating", time, status);
-    updateTime(time);
-  });
-  timeline.onFinish(() => {
-    console.log("Finished.");
-  });
-
   useEffect(() => {
-    timeline.start();
+    const stopTimeline = timeline
+      .onStart(() => {
+        console.log("Starting now");
+      })
+      .onUpdate(({ time, status }) => {
+        console.log("Updating", time, status);
+
+        updateTime(time);
+      }).onFinish(async () => {
+        console.log("Finished.");
+
+        console.log("Restarting in 2 secs");
+        updateTime("Restarting ...");
+        await sleep(2000);
+
+        const today = dateString();
+        timeline.restart(today, today);
+      }).start();
 
     return () => {
-      timeline.stop();
+      stopTimeline();
     };
   }, []);
 
@@ -74,38 +82,40 @@ function Coolddown150s() {
     </div>
   );
 }
-// Example 3 (Pratical Example)
-function Range10d() {
-  const start = dateString(); 
-  const end = dateString(10);
+
+// Example 2 (Pratical Example)
+export function Range10d() {
+  const { start, end } = useMemo(() => {
+    return {
+      start: dateString(),
+      end: dateString(9),
+    };
+  }, []);
 
   const [time, updateTime] = useState("");
   const timeline = useRef(
-    new Timeline(start, end, undefined, undefined, {
-      NOT_STARTED:"Wait for",
-      STARTS_TOMARROW:"Wait for only",
-      STARTED:"Hurry, Sales ending in",
-      ENDS_TODAY:"Hurry, ending in",
-      ENDED:"Oppies, Sales over"
-    })
+    new Timeline(start, end, 150, 0, [
+      "Wait for",
+      "Hurry, Sales ending in",
+      "Oppies, Sales over",
+    ])
   ).current;
 
-  timeline.onStart(() => {
-    console.log("Starting now");
-  });
-  timeline.onUpdate(({ time, status }) => {
-    console.log("Updating", time, status);
-    updateTime(time);
-  });
-  timeline.onFinish(() => {
-    console.log("Finished.");
-  });
-
   useEffect(() => {
-    timeline.start();
+    const stopTimeline = timeline
+    .onStart(() => {
+      console.log("Starting now");
+    })
+    .onUpdate(({ time, status }) => {
+      console.log("Updating", time, status);
+
+      updateTime(time);
+    }).onFinish(async () => {
+      console.log("Finished.");
+    }).start();
 
     return () => {
-      timeline.stop();
+      stopTimeline();
     };
   }, []);
 

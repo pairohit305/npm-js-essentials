@@ -50,6 +50,8 @@ d-> = depent on
 
 **Examples**
 
+[Timeline Demo](https://codesandbox.io/embed/tender-burnell-dbx3f?fontsize=14&hidenavigation=1&theme=dark")
+
 ```
 import { httpReqValidatorAsync } from "@pairohit/helper";
 import express from "express";

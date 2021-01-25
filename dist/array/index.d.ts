@@ -3,7 +3,7 @@
  * @param array original array
  * @param into slice into how many parts
  */
-export declare function splitArrayInto(array: any[], into: number): any[][];
+export declare function splitArrayInto<T>(array: T[], into: number): T[][];
 /** Count the given element in an array */
 export declare function arrayElmCounter(list: any[], searcher: any): number;
 /**
