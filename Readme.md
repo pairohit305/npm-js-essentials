@@ -15,7 +15,10 @@
 |                | getCountryList         |
 | Email          | isEmail                |
 | Express        | httpReqValidatorAsync  |
-| Halt           | halt d-> HaltCounter   |
+| Language       | getLanguageEntries     |
+|                | getLanguageFullname    |
+|                | getLanguageList        |
+| Halt           | halt d -> HaltCounter  |
 | HttpStatusCode | httpStatusCode         |
 | Math           | minmax                 |
 |                | mod                    |

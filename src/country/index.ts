@@ -520,3 +520,4 @@ type CountryCode =
 export function getCountryFullname(code: CountryCode) {
   return countryJSON[code];
 }
+
