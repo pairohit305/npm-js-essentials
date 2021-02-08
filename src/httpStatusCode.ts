@@ -7,7 +7,8 @@ export const httpStatusCode = {
   404: "Not Found!",
   405: "Method Not Allowed!",
   408: "Request Timeout!",
+  409: "Conflict!",
   410: "Gone! Permanently Deleted!",
   500: "Internal Server Error",
   503: "Service Unavailable",
-}
+};

@@ -7,6 +7,7 @@ export declare const httpStatusCode: {
     404: string;
     405: string;
     408: string;
+    409: string;
     410: string;
     500: string;
     503: string;
