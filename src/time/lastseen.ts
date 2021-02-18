@@ -3,6 +3,7 @@ import {
   dateString,
   dateStringDifference,
   timeLeft24h,
+  toDateString,
 } from "./dates";
 
 /** 1604247241_000 -> yesterday */
@@ -58,7 +59,6 @@ export function lastseen(timestamp: number) {
   }
 }
 
-
 /**
  *       24h before startDate(STARTS_TOMARROW)                   *
  *                 |                                             *
@@ -79,11 +79,11 @@ export function lastseen(timestamp: number) {
 
 /**
  * How code works internally
- *     
+ *
  *  #Lifecycle
- * 
+ *
  *  public events           internal
- * 
+ *
  *                      constructor()     <---- inputs such as start and end dates ...
  *                            |
  *                            v
@@ -95,7 +95,7 @@ export function lastseen(timestamp: number) {
  *                            |
  *                            | No
  *                            V
- *  onFinish()  <--------  finish()  == static time output like "Ends in 5h 12h" 
+ *  onFinish()  <--------  finish()  == static time output like "Ends in 5h 12h"
  *                            |
  *                            v
  *                          kill()
@@ -108,7 +108,7 @@ type numish = number | string | null;
 const TIMELINE_MODE = {
   OFF: 0,
   ON: 1,
-  UNKNOWN: 2
+  UNKNOWN: 2,
 };
 export const TIMELINE_STATUS = {
   NOT_STARTED: 0,
@@ -117,13 +117,13 @@ export const TIMELINE_STATUS = {
   ENDS_TODAY: 3, // show 24h clock
   ENDED: 4,
   UNKNOWN: 5,
-  INVALID: 6
+  INVALID: 6,
 };
 /**
  *
  * Important:
  * All timeline is based on GMT
- * 
+ *
  * This Timeline class is only dynamic when
  * less 24 hours remaining, for rest case static
  * time values is shown.
@@ -154,8 +154,8 @@ export class Timeline {
      * if 120 or less seconds remaining then update every 1s
      */
     private SWITCH_SECONDS = 120,
-    /** 
-     * All time related is based on GMT if you 
+    /**
+     * All time related is based on GMT if you
      * want add some init delays before calulating
      * go ahead and add it
      */
@@ -189,18 +189,21 @@ export class Timeline {
 
     // assigning value
     this.STATUS = Timeline.getStatus(this.startD, this.endD);
-    if (this.STATUS === TIMELINE_STATUS.INVALID) throw new RangeError("endDateString > startDateString is not allowed!")
+    if (this.STATUS === TIMELINE_STATUS.INVALID)
+      throw new RangeError("endDateString > startDateString is not allowed!");
 
     this.MODE = this.getMode(this.STATUS);
     this.time =
-      this.MODE === TIMELINE_MODE.ON ? timeLeft24h(true) + this.INITIAL_DELAY : 0;
+      this.MODE === TIMELINE_MODE.ON
+        ? timeLeft24h(true) + this.INITIAL_DELAY
+        : 0;
 
     this.interval =
       this.MODE === TIMELINE_MODE.OFF
         ? undefined
         : this.time <= this.SWITCH_SECONDS
-          ? 1000
-          : 60000;
+        ? 1000
+        : 60000;
 
     this.update(this.STATUS);
     return this.kill;
@@ -212,7 +215,8 @@ export class Timeline {
       const days = dateStringDifference(dateString(), this.startD);
       const hours = Math.floor((timeLeft24h(true) / (60 * 60)) % 24);
 
-      const time = this.replacer[0].trim() + " " + days + "d" + " " + hours + "h";
+      const time =
+        this.replacer[0].trim() + " " + days + "d" + " " + hours + "h";
 
       if (this._onUpdate) this._onUpdate({ status, time });
       return this.finish();
@@ -223,14 +227,17 @@ export class Timeline {
       const days = dateStringDifference(dateString(), this.endD);
       const hours = Math.floor((timeLeft24h(true) / (60 * 60)) % 24);
 
-      const time = this.replacer[1].trim() + " " + days + "d" + " " + hours + "h";
+      const time =
+        this.replacer[1].trim() + " " + days + "d" + " " + hours + "h";
 
       if (this._onUpdate) this._onUpdate({ status, time });
       return this.finish();
 
       // ENDED
     } else if (status === TIMELINE_STATUS.ENDED) {
-      const time = this.replacer[2].trim();
+      const days = dateStringDifference(dateString(), this.endD);
+      console.log(this.replacer[2].trim());
+      const time = this.replacer[2].trim() + " " + (days ? days + "d" : "");
 
       if (this._onUpdate) this._onUpdate({ status, time });
       return this.finish();
@@ -385,7 +392,7 @@ export class Timeline {
     this._onFinish = callback;
 
     return {
-      start: this.start
+      start: this.start,
     };
   }
 

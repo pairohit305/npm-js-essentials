@@ -79,7 +79,7 @@ exports.lastseen = lastseen;
 const TIMELINE_MODE = {
     OFF: 0,
     ON: 1,
-    UNKNOWN: 2
+    UNKNOWN: 2,
 };
 exports.TIMELINE_STATUS = {
     NOT_STARTED: 0,
@@ -88,7 +88,7 @@ exports.TIMELINE_STATUS = {
     ENDS_TODAY: 3,
     ENDED: 4,
     UNKNOWN: 5,
-    INVALID: 6
+    INVALID: 6,
 };
 /**
  *
@@ -136,7 +136,9 @@ class Timeline {
                 throw new RangeError("endDateString > startDateString is not allowed!");
             this.MODE = this.getMode(this.STATUS);
             this.time =
-                this.MODE === TIMELINE_MODE.ON ? dates_1.timeLeft24h(true) + this.INITIAL_DELAY : 0;
+                this.MODE === TIMELINE_MODE.ON
+                    ? dates_1.timeLeft24h(true) + this.INITIAL_DELAY
+                    : 0;
             this.interval =
                 this.MODE === TIMELINE_MODE.OFF
                     ? undefined
@@ -169,7 +171,9 @@ class Timeline {
                 // ENDED
             }
             else if (status === exports.TIMELINE_STATUS.ENDED) {
-                const time = this.replacer[2].trim();
+                const days = dates_1.dateStringDifference(dates_1.dateString(), this.endD);
+                console.log(this.replacer[2].trim());
+                const time = this.replacer[2].trim() + " " + (days ? days + "d" : "");
                 if (this._onUpdate)
                     this._onUpdate({ status, time });
                 return this.finish();
@@ -314,7 +318,7 @@ class Timeline {
     onFinish(callback) {
         this._onFinish = callback;
         return {
-            start: this.start
+            start: this.start,
         };
     }
     toDoubleDigit(digit, append) {
