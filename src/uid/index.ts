@@ -2,8 +2,8 @@ import { v5 as uuidv5 } from "uuid";
 import { randomInteger } from "../random";
 
 // generate uid base on version uuid v5
-export function genUniqueId(appName: string, key: string) {
-  let uid = uuidv5(appName + key, uuidv5.URL);
+export function genUniqueId(lock: string, key: string) {
+  let uid = uuidv5(lock + key, uuidv5.URL);
   return uid;
 }
 

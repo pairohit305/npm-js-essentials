@@ -1,6 +1,6 @@
 {
   "name": "@pairohit/helper",
-  "version": "4.0.628",
+  "version": "4.0.7",
   "description": "Many Usefull Helper function to save time!",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,12 +24,10 @@
   "license": "MIT",
   "dependencies": {
     "date-fns": "^2.16.1",
-    "url-parse": "^1.4.7",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/node": "^14.10.1",
-    "@types/url-parse": "^1.4.3",
     "@types/uuid": "^8.0.0",
     "react": "^17.0.1",
     "typescript": "^4.1.3"

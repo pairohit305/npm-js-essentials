@@ -14,7 +14,6 @@
 |                | getCountryFullname     |
 |                | getCountryList         |
 | Email          | isEmail                |
-| Express        | httpReqValidatorAsync  |
 | Language       | getLanguageEntries     |
 |                | getLanguageFullname    |
 |                | getLanguageList        |
@@ -22,10 +21,6 @@
 | HttpStatusCode | httpStatusCode         |
 | Math           | minmax                 |
 |                | mod                    |
-| Parser         | videoORImage           |
-|                | img2DMatrix            |
-|                | plainText2HTML         |
-|                | domaincomDetector      |
 | Text           | textLimitor            |
 |                | toStartCase            |
 | Time           | dateString             |
