@@ -13,7 +13,7 @@ exports.Timeline = exports.TIMELINE_STATUS = exports.lastseen = void 0;
 const dates_1 = require("./dates");
 /** 1604247241_000 -> yesterday */
 function lastseen(timestamp) {
-    var differenceTime = dates_1.timestamp() - timestamp;
+    var differenceTime = dates_1.Dates.timestamp() - timestamp;
     var seconds = differenceTime / 1000;
     var minutes = Math.floor(seconds / 60); // value 60 is seconds
     var hours = Math.floor(seconds / 3600); //value 3600 is 60 minutes * 60 sec
@@ -106,7 +106,7 @@ exports.TIMELINE_STATUS = {
  *     and so on ...
  */
 class Timeline {
-    constructor(startDateString, endDateString, 
+    constructor(start_dime, finish_dime, 
     /** It is time when it switches from 60s interval to 1s interval
      *  and this gives awesome ux, so if you provide value 120 it means
      * if 120 or less seconds remaining then update every 1s
@@ -133,11 +133,11 @@ class Timeline {
             // assigning value
             this.STATUS = Timeline.getStatus(this.startD, this.endD);
             if (this.STATUS === exports.TIMELINE_STATUS.INVALID)
-                throw new RangeError("endDateString > startDateString is not allowed!");
+                throw new RangeError("finish_dim < start_dim is not allowed!");
             this.MODE = this.getMode(this.STATUS);
             this.time =
                 this.MODE === TIMELINE_MODE.ON
-                    ? dates_1.timeLeft24h(true) + this.INITIAL_DELAY
+                    ? this.timeLeft24h() + this.INITIAL_DELAY
                     : 0;
             this.interval =
                 this.MODE === TIMELINE_MODE.OFF
@@ -152,8 +152,8 @@ class Timeline {
             // NOT_STARTED
             if (status === exports.TIMELINE_STATUS.NOT_STARTED) {
                 // remaining days
-                const days = dates_1.dateStringDifference(dates_1.dateString(), this.startD);
-                const hours = Math.floor((dates_1.timeLeft24h(true) / (60 * 60)) % 24);
+                const days = dates_1.Dates.differenceInDays(dates_1.Dates.timestamp(), dates_1.Dates.dimeToTimestamp(this.startD));
+                const hours = Math.floor((this.timeLeft24h() / (60 * 60)) % 24);
                 const time = this.replacer[0].trim() + " " + days + "d" + " " + hours + "h";
                 if (this._onUpdate)
                     this._onUpdate({ status, time });
@@ -162,8 +162,8 @@ class Timeline {
             }
             else if (status === exports.TIMELINE_STATUS.STARTED_IN_BETWEEN) {
                 // remaining days
-                const days = dates_1.dateStringDifference(dates_1.dateString(), this.endD);
-                const hours = Math.floor((dates_1.timeLeft24h(true) / (60 * 60)) % 24);
+                const days = dates_1.Dates.differenceInDays(dates_1.Dates.timestamp(), dates_1.Dates.dimeToTimestamp(this.endD));
+                const hours = Math.floor((this.timeLeft24h() / (60 * 60)) % 24);
                 const time = this.replacer[1].trim() + " " + days + "d" + " " + hours + "h";
                 if (this._onUpdate)
                     this._onUpdate({ status, time });
@@ -171,7 +171,7 @@ class Timeline {
                 // ENDED
             }
             else if (status === exports.TIMELINE_STATUS.ENDED) {
-                const days = dates_1.dateStringDifference(dates_1.dateString(), this.endD);
+                const days = dates_1.Dates.differenceInDays(dates_1.Dates.timestamp(), dates_1.Dates.dimeToTimestamp(this.endD));
                 console.log(this.replacer[2].trim());
                 const time = this.replacer[2].trim() + " " + (days ? days + "d" : "");
                 if (this._onUpdate)
@@ -273,13 +273,17 @@ class Timeline {
         this.kill = () => {
             clearTimeout(this.intervaler);
         };
-        this.startD = startDateString;
-        this.endD = endDateString;
+        this.startD = start_dime;
+        this.endD = finish_dime;
         this.onStart = this.onStart.bind(this);
         this.onUpdate = this.onUpdate.bind(this);
         this.onFinish = this.onFinish.bind(this);
         this.sleep = this.sleep.bind(this);
         this.restart = this.restart.bind(this);
+    }
+    timeLeft24h() {
+        return (dates_1.Dates.timestamp({ alterBy: 1, inSecs: true }) -
+            dates_1.Dates.timestamp({ inSecs: true }));
     }
     // sleep
     sleep(ms) {
@@ -338,24 +342,24 @@ class Timeline {
         }
     }
     // usefull methods
-    static getStatus(startDateString, endDateString) {
-        if (startDateString > endDateString)
+    static getStatus(start_dime, finish_dime) {
+        if (start_dime > finish_dime)
             return exports.TIMELINE_STATUS.INVALID;
-        const today = dates_1.dateString();
+        const now_dime = dates_1.Dates.dime();
         switch (true) {
-            case endDateString === today:
+            case finish_dime === now_dime:
                 return exports.TIMELINE_STATUS.ENDS_TODAY;
-            case startDateString > today:
-                const remaining = dates_1.dateStringDifference(today, startDateString);
+            case start_dime > now_dime:
+                const remaining = dates_1.Dates.differenceInDays(dates_1.Dates.timestamp(), dates_1.Dates.dimeToTimestamp(start_dime));
                 if (remaining === 1) {
                     return exports.TIMELINE_STATUS.STARTS_TOMARROW;
                 }
                 else {
                     return exports.TIMELINE_STATUS.NOT_STARTED;
                 }
-            case today >= startDateString && today <= endDateString:
+            case now_dime >= start_dime && now_dime <= finish_dime:
                 return exports.TIMELINE_STATUS.STARTED_IN_BETWEEN;
-            case today > endDateString:
+            case now_dime > finish_dime:
                 return exports.TIMELINE_STATUS.ENDED;
             default:
                 return exports.TIMELINE_STATUS.INVALID;

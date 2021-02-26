@@ -1,92 +1,136 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.timeLeft24h = exports.firstDateStringOfMonth = exports.lastDateStringOfMonth = exports.dateStringDifference = exports.toTimestamp = exports.timestamp = exports.toEarlyDate = exports.toLateDate = exports.toDateString = exports.dateString = exports.utcDate = void 0;
+exports.Dates = void 0;
 const date_fns_1 = require("date-fns");
-/** op: Wed, 02 Dec 2020 05:47:41 GMT */
-function utcDate() {
-    return new Date().toUTCString();
-}
-exports.utcDate = utcDate;
-/**
- // prettier-ignore
- * Example:
- *  default : o/p => 202010**15**
- *  dayModifier = **10** : o/p => 202010**25**
- *  dayModifier = **-10** : o/p => 202010**05**
- */
-function dateString(dayModifier) {
-    const utcnumber = Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate());
-    if (dayModifier && dayModifier > 0) {
-        return date_fns_1.format(date_fns_1.addDays(utcnumber, dayModifier), "yyyyMMdd");
+class Dates {
+    // => Wed, 02 Dec 2020 05:47:41 GMT
+    static UTC(options) {
+        let utc = "";
+        if ((options === null || options === void 0 ? void 0 : options.alterBy) && typeof options.alterBy === "string") {
+            utc =
+                options.alterBy === "alpha"
+                    ? (() => {
+                        const d = new Date();
+                        d.setUTCMonth(d.getMonth(), 1);
+                        d.setUTCHours(0, 0, 0, 0);
+                        return d.toUTCString();
+                    })()
+                    : (() => {
+                        const d = new Date();
+                        d.setUTCMonth(d.getMonth() + 1, 0);
+                        d.setUTCHours(23, 59, 59, 999);
+                        return d.toUTCString();
+                    })();
+        }
+        else if ((options === null || options === void 0 ? void 0 : options.alterBy) && typeof options.alterBy === "number") {
+            const d = new Date();
+            d.setUTCHours(0, 0, 0, 0);
+            utc =
+                options.alterBy > 0
+                    ? date_fns_1.addDays(d, options.alterBy).toUTCString()
+                    : date_fns_1.subDays(d, -options.alterBy).toUTCString();
+        }
+        else {
+            utc = new Date().toUTCString();
+        }
+        return utc;
     }
-    else if (dayModifier && dayModifier < 0) {
-        return date_fns_1.format(date_fns_1.subDays(utcnumber, -dayModifier), "yyyyMMdd");
+    // => 20210225T125958.000Z
+    static ISO(options) {
+        let _iso = "";
+        if ((options === null || options === void 0 ? void 0 : options.alterBy) && typeof options.alterBy === "string") {
+            _iso =
+                options.alterBy === "alpha"
+                    ? (() => {
+                        const d = new Date();
+                        d.setUTCMonth(d.getMonth(), 1);
+                        d.setUTCHours(0, 0, 0, 0);
+                        return d.toISOString();
+                    })()
+                    : (() => {
+                        const d = new Date();
+                        d.setUTCMonth(d.getMonth() + 1, 0);
+                        d.setUTCHours(23, 59, 59, 999);
+                        return d.toISOString();
+                    })();
+        }
+        else if ((options === null || options === void 0 ? void 0 : options.alterBy) && typeof options.alterBy === "number") {
+            const d = new Date();
+            d.setUTCHours(0, 0, 0, 0);
+            _iso =
+                options.alterBy > 0
+                    ? date_fns_1.addDays(d, options.alterBy).toISOString()
+                    : date_fns_1.subDays(d, -options.alterBy).toISOString();
+        }
+        else {
+            _iso = new Date().toISOString();
+        }
+        let iso = "";
+        for (const char of _iso) {
+            if (char === ":" || char === "-")
+                continue;
+            iso += char;
+        }
+        if ((options === null || options === void 0 ? void 0 : options.representation) === "date")
+            return iso.split("T")[0];
+        return iso;
     }
-    else {
-        return date_fns_1.format(utcnumber, "yyyyMMdd");
+    // => 1614326147_000
+    static timestamp(options) {
+        let timestamp = 0;
+        if ((options === null || options === void 0 ? void 0 : options.alterBy) && typeof options.alterBy === "string") {
+            timestamp =
+                options.alterBy === "alpha"
+                    ? (() => {
+                        const d = new Date();
+                        d.setUTCMonth(d.getMonth(), 1);
+                        d.setUTCHours(0, 0, 0, 0);
+                        return d.getTime();
+                    })()
+                    : (() => {
+                        const d = new Date();
+                        d.setUTCMonth(d.getMonth() + 1, 0);
+                        d.setUTCHours(0, 0, 0, 0);
+                        return d.getTime();
+                    })();
+        }
+        else if ((options === null || options === void 0 ? void 0 : options.alterBy) && typeof options.alterBy === "number") {
+            const d = new Date();
+            d.setUTCHours(0, 0, 0, 0);
+            timestamp =
+                options.alterBy > 0
+                    ? date_fns_1.addDays(d, options.alterBy).getTime()
+                    : date_fns_1.subDays(d, -options.alterBy).getTime();
+        }
+        else {
+            timestamp = Date.now();
+        }
+        return (options === null || options === void 0 ? void 0 : options.inSecs) ? Math.round(timestamp / 1000) : timestamp;
+    }
+    static timeToTimestamp(time, options) {
+        const timestamp = date_fns_1.parseISO(time).getTime();
+        return (options === null || options === void 0 ? void 0 : options.inSecs) ? Math.round(timestamp / 1000) : timestamp;
+    }
+    static dimeToTimestamp(dime, options) {
+        const timestamp = Date.UTC(Number(dime.slice(0, 4)), Number(dime.slice(4, 6)) - 1, Number(dime.slice(-2)));
+        return (options === null || options === void 0 ? void 0 : options.inSecs) ? Math.round(timestamp / 1000) : timestamp;
+    }
+    static differenceInDays(LTimestamp, RTimestamp) {
+        return Math.abs(date_fns_1.differenceInDays(LTimestamp, RTimestamp));
+    }
+    // => 20210225
+    static dime(options) {
+        return this.ISO({ representation: "date", alterBy: options === null || options === void 0 ? void 0 : options.alterBy });
+    }
+    /** convert iso / gmt to the local  */
+    static beautify(time, format = "ISO") {
+        if (format === "ISO") {
+            return date_fns_1.format(date_fns_1.parseISO(time), "do MMM, yyyy");
+        }
+        else if (format === "UTC") {
+            return date_fns_1.format(new Date(time), "do MMM, yyyy");
+        }
     }
 }
-exports.dateString = dateString;
-/** 1604247241_000 -> 20201202*/
-function toDateString(timestamp) {
-    return date_fns_1.format(timestamp, "yyyyMMdd");
-}
-exports.toDateString = toDateString;
-/* 20201010 -> "Tue, 10 Oct 2020 23:59:59 GMT" */
-function toLateDate(dateString) {
-    return new Date(Date.UTC(Number(dateString.slice(0, 4)), Number(dateString.slice(4, 6)) - 1, Number(dateString.slice(-2)), 23, 59, 59, 999)).toUTCString();
-}
-exports.toLateDate = toLateDate;
-/* 20201010 -> "Tue, 10 Oct 2020 00:00:00 GMT" */
-function toEarlyDate(dateString) {
-    return new Date(Date.UTC(Number(dateString.slice(0, 4)), Number(dateString.slice(4, 6)) - 1, Number(dateString.slice(-2)), 0, 0, 0, 0)).toUTCString();
-}
-exports.toEarlyDate = toEarlyDate;
-/* op: 1604247241_000
-            or
-  20201010 -> 1606867200_000
-*/
-function timestamp(dateString, 
-/** output in seconds  */
-s) {
-    if (dateString) {
-        const num = Date.UTC(Number(dateString.slice(0, 4)), Number(dateString.slice(4, 6)) - 1, Number(dateString.slice(-2)));
-        return s ? num / 1000 : num;
-    }
-    const num = new Date().getTime();
-    return Math.floor(num / (s ? 1000 : 1));
-}
-exports.timestamp = timestamp;
-/** "Tue, 10 Oct 2020 00:00:00 GMT" -> 1604247241_000 or 1604247241 */
-function toTimestamp(utcDate, 
-/** output in seconds */
-s) {
-    const num = Date.parse(utcDate);
-    return Math.floor(num / (s ? 1000 : 1));
-}
-exports.toTimestamp = toTimestamp;
-// UTILS
-/**
- * Returns the differences in days between two dateString in days
- * @param dateStringA dateString
- * @param dateStringB dateString
- */
-function dateStringDifference(dateStringA, dateStringB) {
-    return Math.abs(date_fns_1.differenceInDays(timestamp(dateStringA), timestamp(dateStringB)));
-}
-exports.dateStringDifference = dateStringDifference;
-/** Give the last Date String of current Month */
-function lastDateStringOfMonth() {
-    return date_fns_1.format(date_fns_1.lastDayOfMonth(timestamp()), "yyyyMMdd");
-}
-exports.lastDateStringOfMonth = lastDateStringOfMonth;
-function firstDateStringOfMonth() {
-    return dateString().slice(0, 6) + "01";
-}
-exports.firstDateStringOfMonth = firstDateStringOfMonth;
-function timeLeft24h(s) {
-    const timeleft = timestamp(dateString(1)) - timestamp();
-    return Math.round(s ? timeleft / 1000 : timeleft);
-}
-exports.timeLeft24h = timeLeft24h;
+exports.Dates = Dates;
 //# sourceMappingURL=dates.js.map

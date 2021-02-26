@@ -2,47 +2,37 @@
 
 `Available functions`
 
-| Core           | Function               |
-| -------------- | ---------------------- |
-| Array          | splitArrayInto         |
-|                | arrayElmCounter        |
-|                | contains               |
-|                | isDistinctiveArray     |
-|                | minArray               |
-|                | maxArray               |
-| Country        | getCountryEntries      |
-|                | getCountryFullname     |
-|                | getCountryList         |
-| Email          | isEmail                |
-| Language       | getLanguageEntries     |
-|                | getLanguageFullname    |
-|                | getLanguageList        |
-| Halt           | halt d -> HaltCounter  |
-| HttpStatusCode | httpStatusCode         |
-| Math           | minmax                 |
-|                | mod                    |
-| Text           | textLimitor            |
-|                | toStartCase            |
-| Time           | dateString             |
-|                | utcDate                |
-|                | toLateDate             |
-|                | toEarlyDate            |
-|                | toFormateDate          |
-|                | Timeline               |
-|                | toTimestamp            |
-|                | timestamp              |
-|                | timeLeft24h            |
-|                | lastseen               |
-|                | dateStringDifference   |
-|                | lastDateStringOfMonth  |
-|                | firstDateStringOfMonth |
-| Uid            | genUniqueId            |
-|                | genRandomUniqueId      |
-| Random         | randomInteger          |
-|                | randomFloat            |
-|                | randomAlphabet         |
-|                | randomNaturalArray     |
-| Sleep          | sleep                  |
+| Core           | Function              |
+| -------------- | --------------------- |
+| Array          | splitArrayInto        |
+|                | arrayElmCounter       |
+|                | contains              |
+|                | isDistinctiveArray    |
+|                | minArray              |
+|                | maxArray              |
+| Country        | getCountryEntries     |
+|                | getCountryFullname    |
+|                | getCountryList        |
+| Email          | isEmail               |
+| Language       | getLanguageEntries    |
+|                | getLanguageFullname   |
+|                | getLanguageList       |
+| Halt           | halt d -> HaltCounter |
+| HttpStatusCode | httpStatusCode        |
+| Math           | minmax                |
+|                | mod                   |
+| Text           | textLimitor           |
+|                | toStartCase           |
+| Time           | Dates                 |
+|                | lastseen              |
+|                | Timeline              |
+| Uid            | genUniqueId           |
+|                | genRandomUniqueId     |
+| Random         | randomInteger         |
+|                | randomFloat           |
+|                | randomAlphabet        |
+|                | randomNaturalArray    |
+| Sleep          | sleep                 |
 
 d-> = depent on
 
@@ -51,32 +41,8 @@ d-> = depent on
 [Timeline Demo](https://codesandbox.io/embed/tender-burnell-dbx3f?fontsize=14&hidenavigation=1&theme=dark")
 
 ```
-import { httpReqValidatorAsync } from "@pairohit/helper";
-import express from "express";
-const app = express();
 
-/**
- * let say you want to check "id" and "email"
- * present in req.body
- */
-app.get("/", async (req, res) => {
-  try {
-    // rejects if id and email is not present in req.body
-    await httpReqValidatorAsync(["id", "email"], req.body);
-
-    return res.status(200).send("Well done!");
-  } catch (err) {
-    return res.send(err.code).end(err.message);
-  }
-});
-
-app.listen(3000, () => console.log("Server started at PORT 3000"));
-
-```
-
-```
-
-async function example2() {
+async function example1() {
   console.log("** started **");
   let hc = new HaltCounter(0);
 
@@ -95,6 +61,6 @@ async function example2() {
   clearInterval(looper);
 }
 
-example2();
+example1();
 
 ```

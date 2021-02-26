@@ -45,7 +45,7 @@ export declare class Timeline {
     private startD;
     private endD;
     private intervaler;
-    constructor(startDateString: string, endDateString: string, 
+    constructor(start_dime: string, finish_dime: string, 
     /** It is time when it switches from 60s interval to 1s interval
      *  and this gives awesome ux, so if you provide value 120 it means
      * if 120 or less seconds remaining then update every 1s
@@ -57,6 +57,7 @@ export declare class Timeline {
      * go ahead and add it
      */
     INITIAL_DELAY?: number, replacer?: string[]);
+    private timeLeft24h;
     private sleep;
     private start;
     private update;
@@ -95,6 +96,6 @@ export declare class Timeline {
     };
     private toDoubleDigit;
     private getMode;
-    static getStatus(startDateString: string, endDateString: string): number;
+    static getStatus(start_dime: string, finish_dime: string): number;
 }
 //# sourceMappingURL=lastseen.d.ts.map
