@@ -111,6 +111,19 @@ class Dates {
     static timeToDime(time) {
         return time.split("T")[0];
     }
+    static dateToTime(date) {
+        const _iso = date.toISOString();
+        let iso = "";
+        for (const char of _iso) {
+            if (char === ":" || char === "-")
+                continue;
+            iso += char;
+        }
+        return iso;
+    }
+    static timeToDate(time) {
+        return date_fns_1.parseISO(time);
+    }
     static timeToTimestamp(time, options) {
         const timestamp = date_fns_1.parseISO(time).getTime();
         return (options === null || options === void 0 ? void 0 : options.inSecs) ? Math.round(timestamp / 1000) : timestamp;

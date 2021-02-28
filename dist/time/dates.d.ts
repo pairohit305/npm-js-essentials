@@ -11,6 +11,8 @@ export declare class Dates {
         alterBy?: number | "final" | "alpha";
     }): number;
     static timeToDime(time: string): string;
+    static dateToTime(date: Date): string;
+    static timeToDate(time: string): Date;
     static timeToTimestamp(time: string, options?: {
         inSecs?: boolean;
     }): number;
