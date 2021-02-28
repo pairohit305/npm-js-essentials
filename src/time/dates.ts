@@ -132,6 +132,20 @@ export class Dates {
   static timeToDime(time: string) {
     return time.split("T")[0];
   }
+  static dateToTime(date: Date) {
+    const _iso = date.toISOString();
+    let iso = "";
+
+    for (const char of _iso) {
+      if (char === ":" || char === "-") continue;
+      iso += char;
+    }
+
+    return iso;
+  }
+  static timeToDate(time: string) {
+    return parseISO(time);
+  }
   static timeToTimestamp(time: string, options?: { inSecs?: boolean }) {
     const timestamp = parseISO(time).getTime();
     return options?.inSecs ? Math.round(timestamp / 1000) : timestamp;
