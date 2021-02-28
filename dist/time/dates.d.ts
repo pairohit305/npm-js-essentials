@@ -10,6 +10,7 @@ export declare class Dates {
         inSecs?: boolean;
         alterBy?: number | "final" | "alpha";
     }): number;
+    static timeToDime(time: string): string;
     static timeToTimestamp(time: string, options?: {
         inSecs?: boolean;
     }): number;

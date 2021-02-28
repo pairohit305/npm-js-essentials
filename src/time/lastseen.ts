@@ -55,9 +55,9 @@ export function lastseen(timestamp: number) {
 }
 
 /**
- *       24h before startDate(STARTS_TOMARROW)                   *
+ *       24h before startDate(STARTS_SOON)                       *
  *                 |                                             *
- *                 |       24h before endDate(ENDS_TODAY)        *
+ *                 |       24h before endDate(ENDS_SOON)         *
  *                 |                   |                         *
  *                 v                   v                         *
  * (NOT_STARTED)-- * -- * ============ * -- * ------             *
@@ -100,19 +100,13 @@ export function lastseen(timestamp: number) {
 type numish = number | string | null;
 
 // enum
-const TIMELINE_MODE = {
-  OFF: 0,
-  ON: 1,
-  UNKNOWN: 2,
-};
 export const TIMELINE_STATUS = {
   NOT_STARTED: 0,
-  STARTS_TOMARROW: 1, // show 24h clock
+  STARTS_SOON: 1, // show 24h clock
   STARTED_IN_BETWEEN: 2,
-  ENDS_TODAY: 3, // show 24h clock
+  ENDS_SOON: 3, // show 24h clock
   ENDED: 4,
   UNKNOWN: 5,
-  INVALID: 6,
 };
 /**
  *
@@ -131,34 +125,27 @@ export const TIMELINE_STATUS = {
  */
 export class Timeline {
   private STATUS: number = TIMELINE_STATUS.UNKNOWN;
-  private MODE: number = TIMELINE_MODE.UNKNOWN;
   private time = 0;
   private interval: 1000 | 60000 | undefined;
   private timeString = " - ";
 
-  private startD: string;
-  private endD: string;
+  private start_time: string;
+  private finish_time: string;
 
   // setInterval timer
   private intervaler: any;
   constructor(
-    start_dime: string,
-    finish_dime: string,
+    start_time: string,
+    finish_time: string,
     /** It is time when it switches from 60s interval to 1s interval
      *  and this gives awesome ux, so if you provide value 120 it means
      * if 120 or less seconds remaining then update every 1s
      */
     private SWITCH_SECONDS = 120,
-    /**
-     * All time related is based on GMT if you
-     * want add some init delays before calulating
-     * go ahead and add it
-     */
-    private INITIAL_DELAY = 0,
     private replacer = ["Starts in ", "Ends in ", "Ended"]
   ) {
-    this.startD = start_dime;
-    this.endD = finish_dime;
+    this.start_time = start_time;
+    this.finish_time = finish_time;
 
     this.onStart = this.onStart.bind(this);
     this.onUpdate = this.onUpdate.bind(this);
@@ -166,12 +153,6 @@ export class Timeline {
 
     this.sleep = this.sleep.bind(this);
     this.restart = this.restart.bind(this);
-  }
-  private timeLeft24h() {
-    return (
-      Dates.timestamp({ alterBy: 1, inSecs: true }) -
-      Dates.timestamp({ inSecs: true })
-    );
   }
   // sleep
   private async sleep(ms: number) {
@@ -188,22 +169,24 @@ export class Timeline {
     if (this._onStart && !nolog) this._onStart();
 
     // assigning value
-    this.STATUS = Timeline.getStatus(this.startD, this.endD);
-    if (this.STATUS === TIMELINE_STATUS.INVALID)
-      throw new RangeError("finish_dim < start_dim is not allowed!");
+    this.STATUS = Timeline.getStatus(this.start_time, this.finish_time);
 
-    this.MODE = this.getMode(this.STATUS);
     this.time =
-      this.MODE === TIMELINE_MODE.ON
-        ? this.timeLeft24h() + this.INITIAL_DELAY
+      this.STATUS === TIMELINE_STATUS.STARTS_SOON
+        ? Dates.timeToTimestamp(this.start_time, { inSecs: true }) -
+          Dates.timestamp({ inSecs: true })
+        : this.STATUS === TIMELINE_STATUS.ENDS_SOON
+        ? Dates.timeToTimestamp(this.finish_time, { inSecs: true }) -
+          Dates.timestamp({ inSecs: true })
         : 0;
 
     this.interval =
-      this.MODE === TIMELINE_MODE.OFF
-        ? undefined
-        : this.time <= this.SWITCH_SECONDS
-        ? 1000
-        : 60000;
+      this.STATUS === TIMELINE_STATUS.STARTS_SOON ||
+      this.STATUS === TIMELINE_STATUS.ENDS_SOON
+        ? this.time <= this.SWITCH_SECONDS
+          ? 1000
+          : 60000
+        : undefined;
 
     this.update(this.STATUS);
     return this.kill;
@@ -214,9 +197,15 @@ export class Timeline {
       // remaining days
       const days = Dates.differenceInDays(
         Dates.timestamp(),
-        Dates.dimeToTimestamp(this.startD)
+        Dates.timeToTimestamp(this.start_time)
       );
-      const hours = Math.floor((this.timeLeft24h() / (60 * 60)) % 24);
+
+      const hours = Math.floor(
+        ((Dates.timeToTimestamp(this.start_time, { inSecs: true }) -
+          Dates.timestamp({ inSecs: true })) /
+          (60 * 60)) %
+          24
+      );
 
       const time =
         this.replacer[0].trim() + " " + days + "d" + " " + hours + "h";
@@ -229,9 +218,15 @@ export class Timeline {
       // remaining days
       const days = Dates.differenceInDays(
         Dates.timestamp(),
-        Dates.dimeToTimestamp(this.endD)
+        Dates.timeToTimestamp(this.finish_time)
       );
-      const hours = Math.floor((this.timeLeft24h() / (60 * 60)) % 24);
+
+      const hours = Math.floor(
+        ((Dates.timeToTimestamp(this.finish_time, { inSecs: true }) -
+          Dates.timestamp({ inSecs: true })) /
+          (60 * 60)) %
+          24
+      );
 
       const time =
         this.replacer[1].trim() + " " + days + "d" + " " + hours + "h";
@@ -243,15 +238,15 @@ export class Timeline {
     } else if (status === TIMELINE_STATUS.ENDED) {
       const days = Dates.differenceInDays(
         Dates.timestamp(),
-        Dates.dimeToTimestamp(this.endD)
+        Dates.timeToTimestamp(this.finish_time)
       );
-      console.log(this.replacer[2].trim());
+
       const time = this.replacer[2].trim() + " " + (days ? days + "d" : "");
 
       if (this._onUpdate) this._onUpdate({ status, time });
       return this.finish();
-      // ENDS_TODAY
-    } else if (status === TIMELINE_STATUS.ENDS_TODAY) {
+      // ENDS_SOON
+    } else if (status === TIMELINE_STATUS.ENDS_SOON) {
       // time string logic
 
       // in some case hour, mins are not required
@@ -284,24 +279,24 @@ export class Timeline {
           this.time -= 60;
           await this.sleep(60000);
 
-          this.update(TIMELINE_STATUS.ENDS_TODAY);
+          this.update(TIMELINE_STATUS.ENDS_SOON);
           break;
         case this.time <= this.SWITCH_SECONDS && this.interval === 1000:
           this.time -= 1;
           await this.sleep(1000);
 
-          this.update(TIMELINE_STATUS.ENDS_TODAY);
+          this.update(TIMELINE_STATUS.ENDS_SOON);
           break;
         case this.time <= this.SWITCH_SECONDS && this.interval === 60000:
           // change the interval time from 60s to 1s
           this.interval = 1000;
           this.time -= 1;
 
-          this.update(TIMELINE_STATUS.ENDS_TODAY);
+          this.update(TIMELINE_STATUS.ENDS_SOON);
           break;
       }
-      // STARTS_TOMARROW
-    } else if (status === TIMELINE_STATUS.STARTS_TOMARROW) {
+      // STARTS_SOON
+    } else if (status === TIMELINE_STATUS.STARTS_SOON) {
       // time string logic
 
       // in some case hour, mins are not required
@@ -334,20 +329,20 @@ export class Timeline {
           this.time -= 60;
           await this.sleep(60000);
 
-          this.update(TIMELINE_STATUS.STARTS_TOMARROW);
+          this.update(TIMELINE_STATUS.STARTS_SOON);
           break;
         case this.time <= this.SWITCH_SECONDS && this.interval === 1000:
           this.time -= 1;
           await this.sleep(1000);
 
-          this.update(TIMELINE_STATUS.STARTS_TOMARROW);
+          this.update(TIMELINE_STATUS.STARTS_SOON);
           break;
         case this.time <= this.SWITCH_SECONDS && this.interval === 60000:
           // change the interval time from 60s to 1s
           this.interval = 1000;
           this.time -= 1;
 
-          this.update(TIMELINE_STATUS.STARTS_TOMARROW);
+          this.update(TIMELINE_STATUS.STARTS_SOON);
           break;
       }
     }
@@ -358,15 +353,12 @@ export class Timeline {
     // user's onfinish method called
     if (this._onFinish) this._onFinish();
   };
-  public restart(startDateString: string, endDateString: string) {
-    this.startD = startDateString;
-    this.endD = endDateString;
+  public restart(start_time: string, finish_time: string) {
+    this.start_time = start_time;
+    this.finish_time = finish_time;
     this.STATUS = TIMELINE_STATUS.UNKNOWN;
-    this.MODE = TIMELINE_MODE.UNKNOWN;
     this.time = 0;
     this.interval = undefined;
-    this.INITIAL_DELAY = 0;
-
     this.start(true);
   }
   /** Call this function to stop the timeline
@@ -413,44 +405,35 @@ export class Timeline {
       " "
     );
   }
-  private getMode(status: number) {
-    switch (status) {
-      case TIMELINE_STATUS.STARTS_TOMARROW:
-      case TIMELINE_STATUS.ENDS_TODAY:
-        return TIMELINE_MODE.ON;
-      default:
-        return TIMELINE_MODE.OFF;
-    }
-  }
   // usefull methods
-  public static getStatus(start_dime: string, finish_dime: string) {
-    if (start_dime > finish_dime) return TIMELINE_STATUS.INVALID;
-    const now_dime = Dates.dime();
+  public static getStatus(start_time: string, finish_time: string) {
+    if (start_time > finish_time) {
+      throw new RangeError("start_time > finish_time is not allowed!");
+    }
+
+    const _24h = 86400000;
+    const now_time = Dates.ISO();
 
     switch (true) {
-      case finish_dime === now_dime:
-        return TIMELINE_STATUS.ENDS_TODAY;
-
-      case start_dime > now_dime:
-        const remaining = Dates.differenceInDays(
-          Dates.timestamp(),
-          Dates.dimeToTimestamp(start_dime)
-        );
-
-        if (remaining === 1) {
-          return TIMELINE_STATUS.STARTS_TOMARROW;
+      case now_time < start_time:
+        if (Dates.timeToTimestamp(start_time) - Dates.timestamp() <= _24h) {
+          return TIMELINE_STATUS.STARTS_SOON;
         } else {
           return TIMELINE_STATUS.NOT_STARTED;
         }
 
-      case now_dime >= start_dime && now_dime <= finish_dime:
-        return TIMELINE_STATUS.STARTED_IN_BETWEEN;
-
-      case now_dime > finish_dime:
+      case now_time > finish_time:
         return TIMELINE_STATUS.ENDED;
 
+      case now_time >= start_time && now_time <= finish_time:
+        if (Dates.timeToTimestamp(finish_time) - Dates.timestamp() <= _24h) {
+          return TIMELINE_STATUS.ENDS_SOON;
+        } else {
+          return TIMELINE_STATUS.STARTED_IN_BETWEEN;
+        }
+
       default:
-        return TIMELINE_STATUS.INVALID;
+        return TIMELINE_STATUS.UNKNOWN;
     }
   }
 }

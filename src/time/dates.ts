@@ -128,11 +128,14 @@ export class Dates {
     return options?.inSecs ? Math.round(timestamp / 1000) : timestamp;
   }
 
+  // conversion
+  static timeToDime(time: string) {
+    return time.split("T")[0];
+  }
   static timeToTimestamp(time: string, options?: { inSecs?: boolean }) {
     const timestamp = parseISO(time).getTime();
     return options?.inSecs ? Math.round(timestamp / 1000) : timestamp;
   }
-
   static dimeToTimestamp(dime: string, options?: { inSecs?: boolean }) {
     const timestamp = Date.UTC(
       Number(dime.slice(0, 4)),

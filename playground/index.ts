@@ -3,7 +3,7 @@ import * as helper from "../src";
 (async () => {
   console.log("** started **\n\n");
   console.time("s");
-  new helper.Timeline("20210226", "20210226")
+  new helper.Timeline("20210228T120000.000Z", "20210328T121500.000Z")
     .onStart(() => {
       console.log("started", helper.Dates.dime());
     })
