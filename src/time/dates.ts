@@ -1,3 +1,4 @@
+import { time } from "console";
 import {
   addDays,
   subDays,
@@ -163,6 +164,9 @@ export class Dates {
   static timeToTimestamp(time: string, options?: { inSecs?: boolean }) {
     const timestamp = parseISO(time).getTime();
     return options?.inSecs ? Math.round(timestamp / 1000) : timestamp;
+  }
+  static timestampToTime(timestamp: number) {
+    return this.dateToTime(new Date(timestamp));
   }
   static timealterBy(time: string, alterBy: number) {
     const d = parseISO(time);

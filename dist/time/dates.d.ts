@@ -21,6 +21,7 @@ export declare class Dates {
     static timeToTimestamp(time: string, options?: {
         inSecs?: boolean;
     }): number;
+    static timestampToTime(timestamp: number): string;
     static timealterBy(time: string, alterBy: number): string;
     static differenceInDays(LTimestamp: number, RTimestamp: number): number;
     static dime(options?: {

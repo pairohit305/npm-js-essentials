@@ -138,6 +138,9 @@ class Dates {
         const timestamp = date_fns_1.parseISO(time).getTime();
         return (options === null || options === void 0 ? void 0 : options.inSecs) ? Math.round(timestamp / 1000) : timestamp;
     }
+    static timestampToTime(timestamp) {
+        return this.dateToTime(new Date(timestamp));
+    }
     static timealterBy(time, alterBy) {
         const d = date_fns_1.parseISO(time);
         let iso = "";
