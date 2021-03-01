@@ -108,9 +108,6 @@ class Dates {
         return (options === null || options === void 0 ? void 0 : options.inSecs) ? Math.round(timestamp / 1000) : timestamp;
     }
     // conversion
-    static timeToDime(time) {
-        return time.split("T")[0];
-    }
     static dateToTime(date) {
         const _iso = date.toISOString();
         let iso = "";
@@ -121,16 +118,38 @@ class Dates {
         }
         return iso;
     }
+    static dimeToTimestamp(dime, options) {
+        const timestamp = Date.UTC(Number(dime.slice(0, 4)), Number(dime.slice(4, 6)) - 1, Number(dime.slice(-2)));
+        return (options === null || options === void 0 ? void 0 : options.inSecs) ? Math.round(timestamp / 1000) : timestamp;
+    }
+    static timeToDime(time) {
+        return time.split("T")[0];
+    }
     static timeToDate(time) {
         return date_fns_1.parseISO(time);
+    }
+    static timeToInputDate(time) {
+        return date_fns_1.parseISO(time).toISOString().slice(0, 10);
+    }
+    static timeToInputDateTime(time) {
+        return date_fns_1.parseISO(time).toISOString().slice(0, 16);
     }
     static timeToTimestamp(time, options) {
         const timestamp = date_fns_1.parseISO(time).getTime();
         return (options === null || options === void 0 ? void 0 : options.inSecs) ? Math.round(timestamp / 1000) : timestamp;
     }
-    static dimeToTimestamp(dime, options) {
-        const timestamp = Date.UTC(Number(dime.slice(0, 4)), Number(dime.slice(4, 6)) - 1, Number(dime.slice(-2)));
-        return (options === null || options === void 0 ? void 0 : options.inSecs) ? Math.round(timestamp / 1000) : timestamp;
+    static timealterBy(time, alterBy) {
+        const d = date_fns_1.parseISO(time);
+        let iso = "";
+        const _iso = alterBy > 0
+            ? date_fns_1.addDays(d, alterBy).toISOString()
+            : date_fns_1.subDays(d, -alterBy).toISOString();
+        for (const char of _iso) {
+            if (char === ":" || char === "-")
+                continue;
+            iso += char;
+        }
+        return iso;
     }
     static differenceInDays(LTimestamp, RTimestamp) {
         return Math.abs(date_fns_1.differenceInDays(LTimestamp, RTimestamp));

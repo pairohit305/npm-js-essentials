@@ -10,15 +10,18 @@ export declare class Dates {
         inSecs?: boolean;
         alterBy?: number | "final" | "alpha";
     }): number;
-    static timeToDime(time: string): string;
     static dateToTime(date: Date): string;
-    static timeToDate(time: string): Date;
-    static timeToTimestamp(time: string, options?: {
-        inSecs?: boolean;
-    }): number;
     static dimeToTimestamp(dime: string, options?: {
         inSecs?: boolean;
     }): number;
+    static timeToDime(time: string): string;
+    static timeToDate(time: string): Date;
+    static timeToInputDate(time: string): string;
+    static timeToInputDateTime(time: string): string;
+    static timeToTimestamp(time: string, options?: {
+        inSecs?: boolean;
+    }): number;
+    static timealterBy(time: string, alterBy: number): string;
     static differenceInDays(LTimestamp: number, RTimestamp: number): number;
     static dime(options?: {
         alterBy?: number | "final" | "alpha";

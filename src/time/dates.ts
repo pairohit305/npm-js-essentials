@@ -129,9 +129,6 @@ export class Dates {
   }
 
   // conversion
-  static timeToDime(time: string) {
-    return time.split("T")[0];
-  }
   static dateToTime(date: Date) {
     const _iso = date.toISOString();
     let iso = "";
@@ -143,13 +140,6 @@ export class Dates {
 
     return iso;
   }
-  static timeToDate(time: string) {
-    return parseISO(time);
-  }
-  static timeToTimestamp(time: string, options?: { inSecs?: boolean }) {
-    const timestamp = parseISO(time).getTime();
-    return options?.inSecs ? Math.round(timestamp / 1000) : timestamp;
-  }
   static dimeToTimestamp(dime: string, options?: { inSecs?: boolean }) {
     const timestamp = Date.UTC(
       Number(dime.slice(0, 4)),
@@ -157,6 +147,38 @@ export class Dates {
       Number(dime.slice(-2))
     );
     return options?.inSecs ? Math.round(timestamp / 1000) : timestamp;
+  }
+  static timeToDime(time: string) {
+    return time.split("T")[0];
+  }
+  static timeToDate(time: string) {
+    return parseISO(time);
+  }
+  static timeToInputDate(time: string) {
+    return parseISO(time).toISOString().slice(0, 10);
+  }
+  static timeToInputDateTime(time: string) {
+    return parseISO(time).toISOString().slice(0, 16);
+  }
+  static timeToTimestamp(time: string, options?: { inSecs?: boolean }) {
+    const timestamp = parseISO(time).getTime();
+    return options?.inSecs ? Math.round(timestamp / 1000) : timestamp;
+  }
+  static timealterBy(time: string, alterBy: number) {
+    const d = parseISO(time);
+
+    let iso = "";
+    const _iso =
+      alterBy > 0
+        ? addDays(d, alterBy).toISOString()
+        : subDays(d, -alterBy).toISOString();
+
+    for (const char of _iso) {
+      if (char === ":" || char === "-") continue;
+      iso += char;
+    }
+
+    return iso;
   }
 
   static differenceInDays(LTimestamp: number, RTimestamp: number) {
