@@ -191,7 +191,7 @@ export function getLanguageEntries(): [Language, string][] {
     ["YI", "ייִדיש"],
     ["YO", "Yorùbá"],
     ["ZA", "Saɯ cueŋƅ, Saw cuengh"],
-  ]
+  ];
 }
 type Language =
   | "AB"
@@ -377,3 +377,7 @@ type Language =
   | "YI"
   | "YO"
   | "ZA";
+
+export function getLanguageFullname(language: Language) {
+  return languageJSON[language];
+}

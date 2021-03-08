@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getLanguageEntries = exports.getLanguageList = void 0;
+exports.getLanguageFullname = exports.getLanguageEntries = exports.getLanguageList = void 0;
 const language_json_1 = __importDefault(require("./language.json"));
 /**
  * Get the all country code list
@@ -200,4 +200,8 @@ function getLanguageEntries() {
     ];
 }
 exports.getLanguageEntries = getLanguageEntries;
+function getLanguageFullname(language) {
+    return language_json_1.default[language];
+}
+exports.getLanguageFullname = getLanguageFullname;
 //# sourceMappingURL=index.js.map
