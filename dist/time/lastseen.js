@@ -25,28 +25,13 @@ function lastseen(timestamp) {
         return "Just Now";
     }
     else if (minutes <= 60) {
-        if (minutes == 1) {
-            return "one minute ago";
-        }
-        else {
-            return `${minutes} minutes ago`;
-        }
+        return `${minutes}m ago`;
     }
     else if (hours <= 24) {
-        if (hours == 1) {
-            return "an hour ago";
-        }
-        else {
-            return `${hours} hrs ago`;
-        }
+        return `${hours}h ago`;
     }
     else if (days <= 7) {
-        if (days == 1) {
-            return "yesterday";
-        }
-        else {
-            return `${days} days ago`;
-        }
+        return `${days}d ago`;
     }
     else if (weeks <= 4.3) {
         //4.3 == 52/12

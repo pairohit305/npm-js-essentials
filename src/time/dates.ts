@@ -1,4 +1,3 @@
-import { time } from "console";
 import {
   addDays,
   subDays,
@@ -166,7 +165,17 @@ export class Dates {
     return options?.inSecs ? Math.round(timestamp / 1000) : timestamp;
   }
   static timestampToTime(timestamp: number) {
-    return this.dateToTime(new Date(timestamp));
+    const date = new Date(timestamp);
+
+    const _iso = date.toISOString();
+    let iso = "";
+
+    for (const char of _iso) {
+      if (char === ":" || char === "-") continue;
+      iso += char;
+    }
+
+    return iso;
   }
   static timealterBy(time: string, alterBy: number) {
     const d = parseISO(time);
@@ -195,11 +204,23 @@ export class Dates {
   }
 
   /** convert iso / gmt to the local  */
-  static beautify(time: string, format: "ISO" | "UTC" = "ISO") {
+  static beautify(
+    time: string,
+    format: "ISO" | "UTC" | "dime" = "ISO",
+    withTime?: boolean
+  ) {
     if (format === "ISO") {
+      return dfnsFormat(
+        parseISO(time),
+        withTime ? "do MMM, yyyy hh:mm a" : "do MMM, yyyy"
+      );
+    } else if (format === "dime") {
       return dfnsFormat(parseISO(time), "do MMM, yyyy");
     } else if (format === "UTC") {
-      return dfnsFormat(new Date(time), "do MMM, yyyy");
+      return dfnsFormat(
+        new Date(time),
+        withTime ? "do MMM, yyyy hh:mm a" : "do MMM, yyyy"
+      );
     }
   }
 }

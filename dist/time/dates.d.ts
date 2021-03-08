@@ -28,6 +28,6 @@ export declare class Dates {
         alterBy?: number | "final" | "alpha";
     }): string;
     /** convert iso / gmt to the local  */
-    static beautify(time: string, format?: "ISO" | "UTC"): string | undefined;
+    static beautify(time: string, format?: "ISO" | "UTC" | "dime", withTime?: boolean): string | undefined;
 }
 //# sourceMappingURL=dates.d.ts.map

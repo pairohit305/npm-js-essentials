@@ -139,7 +139,15 @@ class Dates {
         return (options === null || options === void 0 ? void 0 : options.inSecs) ? Math.round(timestamp / 1000) : timestamp;
     }
     static timestampToTime(timestamp) {
-        return this.dateToTime(new Date(timestamp));
+        const date = new Date(timestamp);
+        const _iso = date.toISOString();
+        let iso = "";
+        for (const char of _iso) {
+            if (char === ":" || char === "-")
+                continue;
+            iso += char;
+        }
+        return iso;
     }
     static timealterBy(time, alterBy) {
         const d = date_fns_1.parseISO(time);
@@ -162,12 +170,15 @@ class Dates {
         return this.ISO({ representation: "date", alterBy: options === null || options === void 0 ? void 0 : options.alterBy });
     }
     /** convert iso / gmt to the local  */
-    static beautify(time, format = "ISO") {
+    static beautify(time, format = "ISO", withTime) {
         if (format === "ISO") {
+            return date_fns_1.format(date_fns_1.parseISO(time), withTime ? "do MMM, yyyy hh:mm a" : "do MMM, yyyy");
+        }
+        else if (format === "dime") {
             return date_fns_1.format(date_fns_1.parseISO(time), "do MMM, yyyy");
         }
         else if (format === "UTC") {
-            return date_fns_1.format(new Date(time), "do MMM, yyyy");
+            return date_fns_1.format(new Date(time), withTime ? "do MMM, yyyy hh:mm a" : "do MMM, yyyy");
         }
     }
 }
