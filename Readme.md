@@ -23,6 +23,7 @@
 |                | mod                   |
 | Text           | textLimitor           |
 |                | toStartCase           |
+|                | onlyAlphanumeric      |
 | Time           | Dates                 |
 |                | lastseen              |
 |                | Timeline              |

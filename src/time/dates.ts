@@ -212,14 +212,14 @@ export class Dates {
     if (format === "ISO") {
       return dfnsFormat(
         parseISO(time),
-        withTime ? "do MMM, yyyy hh:mm a" : "do MMM, yyyy"
+        withTime ? "do MMM, yyyy - hh:mm a" : "do MMM, yyyy"
       );
     } else if (format === "dime") {
       return dfnsFormat(parseISO(time), "do MMM, yyyy");
     } else if (format === "UTC") {
       return dfnsFormat(
         new Date(time),
-        withTime ? "do MMM, yyyy hh:mm a" : "do MMM, yyyy"
+        withTime ? "do MMM, yyyy - hh:mm a" : "do MMM, yyyy"
       );
     }
   }

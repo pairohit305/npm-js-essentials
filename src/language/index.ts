@@ -8,375 +8,376 @@ export function getLanguageList() {
 }
 export function getLanguageEntries(): [Language, string][] {
   return [
-    ["AB", "аҧсуа"],
-    ["AA", "Afaraf"],
-    ["AF", "Afrikaans"],
-    ["AK", "Akan"],
-    ["SQ", "Shqip"],
-    ["AM", "አማርኛ"],
-    ["AR", "العربية"],
-    ["AN", "Aragonés"],
-    ["HY", "Հայերեն"],
-    ["AS", "অসমীয়া"],
-    ["AV", "авар мацӀ, магӀарул мацӀ"],
-    ["AE", "avesta"],
-    ["AY", "aymar aru"],
-    ["AZ", "azərbaycan dili"],
-    ["BM", "bamanankan"],
-    ["BA", "башҡорт теле"],
-    ["EU", "euskara, euskera"],
-    ["BE", "Беларуская"],
-    ["BN", "বাংলা"],
-    ["BH", "भोजपुरी"],
-    ["BI", "Bislama"],
-    ["BS", "bosanski jezik"],
-    ["BR", "brezhoneg"],
-    ["BG", "български език"],
-    ["MY", "ဗမာစာ"],
-    ["CA", "Català"],
-    ["CH", "Chamoru"],
-    ["CE", "нохчийн мотт"],
-    ["NY", "chiCheŵa, chinyanja"],
-    ["ZH", "中文 (Zhōngwén), 汉语, 漢語"],
-    ["CV", "чӑваш чӗлхи"],
-    ["KW", "Kernewek"],
-    ["CO", "corsu, lingua corsa"],
-    ["CR", "ᓀᐦᐃᔭᐍᐏᐣ"],
-    ["HR", "hrvatski"],
-    ["CS", "česky, čeština"],
-    ["DA", "dansk"],
-    ["DV", "ދިވެހި"],
-    ["NL", "Nederlands, Vlaams"],
-    ["EN", "English"],
-    ["EO", "Esperanto"],
-    ["ET", "eesti, eesti keel"],
-    ["EE", "Eʋegbe"],
-    ["FO", "føroyskt"],
-    ["FJ", "vosa Vakaviti"],
-    ["FI", "suomi, suomen kieli"],
-    ["FR", "français, langue française"],
-    ["FF", "Fulfulde, Pulaar, Pular"],
-    ["GL", "Galego"],
-    ["KA", "ქართული"],
-    ["DE", "Deutsch"],
-    ["EL", "Ελληνικά"],
-    ["GN", "Avañeẽ"],
-    ["GU", "ગુજરાતી"],
-    ["HT", "Kreyòl ayisyen"],
-    ["HA", "Hausa, هَوُسَ"],
-    ["HE", "עברית"],
-    ["IW", "עברית"],
-    ["HZ", "Otjiherero"],
-    ["HI", "हिन्दी, हिंदी"],
-    ["HO", "Hiri Motu"],
-    ["HU", "Magyar"],
-    ["IA", "Interlingua"],
-    ["ID", "Bahasa Indonesia"],
-    ["IE", "Originally called Occidental; then Interlingue after WWII"],
-    ["GA", "Gaeilge"],
-    ["IG", "Asụsụ Igbo"],
-    ["IK", "Iñupiaq, Iñupiatun"],
-    ["IO", "Ido"],
-    ["IS", "Íslenska"],
-    ["IT", "Italiano"],
-    ["IU", "ᐃᓄᒃᑎᑐᑦ"],
-    ["JA", "日本語 (にほんご／にっぽんご)"],
-    ["JV", "basa Jawa"],
-    ["KL", "kalaallisut, kalaallit oqaasii"],
-    ["KN", "ಕನ್ನಡ"],
-    ["KR", "Kanuri"],
-    ["KS", "कश्मीरी, كشميري‎"],
-    ["KK", "Қазақ тілі"],
-    ["KM", "ភាសាខ្មែរ"],
-    ["KI", "Gĩkũyũ"],
-    ["RW", "Ikinyarwanda"],
-    ["KY", "кыргыз тили"],
-    ["KV", "коми кыв"],
-    ["KG", "KiKongo"],
-    ["KO", "한국어 (韓國語), 조선말 (朝鮮語)"],
-    ["KU", "Kurdî, كوردی‎"],
-    ["KJ", "Kuanyama"],
-    ["LA", "latine, lingua latina"],
-    ["LB", "Lëtzebuergesch"],
-    ["LG", "Luganda"],
-    ["LI", "Limburgs"],
-    ["LN", "Lingála"],
-    ["LO", "ພາສາລາວ"],
-    ["LT", "lietuvių kalba"],
-    ["LU", ""],
-    ["LV", "latviešu valoda"],
-    ["GV", "Gaelg, Gailck"],
-    ["MK", "македонски јазик"],
-    ["MG", "Malagasy fiteny"],
-    ["MS", "bahasa Melayu, بهاس ملايو‎"],
-    ["ML", "മലയാളം"],
-    ["MT", "Malti"],
-    ["MI", "te reo Māori"],
-    ["MR", "मराठी"],
-    ["MH", "Kajin M̧ajeļ"],
-    ["MN", "монгол"],
-    ["NA", "Ekakairũ Naoero"],
-    ["NV", "Diné bizaad, Dinékʼehǰí"],
-    ["NB", "Norsk bokmål"],
-    ["ND", "isiNdebele"],
-    ["NE", "नेपाली"],
-    ["NG", "Owambo"],
-    ["NN", "Norsk nynorsk"],
-    ["NO", "Norsk"],
-    ["II", "ꆈꌠ꒿ Nuosuhxop"],
-    ["NR", "isiNdebele"],
-    ["OC", "Occitan"],
-    ["OJ", "ᐊᓂᔑᓈᐯᒧᐎᓐ"],
-    ["CU", "ѩзыкъ словѣньскъ"],
-    ["OM", "Afaan Oromoo"],
-    ["OR", "ଓଡ଼ିଆ"],
-    ["OS", "ирон æвзаг"],
-    ["PA", "ਪੰਜਾਬੀ, پنجابی‎"],
-    ["PI", "पाऴि"],
-    ["FA", "فارسی"],
-    ["PL", "polski"],
-    ["PS", "پښتو"],
-    ["PT", "Português"],
-    ["QU", "Runa Simi, Kichwa"],
-    ["RM", "rumantsch grischun"],
-    ["RN", "kiRundi"],
-    ["RO", "română"],
-    ["RU", "русский язык"],
-    ["SA", "संस्कृतम्"],
-    ["SC", "sardu"],
-    ["SD", "सिन्धी, سنڌي، سندھی‎"],
-    ["SE", "Davvisámegiella"],
-    ["SM", "gagana faa Samoa"],
-    ["SG", "yângâ tî sängö"],
-    ["SR", "српски језик"],
-    ["GD", "Gàidhlig"],
-    ["SN", "chiShona"],
-    ["SI", "සිංහල"],
-    ["SK", "slovenčina"],
-    ["SL", "slovenščina"],
-    ["SO", "Soomaaliga, af Soomaali"],
-    ["ST", "Sesotho"],
-    ["ES", "español, castellano"],
-    ["SU", "Basa Sunda"],
-    ["SW", "Kiswahili"],
-    ["SS", "SiSwati"],
-    ["SV", "svenska"],
-    ["TA", "தமிழ்"],
-    ["TE", "తెలుగు"],
-    ["TG", "тоҷикӣ, toğikī, تاجیکی‎"],
-    ["TH", "ไทย"],
-    ["TI", "ትግርኛ"],
-    ["BO", "བོད་ཡིག"],
-    ["TK", "Türkmen, Түркмен"],
-    ["TL", "Wikang Tagalog, ᜏᜒᜃᜅ᜔ ᜆᜄᜎᜓᜄ᜔"],
-    ["TN", "Setswana"],
-    ["TO", "faka Tonga"],
-    ["TR", "Türkçe"],
-    ["TS", "Xitsonga"],
-    ["TT", "татарча, tatarça, تاتارچا‎"],
-    ["TW", "Twi"],
-    ["TY", "Reo Tahiti"],
-    ["UG", "Uyƣurqə, ئۇيغۇرچە‎"],
-    ["UK", "українська"],
-    ["UR", "اردو"],
-    ["UZ", "zbek, Ўзбек, أۇزبېك‎"],
-    ["VE", "Tshivenḓa"],
-    ["VI", "Tiếng Việt"],
-    ["VO", "Volapük"],
-    ["WA", "Walon"],
-    ["CY", "Cymraeg"],
-    ["WO", "Wollof"],
-    ["FY", "Frysk"],
-    ["XH", "isiXhosa"],
-    ["YI", "ייִדיש"],
-    ["YO", "Yorùbá"],
-    ["ZA", "Saɯ cueŋƅ, Saw cuengh"],
+    ["ab", "аҧсуа"],
+    ["aa", "Afaraf"],
+    ["af", "Afrikaans"],
+    ["ak", "Akan"],
+    ["sq", "Shqip"],
+    ["am", "አማርኛ"],
+    ["ar", "العربية"],
+    ["an", "Aragonés"],
+    ["hy", "Հայերեն"],
+    ["as", "অসমীয়া"],
+    ["av", "авар мацӀ, магӀарул мацӀ"],
+    ["ae", "avesta"],
+    ["ay", "aymar aru"],
+    ["az", "azərbaycan dili"],
+    ["bm", "bamanankan"],
+    ["ba", "башҡорт теле"],
+    ["eu", "euskara, euskera"],
+    ["be", "Беларуская"],
+    ["bn", "বাংলা"],
+    ["bh", "भोजपुरी"],
+    ["bi", "Bislama"],
+    ["bs", "bosanski jezik"],
+    ["br", "brezhoneg"],
+    ["bg", "български език"],
+    ["my", "ဗမာစာ"],
+    ["ca", "Català"],
+    ["ch", "Chamoru"],
+    ["ce", "нохчийн мотт"],
+    ["ny", "chiCheŵa, chinyanja"],
+    ["zh", "中文 (Zhōngwén), 汉语, 漢語"],
+    ["cv", "чӑваш чӗлхи"],
+    ["kw", "Kernewek"],
+    ["co", "corsu, lingua corsa"],
+    ["cr", "ᓀᐦᐃᔭᐍᐏᐣ"],
+    ["hr", "hrvatski"],
+    ["cs", "česky, čeština"],
+    ["da", "dansk"],
+    ["dv", "ދިވެހި"],
+    ["nl", "Nederlands, Vlaams"],
+    ["en", "English"],
+    ["eo", "Esperanto"],
+    ["et", "eesti, eesti keel"],
+    ["ee", "Eʋegbe"],
+    ["fo", "føroyskt"],
+    ["fj", "vosa Vakaviti"],
+    ["fi", "suomi, suomen kieli"],
+    ["fr", "français, langue française"],
+    ["ff", "Fulfulde, Pulaar, Pular"],
+    ["gl", "Galego"],
+    ["ka", "ქართული"],
+    ["de", "Deutsch"],
+    ["el", "Ελληνικά"],
+    ["gn", "Avañeẽ"],
+    ["gu", "ગુજરાતી"],
+    ["ht", "Kreyòl ayisyen"],
+    ["ha", "Hausa, هَوُسَ"],
+    ["he", "עברית"],
+    ["iw", "עברית"],
+    ["hz", "Otjiherero"],
+    ["hi", "हिन्दी, हिंदी"],
+    ["ho", "Hiri Motu"],
+    ["hu", "Magyar"],
+    ["ia", "Interlingua"],
+    ["id", "Bahasa Indonesia"],
+    ["ie", "Originally called Occidental; then Interlingue after WWII"],
+    ["ga", "Gaeilge"],
+    ["ig", "Asụsụ Igbo"],
+    ["ik", "Iñupiaq, Iñupiatun"],
+    ["io", "Ido"],
+    ["is", "Íslenska"],
+    ["it", "Italiano"],
+    ["iu", "ᐃᓄᒃᑎᑐᑦ"],
+    ["ja", "日本語 (にほんご／にっぽんご)"],
+    ["jv", "basa Jawa"],
+    ["kl", "kalaallisut, kalaallit oqaasii"],
+    ["kn", "ಕನ್ನಡ"],
+    ["kr", "Kanuri"],
+    ["ks", "कश्मीरी, كشميري‎"],
+    ["kk", "Қазақ тілі"],
+    ["km", "ភាសាខ្មែរ"],
+    ["ki", "Gĩkũyũ"],
+    ["rw", "Ikinyarwanda"],
+    ["ky", "кыргыз тили"],
+    ["kv", "коми кыв"],
+    ["kg", "KiKongo"],
+    ["ko", "한국어 (韓國語), 조선말 (朝鮮語)"],
+    ["ku", "Kurdî, كوردی‎"],
+    ["kj", "Kuanyama"],
+    ["la", "latine, lingua latina"],
+    ["lb", "Lëtzebuergesch"],
+    ["lg", "Luganda"],
+    ["li", "Limburgs"],
+    ["ln", "Lingála"],
+    ["lo", "ພາສາລາວ"],
+    ["lt", "lietuvių kalba"],
+    ["lu", ""],
+    ["lv", "latviešu valoda"],
+    ["gv", "Gaelg, Gailck"],
+    ["mk", "македонски јазик"],
+    ["mg", "Malagasy fiteny"],
+    ["ms", "bahasa Melayu, بهاس ملايو‎"],
+    ["ml", "മലയാളം"],
+    ["mt", "Malti"],
+    ["mi", "te reo Māori"],
+    ["mr", "मराठी"],
+    ["mh", "Kajin M̧ajeļ"],
+    ["mn", "монгол"],
+    ["na", "Ekakairũ Naoero"],
+    ["nv", "Diné bizaad, Dinékʼehǰí"],
+    ["nb", "Norsk bokmål"],
+    ["nd", "isiNdebele"],
+    ["ne", "नेपाली"],
+    ["ng", "Owambo"],
+    ["nn", "Norsk nynorsk"],
+    ["no", "Norsk"],
+    ["ii", "ꆈꌠ꒿ Nuosuhxop"],
+    ["nr", "isiNdebele"],
+    ["oc", "Occitan"],
+    ["oj", "ᐊᓂᔑᓈᐯᒧᐎᓐ"],
+    ["cu", "ѩзыкъ словѣньскъ"],
+    ["om", "Afaan Oromoo"],
+    ["or", "ଓଡ଼ିଆ"],
+    ["os", "ирон æвзаг"],
+    ["pa", "ਪੰਜਾਬੀ, پنجابی‎"],
+    ["pi", "पाऴि"],
+    ["fa", "فارسی"],
+    ["pl", "polski"],
+    ["ps", "پښتو"],
+    ["pt", "Português"],
+    ["qu", "Runa Simi, Kichwa"],
+    ["rm", "rumantsch grischun"],
+    ["rn", "kiRundi"],
+    ["ro", "română"],
+    ["ru", "русский язык"],
+    ["sa", "संस्कृतम्"],
+    ["sc", "sardu"],
+    ["sd", "सिन्धी, سنڌي، سندھی‎"],
+    ["se", "Davvisámegiella"],
+    ["sm", "gagana faa Samoa"],
+    ["sg", "yângâ tî sängö"],
+    ["sr", "српски језик"],
+    ["gd", "Gàidhlig"],
+    ["sn", "chiShona"],
+    ["si", "සිංහල"],
+    ["sk", "slovenčina"],
+    ["sl", "slovenščina"],
+    ["so", "Soomaaliga, af Soomaali"],
+    ["st", "Sesotho"],
+    ["es", "español, castellano"],
+    ["su", "Basa Sunda"],
+    ["sw", "Kiswahili"],
+    ["ss", "SiSwati"],
+    ["sv", "svenska"],
+    ["ta", "தமிழ்"],
+    ["te", "తెలుగు"],
+    ["tg", "тоҷикӣ, toğikī, تاجیکی‎"],
+    ["th", "ไทย"],
+    ["ti", "ትግርኛ"],
+    ["bo", "བོད་ཡིག"],
+    ["tk", "Türkmen, Түркмен"],
+    ["tl", "Wikang Tagalog"],
+    ["tn", "Setswana"],
+    ["to", "faka Tonga"],
+    ["tr", "Türkçe"],
+    ["ts", "Xitsonga"],
+    ["tt", "татарча, tatarça, تاتارچا‎"],
+    ["tw", "Twi"],
+    ["ty", "Reo Tahiti"],
+    ["ug", "Uyƣurqə, ئۇيغۇرچە‎"],
+    ["uk", "українська"],
+    ["ur", "اردو"],
+    ["uz", "zbek, Ўзбек, أۇزبېك‎"],
+    ["ve", "Tshivenḓa"],
+    ["vi", "Tiếng Việt"],
+    ["vo", "Volapük"],
+    ["wa", "Walon"],
+    ["cy", "Cymraeg"],
+    ["wo", "Wollof"],
+    ["fy", "Frysk"],
+    ["xh", "isiXhosa"],
+    ["yi", "ייִדיש"],
+    ["yo", "Yorùbá"],
+    ["za", "Saɯ cueŋƅ, Saw cuengh"],
   ];
 }
+
 type Language =
-  | "AB"
-  | "AA"
-  | "AF"
-  | "AK"
-  | "SQ"
-  | "AM"
-  | "AR"
-  | "AN"
-  | "HY"
-  | "AS"
-  | "AV"
-  | "AE"
-  | "AY"
-  | "AZ"
-  | "BM"
-  | "BA"
-  | "EU"
-  | "BE"
-  | "BN"
-  | "BH"
-  | "BI"
-  | "BS"
-  | "BR"
-  | "BG"
-  | "MY"
-  | "CA"
-  | "CH"
-  | "CE"
-  | "NY"
-  | "ZH"
-  | "CV"
-  | "KW"
-  | "CO"
-  | "CR"
-  | "HR"
-  | "CS"
-  | "DA"
-  | "DV"
-  | "NL"
-  | "EN"
-  | "EO"
-  | "ET"
-  | "EE"
-  | "FO"
-  | "FJ"
-  | "FI"
-  | "FR"
-  | "FF"
-  | "GL"
-  | "KA"
-  | "DE"
-  | "EL"
-  | "GN"
-  | "GU"
-  | "HT"
-  | "HA"
-  | "HE"
-  | "IW"
-  | "HZ"
-  | "HI"
-  | "HO"
-  | "HU"
-  | "IA"
-  | "ID"
-  | "IE"
-  | "GA"
-  | "IG"
-  | "IK"
-  | "IO"
-  | "IS"
-  | "IT"
-  | "IU"
-  | "JA"
-  | "JV"
-  | "KL"
-  | "KN"
-  | "KR"
-  | "KS"
-  | "KK"
-  | "KM"
-  | "KI"
-  | "RW"
-  | "KY"
-  | "KV"
-  | "KG"
-  | "KO"
-  | "KU"
-  | "KJ"
-  | "LA"
-  | "LB"
-  | "LG"
-  | "LI"
-  | "LN"
-  | "LO"
-  | "LT"
-  | "LU"
-  | "LV"
-  | "GV"
-  | "MK"
-  | "MG"
-  | "MS"
-  | "ML"
-  | "MT"
-  | "MI"
-  | "MR"
-  | "MH"
-  | "MN"
-  | "NA"
-  | "NV"
-  | "NB"
-  | "ND"
-  | "NE"
-  | "NG"
-  | "NN"
-  | "NO"
-  | "II"
-  | "NR"
-  | "OC"
-  | "OJ"
-  | "CU"
-  | "OM"
-  | "OR"
-  | "OS"
-  | "PA"
-  | "PI"
-  | "FA"
-  | "PL"
-  | "PS"
-  | "PT"
-  | "QU"
-  | "RM"
-  | "RN"
-  | "RO"
-  | "RU"
-  | "SA"
-  | "SC"
-  | "SD"
-  | "SE"
-  | "SM"
-  | "SG"
-  | "SR"
-  | "GD"
-  | "SN"
-  | "SI"
-  | "SK"
-  | "SL"
-  | "SO"
-  | "ST"
-  | "ES"
-  | "SU"
-  | "SW"
-  | "SS"
-  | "SV"
-  | "TA"
-  | "TE"
-  | "TG"
-  | "TH"
-  | "TI"
-  | "BO"
-  | "TK"
-  | "TL"
-  | "TN"
-  | "TO"
-  | "TR"
-  | "TS"
-  | "TT"
-  | "TW"
-  | "TY"
-  | "UG"
-  | "UK"
-  | "UR"
-  | "UZ"
-  | "VE"
-  | "VI"
-  | "VO"
-  | "WA"
-  | "CY"
-  | "WO"
-  | "FY"
-  | "XH"
-  | "YI"
-  | "YO"
-  | "ZA";
+  | "ab"
+  | "aa"
+  | "af"
+  | "ak"
+  | "sq"
+  | "am"
+  | "ar"
+  | "an"
+  | "hy"
+  | "as"
+  | "av"
+  | "ae"
+  | "ay"
+  | "az"
+  | "bm"
+  | "ba"
+  | "eu"
+  | "be"
+  | "bn"
+  | "bh"
+  | "bi"
+  | "bs"
+  | "br"
+  | "bg"
+  | "my"
+  | "ca"
+  | "ch"
+  | "ce"
+  | "ny"
+  | "zh"
+  | "cv"
+  | "kw"
+  | "co"
+  | "cr"
+  | "hr"
+  | "cs"
+  | "da"
+  | "dv"
+  | "nl"
+  | "en"
+  | "eo"
+  | "et"
+  | "ee"
+  | "fo"
+  | "fj"
+  | "fi"
+  | "fr"
+  | "ff"
+  | "gl"
+  | "ka"
+  | "de"
+  | "el"
+  | "gn"
+  | "gu"
+  | "ht"
+  | "ha"
+  | "he"
+  | "iw"
+  | "hz"
+  | "hi"
+  | "ho"
+  | "hu"
+  | "ia"
+  | "id"
+  | "ie"
+  | "ga"
+  | "ig"
+  | "ik"
+  | "io"
+  | "is"
+  | "it"
+  | "iu"
+  | "ja"
+  | "jv"
+  | "kl"
+  | "kn"
+  | "kr"
+  | "ks"
+  | "kk"
+  | "km"
+  | "ki"
+  | "rw"
+  | "ky"
+  | "kv"
+  | "kg"
+  | "ko"
+  | "ku"
+  | "kj"
+  | "la"
+  | "lb"
+  | "lg"
+  | "li"
+  | "ln"
+  | "lo"
+  | "lt"
+  | "lu"
+  | "lv"
+  | "gv"
+  | "mk"
+  | "mg"
+  | "ms"
+  | "ml"
+  | "mt"
+  | "mi"
+  | "mr"
+  | "mh"
+  | "mn"
+  | "na"
+  | "nv"
+  | "nb"
+  | "nd"
+  | "ne"
+  | "ng"
+  | "nn"
+  | "no"
+  | "ii"
+  | "nr"
+  | "oc"
+  | "oj"
+  | "cu"
+  | "om"
+  | "or"
+  | "os"
+  | "pa"
+  | "pi"
+  | "fa"
+  | "pl"
+  | "ps"
+  | "pt"
+  | "qu"
+  | "rm"
+  | "rn"
+  | "ro"
+  | "ru"
+  | "sa"
+  | "sc"
+  | "sd"
+  | "se"
+  | "sm"
+  | "sg"
+  | "sr"
+  | "gd"
+  | "sn"
+  | "si"
+  | "sk"
+  | "sl"
+  | "so"
+  | "st"
+  | "es"
+  | "su"
+  | "sw"
+  | "ss"
+  | "sv"
+  | "ta"
+  | "te"
+  | "tg"
+  | "th"
+  | "ti"
+  | "bo"
+  | "tk"
+  | "tl"
+  | "tn"
+  | "to"
+  | "tr"
+  | "ts"
+  | "tt"
+  | "tw"
+  | "ty"
+  | "ug"
+  | "uk"
+  | "ur"
+  | "uz"
+  | "ve"
+  | "vi"
+  | "vo"
+  | "wa"
+  | "cy"
+  | "wo"
+  | "fy"
+  | "xh"
+  | "yi"
+  | "yo"
+  | "za";
 
 export function getLanguageFullname(language: Language) {
   return languageJSON[language];

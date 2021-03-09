@@ -172,13 +172,13 @@ class Dates {
     /** convert iso / gmt to the local  */
     static beautify(time, format = "ISO", withTime) {
         if (format === "ISO") {
-            return date_fns_1.format(date_fns_1.parseISO(time), withTime ? "do MMM, yyyy hh:mm a" : "do MMM, yyyy");
+            return date_fns_1.format(date_fns_1.parseISO(time), withTime ? "do MMM, yyyy - hh:mm a" : "do MMM, yyyy");
         }
         else if (format === "dime") {
             return date_fns_1.format(date_fns_1.parseISO(time), "do MMM, yyyy");
         }
         else if (format === "UTC") {
-            return date_fns_1.format(new Date(time), withTime ? "do MMM, yyyy hh:mm a" : "do MMM, yyyy");
+            return date_fns_1.format(new Date(time), withTime ? "do MMM, yyyy - hh:mm a" : "do MMM, yyyy");
         }
     }
 }
