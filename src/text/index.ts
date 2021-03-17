@@ -22,7 +22,7 @@ export function onlyAlphanumeric(text: string) {
 
   for (let index = 0; index < text.length; index++) {
     const char = text[index];
-    const isAlphaNumeric = char.match(/^[0-9a-z]/);
+    const isAlphaNumeric = char.match(/^[0-9a-zA-Z]/);
 
     // if no alpha numberic then replace it with its char code
     if (!isAlphaNumeric) {
