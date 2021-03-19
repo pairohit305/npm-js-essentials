@@ -1,6 +1,6 @@
 {
   "name": "@pairohit/helper",
-  "version": "4.1.8",
+  "version": "4.1.85",
   "description": "Many Usefull Helper function to save time!",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
