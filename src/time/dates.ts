@@ -221,6 +221,6 @@ export class Dates {
         new Date(time),
         withTime ? "do MMM, yyyy - hh:mm a" : "do MMM, yyyy"
       );
-    }
+    } else return " - ";
   }
 }
