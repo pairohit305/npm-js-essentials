@@ -2,38 +2,39 @@
 
 `Available functions`
 
-| Core           | Function              |
-| -------------- | --------------------- |
-| Array          | splitArrayInto        |
-|                | arrayElmCounter       |
-|                | contains              |
-|                | isDistinctiveArray    |
-|                | minArray              |
-|                | maxArray              |
-| Country        | getCountryEntries     |
-|                | getCountryFullname    |
-|                | getCountryList        |
-| Email          | isEmail               |
-| Language       | getLanguageEntries    |
-|                | getLanguageFullname   |
-|                | getLanguageList       |
-| Halt           | halt d -> HaltCounter |
-| HttpStatusCode | httpStatusCode        |
-| Math           | minmax                |
-|                | mod                   |
-| Text           | textLimitor           |
-|                | toStartCase           |
-|                | onlyAlphanumeric      |
-| Time           | Dates                 |
-|                | lastseen              |
-|                | Timeline              |
-| Uid            | genUniqueId           |
-|                | genRandomUniqueId     |
-| Random         | randomInteger         |
-|                | randomFloat           |
-|                | randomAlphabet        |
-|                | randomNaturalArray    |
-| Sleep          | sleep                 |
+| Core           | Function                     |
+| -------------- | ---------------------------- |
+| Array          | splitArrayInto               |
+|                | arrayElmCounter              |
+|                | contains                     |
+|                | isDistinctiveArray           |
+|                | minArray                     |
+|                | maxArray                     |
+| Country        | getCountryEntries            |
+|                | getCountryFullname           |
+|                | getCountryList               |
+| Email          | isEmail                      |
+| Language       | getLanguageEntries           |
+|                | getLanguageFullname          |
+|                | getLanguageFullnameInEnglish |
+|                | getLanguageList              |
+| Halt           | halt d -> HaltCounter        |
+| HttpStatusCode | httpStatusCode               |
+| Math           | minmax                       |
+|                | mod                          |
+| Text           | textLimitor                  |
+|                | toStartCase                  |
+|                | onlyAlphanumeric             |
+| Time           | Dates                        |
+|                | lastseen                     |
+|                | Timeline                     |
+| Uid            | genUniqueId                  |
+|                | genRandomUniqueId            |
+| Random         | randomInteger                |
+|                | randomFloat                  |
+|                | randomAlphabet               |
+|                | randomNaturalArray           |
+| Sleep          | sleep                        |
 
 d-> = depent on
 

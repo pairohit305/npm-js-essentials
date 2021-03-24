@@ -1,4 +1,5 @@
 import languageJSON from "./language.json";
+import enLanguageJSON from "./langcoden.json";
 
 /**
  * Get the all country code list based on Google translation which it supports
@@ -226,4 +227,8 @@ type Language =
 
 export function getLanguageFullname(language: Language) {
   return languageJSON[language];
+}
+
+export function getLanguageFullnameInEnglish(language: Language) {
+  return enLanguageJSON[language];
 }

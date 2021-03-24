@@ -3,8 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getLanguageFullname = exports.getLanguageEntries = exports.getLanguageList = void 0;
+exports.getLanguageFullnameInEnglish = exports.getLanguageFullname = exports.getLanguageEntries = exports.getLanguageList = void 0;
 const language_json_1 = __importDefault(require("./language.json"));
+const langcoden_json_1 = __importDefault(require("./langcoden.json"));
 /**
  * Get the all country code list based on Google translation which it supports
  */
@@ -126,4 +127,8 @@ function getLanguageFullname(language) {
     return language_json_1.default[language];
 }
 exports.getLanguageFullname = getLanguageFullname;
+function getLanguageFullnameInEnglish(language) {
+    return langcoden_json_1.default[language];
+}
+exports.getLanguageFullnameInEnglish = getLanguageFullnameInEnglish;
 //# sourceMappingURL=index.js.map
