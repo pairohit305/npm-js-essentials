@@ -78,7 +78,6 @@ export function getLanguageEntries(): [Language, string][] {
     ["su", "Sundanese"],
     ["az", "Azərbaycanlı"],
     ["nl", "Nederlands"],
-    ["auto", "Automatic"],
     ["fy", "Frysk"],
     ["ceb", "Salida"],
     ["bg", "български"],
@@ -124,7 +123,6 @@ type Language =
   | "af"
   | "am"
   | "ar"
-  | "auto"
   | "az"
   | "be"
   | "bg"

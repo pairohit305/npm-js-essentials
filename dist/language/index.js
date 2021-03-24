@@ -83,7 +83,6 @@ function getLanguageEntries() {
         ["su", "Sundanese"],
         ["az", "Azərbaycanlı"],
         ["nl", "Nederlands"],
-        ["auto", "Automatic"],
         ["fy", "Frysk"],
         ["ceb", "Salida"],
         ["bg", "български"],

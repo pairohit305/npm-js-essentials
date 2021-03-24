@@ -180,6 +180,8 @@ class Dates {
         else if (format === "UTC") {
             return date_fns_1.format(new Date(time), withTime ? "do MMM, yyyy - hh:mm a" : "do MMM, yyyy");
         }
+        else
+            return " - ";
     }
 }
 exports.Dates = Dates;
