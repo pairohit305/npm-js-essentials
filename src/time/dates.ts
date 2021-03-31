@@ -16,14 +16,14 @@ export class Dates {
         options.alterBy === "alpha"
           ? (() => {
               const d = new Date();
-              d.setUTCMonth(d.getMonth(), 1);
+              d.setUTCMonth(d.getUTCMonth(), 1);
               d.setUTCHours(0, 0, 0, 0);
 
               return d.toUTCString();
             })()
           : (() => {
               const d = new Date();
-              d.setUTCMonth(d.getMonth() + 1, 0);
+              d.setUTCMonth(d.getUTCMonth() + 1, 0);
               d.setUTCHours(23, 59, 59, 999);
 
               return d.toUTCString();
@@ -55,14 +55,14 @@ export class Dates {
         options.alterBy === "alpha"
           ? (() => {
               const d = new Date();
-              d.setUTCMonth(d.getMonth(), 1);
+              d.setUTCMonth(d.getUTCMonth(), 1);
               d.setUTCHours(0, 0, 0, 0);
 
               return d.toISOString();
             })()
           : (() => {
               const d = new Date();
-              d.setUTCMonth(d.getMonth() + 1, 0);
+              d.setUTCMonth(d.getUTCMonth() + 1, 0);
               d.setUTCHours(23, 59, 59, 999);
 
               return d.toISOString();
@@ -101,14 +101,14 @@ export class Dates {
         options.alterBy === "alpha"
           ? (() => {
               const d = new Date();
-              d.setUTCMonth(d.getMonth(), 1);
+              d.setUTCMonth(d.getUTCMonth(), 1);
               d.setUTCHours(0, 0, 0, 0);
 
               return d.getTime();
             })()
           : (() => {
               const d = new Date();
-              d.setUTCMonth(d.getMonth() + 1, 0);
+              d.setUTCMonth(d.getUTCMonth() + 1, 0);
               d.setUTCHours(0, 0, 0, 0);
 
               return d.getTime();
