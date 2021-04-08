@@ -29,18 +29,16 @@ export function randomAlphabet(includeCapital = false) {
   return alphabets.charAt(randomInteger(includeCapital ? 52 : 26));
 }
 
-export function randomNaturalArray(
-  opt: {
-    upper: number,
-    count: number,
-    distinctive?: boolean;
-    /**
-     * acceptable values = {x∈ N | x≤ count}
-     */
-    exclude?: number[];
-    sorted?: boolean;
-  }
-) {
+export function randomNaturalArray(opt: {
+  upper: number;
+  count: number;
+  distinctive?: boolean;
+  /**
+   * acceptable values = {x∈ N | x≤ count}
+   */
+  exclude?: number[];
+  sorted?: boolean;
+}) {
   // default
   const modifiers = {
     exclude: opt?.exclude || [],
@@ -51,7 +49,10 @@ export function randomNaturalArray(
   const count = opt.count;
   const { exclude, distinctive, sorted } = modifiers;
 
-  // err checking 
+  // if count is not more than 0 then return [] no future calculation needed
+  if (count <= 0) return [];
+
+  // err checking
   if (
     exclude &&
     exclude?.length >= 2 &&
@@ -70,7 +71,9 @@ export function randomNaturalArray(
 
   if (distinctive && !exclude?.length) {
     if (count > upper)
-      throw new Error(`randomNaturalArray function expect count ≤ ${upper} for your requirement`);
+      throw new Error(
+        `randomNaturalArray function expect count ≤ ${upper} for your requirement`
+      );
     for (let i = 0; i < count; i++) {
       let random: number;
       while (true) {
@@ -84,7 +87,9 @@ export function randomNaturalArray(
   } else if (distinctive && exclude?.length) {
     if (count > upper - exclude.length)
       throw new Error(
-        `randomNaturalArray function expect count ≤ ${upper - exclude.length} for your requirement`
+        `randomNaturalArray function expect count ≤ ${
+          upper - exclude.length
+        } for your requirement`
       );
     for (let i = 0; i < count; i++) {
       let random: number;
@@ -103,7 +108,9 @@ export function randomNaturalArray(
     }
   } else if (!distinctive && exclude?.length) {
     if (exclude[0] === 1 && count === 1)
-      throw new Error(`randomNaturalArray function expect count ≥ 2 for your requirement`);
+      throw new Error(
+        `randomNaturalArray function expect count ≥ 2 for your requirement`
+      );
     for (let i = 0; i < count; i++) {
       let random: number;
       while (true) {

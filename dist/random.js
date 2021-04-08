@@ -43,7 +43,10 @@ function randomNaturalArray(opt) {
     const upper = opt.upper;
     const count = opt.count;
     const { exclude, distinctive, sorted } = modifiers;
-    // err checking 
+    // if count is not more than 0 then return [] no future calculation needed
+    if (count <= 0)
+        return [];
+    // err checking
     if (exclude &&
         (exclude === null || exclude === void 0 ? void 0 : exclude.length) >= 2 &&
         (!array_1.isDistinctiveArray(exclude) ||
