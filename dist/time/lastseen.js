@@ -35,28 +35,13 @@ function lastseen(timestamp) {
     }
     else if (weeks <= 4.3) {
         //4.3 == 52/12
-        if (weeks == 1) {
-            return "a week ago";
-        }
-        else {
-            return `${weeks} weeks ago`;
-        }
+        return `${weeks} weeks ago`;
     }
     else if (months <= 12) {
-        if (months == 1) {
-            return "a month ago";
-        }
-        else {
-            return `${months} months ago`;
-        }
+        return `${months} months ago`;
     }
     else {
-        if (years == 1) {
-            return "one year ago";
-        }
-        else {
-            return `${years} years ago`;
-        }
+        return `${years} years ago`;
     }
 }
 exports.lastseen = lastseen;
