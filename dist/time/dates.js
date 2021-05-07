@@ -162,6 +162,10 @@ class Dates {
         }
         return iso;
     }
+    static remainingTimeInSecs(time) {
+        return Math.abs(this.timeToTimestamp(this.ISO(), { inSecs: true }) -
+            this.timeToTimestamp(time, { inSecs: true }));
+    }
     static differenceInDays(LTimestamp, RTimestamp) {
         return Math.abs(date_fns_1.differenceInDays(LTimestamp, RTimestamp));
     }

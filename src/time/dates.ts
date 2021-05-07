@@ -194,6 +194,12 @@ export class Dates {
     return iso;
   }
 
+  static remainingTimeInSecs(time: string) {
+    return Math.abs(
+      this.timeToTimestamp(this.ISO(), { inSecs: true }) -
+        this.timeToTimestamp(time, { inSecs: true })
+    );
+  }
   static differenceInDays(LTimestamp: number, RTimestamp: number) {
     return Math.abs(differenceInDays(LTimestamp, RTimestamp));
   }
