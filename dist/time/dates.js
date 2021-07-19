@@ -149,7 +149,7 @@ class Dates {
         }
         return iso;
     }
-    static timealterBy(time, alterBy) {
+    static timeAlterBy(time, alterBy) {
         const d = date_fns_1.parseISO(time);
         let iso = "";
         const _iso = alterBy > 0
@@ -162,9 +162,10 @@ class Dates {
         }
         return iso;
     }
-    static remainingTimeInSecs(time) {
-        return Math.abs(this.timeToTimestamp(this.ISO(), { inSecs: true }) -
-            this.timeToTimestamp(time, { inSecs: true }));
+    static remainingTimeInSecs(time1, time2) {
+        time2 = time2 || this.ISO();
+        return Math.abs(this.timeToTimestamp(time2, { inSecs: true }) -
+            this.timeToTimestamp(time1, { inSecs: true }));
     }
     static differenceInDays(LTimestamp, RTimestamp) {
         return Math.abs(date_fns_1.differenceInDays(LTimestamp, RTimestamp));

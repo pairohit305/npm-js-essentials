@@ -177,7 +177,7 @@ export class Dates {
 
     return iso;
   }
-  static timealterBy(time: string, alterBy: number) {
+  static timeAlterBy(time: string, alterBy: number) {
     const d = parseISO(time);
 
     let iso = "";
@@ -194,10 +194,12 @@ export class Dates {
     return iso;
   }
 
-  static remainingTimeInSecs(time: string) {
+  static remainingTimeInSecs(time1: string, time2?: string) {
+    time2 = time2 || this.ISO();
+
     return Math.abs(
-      this.timeToTimestamp(this.ISO(), { inSecs: true }) -
-        this.timeToTimestamp(time, { inSecs: true })
+      this.timeToTimestamp(time2, { inSecs: true }) -
+        this.timeToTimestamp(time1, { inSecs: true })
     );
   }
   static differenceInDays(LTimestamp: number, RTimestamp: number) {
@@ -208,7 +210,6 @@ export class Dates {
   static dime(options?: { alterBy?: number | "final" | "alpha" }) {
     return this.ISO({ representation: "date", alterBy: options?.alterBy });
   }
-
   /** convert iso / gmt to the local  */
   static beautify(
     time: string,

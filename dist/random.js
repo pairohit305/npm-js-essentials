@@ -92,7 +92,7 @@ function randomNaturalArray(opt) {
         }
     }
     else if (!distinctive && (exclude === null || exclude === void 0 ? void 0 : exclude.length)) {
-        if (exclude[0] === 1 && count === 1)
+        if (exclude[0] === 1 && count === 1 && upper === 1)
             throw new Error(`randomNaturalArray function expect count ≥ 2 for your requirement`);
         for (let i = 0; i < count; i++) {
             let random;

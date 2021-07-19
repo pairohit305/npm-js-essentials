@@ -22,8 +22,8 @@ export declare class Dates {
         inSecs?: boolean;
     }): number;
     static timestampToTime(timestamp: number): string;
-    static timealterBy(time: string, alterBy: number): string;
-    static remainingTimeInSecs(time: string): number;
+    static timeAlterBy(time: string, alterBy: number): string;
+    static remainingTimeInSecs(time1: string, time2?: string): number;
     static differenceInDays(LTimestamp: number, RTimestamp: number): number;
     static dime(options?: {
         alterBy?: number | "final" | "alpha";

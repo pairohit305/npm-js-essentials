@@ -107,7 +107,7 @@ export function randomNaturalArray(opt: {
       array.push(random);
     }
   } else if (!distinctive && exclude?.length) {
-    if (exclude[0] === 1 && count === 1)
+    if (exclude[0] === 1 && count === 1 && upper === 1)
       throw new Error(
         `randomNaturalArray function expect count ≥ 2 for your requirement`
       );
