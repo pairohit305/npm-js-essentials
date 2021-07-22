@@ -9,8 +9,9 @@ import * as helper from "../src";
     })
     .onUpdate((p) => console.log(p))
     .start();
-  // console.log(helper.Dates.timealterBy("20210301T00000.000Z", 7));
-  // console.log(helper.Dates.beautify("20210301T190400.000Z", "ISO"));
+
+  console.log(helper.Dates.timeAlterBy("20210301T00000.000Z", 7));
+  console.log(helper.Dates.beautify("20210301T190400.000Z", "ISO"));
   console.timeEnd("s");
   console.log("\n\n** ended **");
 })();

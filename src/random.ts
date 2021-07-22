@@ -9,7 +9,6 @@ export function randomInteger(upper: number, lower = 0) {
   const diff = upper + 1 - lower;
   return lower + Math.floor(Math.random() * diff);
 }
-
 export function randomFloat(upper: number, lower = 0, decimal = 2) {
   // error checking
   if (typeof upper !== "number" || typeof lower !== "number") return -1;
@@ -18,9 +17,8 @@ export function randomFloat(upper: number, lower = 0, decimal = 2) {
   const diff = upper - lower;
   return Number((lower + Math.random() * diff).toFixed(decimal));
 }
-
-// returns random alphabet from a to z by default if you want to
-// add capital alphabets then set the flag includeCapital to true;
+/** returns random alphabet from a to z by default if you want to
+ * add capital alphabets then set the flag includeCapital to true; */
 export function randomAlphabet(includeCapital = false) {
   const alphabets = includeCapital
     ? "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
@@ -28,7 +26,6 @@ export function randomAlphabet(includeCapital = false) {
 
   return alphabets.charAt(randomInteger(includeCapital ? 52 : 26));
 }
-
 export function randomNaturalArray(opt: {
   upper: number;
   count: number;
@@ -122,4 +119,70 @@ export function randomNaturalArray(opt: {
   }
 
   return sorted ? array.sort((a, b) => a - b) : array;
+}
+export function shuffleArray(array: any[]) {
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+}
+/**
+ *
+ * @param dropRates
+ * [65, 25, 9, 1] => index0 has 65% drop rate, index1 has 25% and so on
+ * [75, 25] => index0 has 75% index1 has 25%
+ * @important sum of dropRates must be equal to 100
+ */
+export class randomDropRateIndex {
+  private dropIndexes: number[];
+  private pointer: number = 0;
+
+  constructor(dropRates: number[]) {
+    const is100 = dropRates.reduce((sum, val) => sum + val, 0) === 100;
+    if (!is100) throw "Sum of drop rate must to equal to 100!";
+
+    const total = 100 / Math.min(...dropRates);
+
+    this.dropIndexes = Array.from(Array(total).keys()).fill(-1);
+    const dropFilled: number[] = [];
+
+    dropRates.forEach((dropRate, index) => {
+      const count = total * (dropRate / 100);
+      const dropIndex = randomNaturalArray({
+        count,
+        upper: total,
+        distinctive: true,
+        exclude: dropFilled,
+      });
+
+      dropFilled.push(...dropIndex);
+      dropIndex.forEach((i) => {
+        this.dropIndexes[i - 1] = index;
+      });
+    });
+  }
+
+  public drop() {
+    const index = this.dropIndexes[this.pointer];
+
+    // suffle for better randomness
+    if (this.pointer + 1 >= this.dropIndexes.length) {
+      this.dropIndexes = shuffleArray(this.dropIndexes);
+    } else this.pointer++;
+
+    return index;
+  }
 }

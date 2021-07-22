@@ -32,8 +32,10 @@
 |                | genRandomUniqueId            |
 | Random         | randomInteger                |
 |                | randomFloat                  |
+|                | shuffleArray                 |
 |                | randomAlphabet               |
 |                | randomNaturalArray           |
+|                | randomDropRateIndex          |
 | Sleep          | sleep                        |
 
 d-> = depent on
