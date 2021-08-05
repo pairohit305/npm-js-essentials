@@ -144,43 +144,39 @@ export function shuffleArray(array: any[]) {
  * @param dropRates
  * [65, 25, 9, 1] => index0 has 65% drop rate, index1 has 25% and so on
  * [75, 25] => index0 has 75% index1 has 25%
+ * [75, 0, 25] => index0 has 75% index1 has 0% index2 has 25%
  * @important sum of dropRates must be equal to 100
  */
-export class randomDropRateIndex {
-  private dropIndexes: number[];
+export class RandomDropRateIndex {
+  private dropIndexes: number[] = [];
   private pointer: number = 0;
 
   constructor(dropRates: number[]) {
     const is100 = dropRates.reduce((sum, val) => sum + val, 0) === 100;
     if (!is100) throw "Sum of drop rate must to equal to 100!";
+    if (!dropRates.every((rate) => rate >= 0))
+      throw "drop rate must be positive!";
 
-    const total = 100 / Math.min(...dropRates);
+    const total = 100 / Math.min(...dropRates.filter((rate) => rate !== 0));
+    // scale accouding to total
+    dropRates.map((rate, index) => {
+      const scaled = Math.round((rate / 100) * total);
 
-    this.dropIndexes = Array.from(Array(total).keys()).fill(-1);
-    const dropFilled: number[] = [];
-
-    dropRates.forEach((dropRate, index) => {
-      const count = total * (dropRate / 100);
-      const dropIndex = randomNaturalArray({
-        count,
-        upper: total,
-        distinctive: true,
-        exclude: dropFilled,
-      });
-
-      dropFilled.push(...dropIndex);
-      dropIndex.forEach((i) => {
-        this.dropIndexes[i - 1] = index;
-      });
+      this.dropIndexes = this.dropIndexes.concat(
+        Array.from(Array(scaled).keys()).fill(index)
+      );
     });
   }
 
   public drop() {
     const index = this.dropIndexes[this.pointer];
 
-    // suffle for better randomness
+    // suffle for better randomness at the start
+    if (this.pointer === 0) shuffleArray(this.dropIndexes);
+
+    // pointer increment
     if (this.pointer + 1 >= this.dropIndexes.length) {
-      this.dropIndexes = shuffleArray(this.dropIndexes);
+      this.pointer = 0;
     } else this.pointer++;
 
     return index;

@@ -35,7 +35,7 @@
 |                | shuffleArray                 |
 |                | randomAlphabet               |
 |                | randomNaturalArray           |
-|                | randomDropRateIndex          |
+|                | RandomDropRateIndex          |
 | Sleep          | sleep                        |
 
 d-> = depent on
