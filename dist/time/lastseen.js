@@ -22,7 +22,7 @@ function lastseen(timestamp) {
     var months = Math.floor(seconds / 2629440); //((365+365+365+365+366)/5/12)*24*60*60
     var years = Math.floor(seconds / 31553280); //(365+365+365+365+366)/5 * 24 * 60 * 60
     if (seconds <= 60) {
-        return "Just Now";
+        return " ";
     }
     else if (minutes <= 60) {
         return `${minutes}m ago`;

@@ -21,7 +21,6 @@
 | Halt           | halt d -> HaltCounter        |
 | HttpStatusCode | httpStatusCode               |
 | Math           | minmax                       |
-|                | mod                          |
 | Text           | textLimitor                  |
 |                | toStartCase                  |
 |                | onlyAlphanumeric             |

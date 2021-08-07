@@ -1,1 +1,1 @@
-{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../src/math/index.ts"],"names":[],"mappings":"AAAA,uBAAuB;AACvB,wBAAgB,GAAG,CAAC,CAAC,EAAE,MAAM,EAAE,CAAC,EAAE,MAAM,GAAG,MAAM,CAShD;AAED,wBAAgB,MAAM,CAAC,GAAG,EAAE,MAAM,EAAE,GAAG,EAAE,MAAM,EAAE,GAAG,EAAE,MAAM,UAE3D"}
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../src/math/index.ts"],"names":[],"mappings":"AAAA,wBAAgB,MAAM,CAAC,GAAG,EAAE,MAAM,EAAE,GAAG,EAAE,MAAM,EAAE,GAAG,EAAE,MAAM,UAE3D"}

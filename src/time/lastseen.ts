@@ -13,7 +13,7 @@ export function lastseen(timestamp: number) {
   var years = Math.floor(seconds / 31553280); //(365+365+365+365+366)/5 * 24 * 60 * 60
 
   if (seconds <= 60) {
-    return "Just Now";
+    return " ";
   } else if (minutes <= 60) {
     return `${minutes}m ago`;
   } else if (hours <= 24) {
