@@ -120,7 +120,7 @@ export function randomNaturalArray(opt: {
 
   return sorted ? array.sort((a, b) => a - b) : array;
 }
-export function shuffleArray(array: any[]) {
+export function shuffleArray<T>(array: Array<T>): Array<T> {
   let currentIndex = array.length,
     randomIndex;
 

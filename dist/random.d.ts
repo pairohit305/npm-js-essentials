@@ -13,7 +13,7 @@ export declare function randomNaturalArray(opt: {
     exclude?: number[];
     sorted?: boolean;
 }): number[];
-export declare function shuffleArray(array: any[]): any[];
+export declare function shuffleArray<T>(array: Array<T>): Array<T>;
 /**
  *
  * @param dropRates

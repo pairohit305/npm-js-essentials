@@ -10,14 +10,7 @@
 |                | isDistinctiveArray           |
 |                | minArray                     |
 |                | maxArray                     |
-| Country        | getCountryEntries            |
-|                | getCountryFullname           |
-|                | getCountryList               |
 | Email          | isEmail                      |
-| Language       | getLanguageEntries           |
-|                | getLanguageFullname          |
-|                | getLanguageFullnameInEnglish |
-|                | getLanguageList              |
 | Halt           | halt d -> HaltCounter        |
 | HttpStatusCode | httpStatusCode               |
 | Math           | minmax                       |
