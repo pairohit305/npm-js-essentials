@@ -1,4 +1,9 @@
-import { contains, isDistinctiveArray, maxArray, minArray } from "./array";
+import {
+  containsInArray,
+  isDistinctiveArray,
+  maxArray,
+  minArray,
+} from "./array";
 
 export function randomInteger(upper: number, lower = 0) {
   // error checking
@@ -75,7 +80,7 @@ export function randomNaturalArray(opt: {
       let random: number;
       while (true) {
         random = randomInteger(upper, 1);
-        if (!contains(array, random)) {
+        if (!containsInArray(array, random)) {
           break;
         }
       }
@@ -92,7 +97,7 @@ export function randomNaturalArray(opt: {
       let random: number;
       while (true) {
         random = randomInteger(upper, 1);
-        if (!contains(array, random) && !exclude.includes(random)) {
+        if (!containsInArray(array, random) && !exclude.includes(random)) {
           break;
         }
       }

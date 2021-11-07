@@ -64,7 +64,7 @@ function randomNaturalArray(opt) {
             let random;
             while (true) {
                 random = randomInteger(upper, 1);
-                if (!array_1.contains(array, random)) {
+                if (!array_1.containsInArray(array, random)) {
                     break;
                 }
             }
@@ -78,7 +78,7 @@ function randomNaturalArray(opt) {
             let random;
             while (true) {
                 random = randomInteger(upper, 1);
-                if (!array_1.contains(array, random) && !exclude.includes(random)) {
+                if (!array_1.containsInArray(array, random) && !exclude.includes(random)) {
                     break;
                 }
             }

@@ -2,33 +2,34 @@
 
 `Available functions`
 
-| Core           | Function                     |
-| -------------- | ---------------------------- |
-| Array          | splitArrayInto               |
-|                | arrayElmCounter              |
-|                | contains                     |
-|                | isDistinctiveArray           |
-|                | minArray                     |
-|                | maxArray                     |
-| Email          | isEmail                      |
-| Halt           | halt d -> HaltCounter        |
-| HttpStatusCode | httpStatusCode               |
-| Math           | minmax                       |
-| Text           | textLimitor                  |
-|                | toStartCase                  |
-|                | onlyAlphanumeric             |
-| Time           | Dates                        |
-|                | lastseen                     |
-|                | Timeline                     |
-| Uid            | genUniqueId                  |
-|                | genRandomUniqueId            |
-| Random         | randomInteger                |
-|                | randomFloat                  |
-|                | shuffleArray                 |
-|                | randomAlphabet               |
-|                | randomNaturalArray           |
-|                | RandomDropRateIndex          |
-| Sleep          | sleep                        |
+| Core           | Function              |
+| -------------- | --------------------- |
+| Array          | splitArrayInto        |
+|                | arrayElmCounter       |
+|                | containsInArray       |
+|                | isDistinctiveArray    |
+|                | minArray              |
+|                | maxArray              |
+|                | swapElmArray          |
+| Email          | isEmail               |
+| Halt           | halt d -> HaltCounter |
+| HttpStatusCode | httpStatusCode        |
+| Math           | minmax                |
+| Text           | textLimitor           |
+|                | toStartCase           |
+|                | onlyAlphanumeric      |
+| Time           | Dates                 |
+|                | lastseen              |
+|                | Timeline              |
+| Uid            | genUniqueId           |
+|                | genRandomUniqueId     |
+| Random         | randomInteger         |
+|                | randomFloat           |
+|                | shuffleArray          |
+|                | randomAlphabet        |
+|                | randomNaturalArray    |
+|                | RandomDropRateIndex   |
+| Sleep          | sleep                 |
 
 d-> = depent on
 

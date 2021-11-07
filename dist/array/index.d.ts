@@ -11,7 +11,7 @@ export declare function arrayElmCounter(list: any[], searcher: any): number;
  * @param array Array of numbers only supported currently
  * @param val Providing only number will act as inbuild includes, but if you want to compare with another array then this option is available too
  */
-export declare function contains(array: number[], val: {
+export declare function containsInArray(array: number[], val: {
     searchElements: number[];
     exact: boolean;
 } | number): boolean;
@@ -26,4 +26,10 @@ export declare function minArray(array: number[]): number;
  * @param array
  */
 export declare function maxArray(array: number[]): number;
+/**
+ * Swap the element in an array
+ *
+ * Return 1 if operation is successfull and -1 for failture
+ */
+export declare function swapElmArray(array: any[], indexA: number, indexB: number): 1 | -1;
 //# sourceMappingURL=index.d.ts.map

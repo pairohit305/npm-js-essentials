@@ -5,7 +5,7 @@
  * @param into slice into how many parts
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.maxArray = exports.minArray = exports.isDistinctiveArray = exports.contains = exports.arrayElmCounter = exports.splitArrayInto = void 0;
+exports.swapElmArray = exports.maxArray = exports.minArray = exports.isDistinctiveArray = exports.containsInArray = exports.arrayElmCounter = exports.splitArrayInto = void 0;
 function splitArrayInto(array, into) {
     const array2d = [];
     let loopCount = Math.ceil(array.length / into);
@@ -27,7 +27,7 @@ exports.arrayElmCounter = arrayElmCounter;
  * @param array Array of numbers only supported currently
  * @param val Providing only number will act as inbuild includes, but if you want to compare with another array then this option is available too
  */
-function contains(array, val) {
+function containsInArray(array, val) {
     // not tested yet!
     if (typeof val === "object") {
         const { searchElements = [], exact } = val;
@@ -46,7 +46,7 @@ function contains(array, val) {
         throw new Error("contains function expects typeof val to be Object or Number");
     }
 }
-exports.contains = contains;
+exports.containsInArray = containsInArray;
 function isDistinctiveArray(array) {
     return !array.some((value) => {
         return arrayElmCounter(array, value) > 1;
@@ -59,7 +59,7 @@ exports.isDistinctiveArray = isDistinctiveArray;
  */
 function minArray(array) {
     let min = Number.MAX_VALUE;
-    array.forEach(value => {
+    array.forEach((value) => {
         if (value < min)
             min = value;
     });
@@ -72,11 +72,30 @@ exports.minArray = minArray;
  */
 function maxArray(array) {
     let max = Number.MIN_VALUE;
-    array.forEach(value => {
+    array.forEach((value) => {
         if (value > max)
             max = value;
     });
     return max;
 }
 exports.maxArray = maxArray;
+/**
+ * Swap the element in an array
+ *
+ * Return 1 if operation is successfull and -1 for failture
+ */
+function swapElmArray(array, indexA, indexB) {
+    if (indexA >= 0 &&
+        indexA < array.length &&
+        indexB >= 0 &&
+        indexB < array.length) {
+        const temp = array[indexB];
+        array[indexB] = array[indexA];
+        array[indexA] = temp;
+        return 1;
+    }
+    else
+        return -1;
+}
+exports.swapElmArray = swapElmArray;
 //# sourceMappingURL=index.js.map
