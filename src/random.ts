@@ -126,6 +126,9 @@ export function randomNaturalArray(opt: {
   return sorted ? array.sort((a, b) => a - b) : array;
 }
 export function shuffleArray<T>(array: Array<T>): Array<T> {
+  // copying
+  array = [...array];
+
   let currentIndex = array.length,
     randomIndex;
 

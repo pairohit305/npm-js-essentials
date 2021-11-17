@@ -108,6 +108,8 @@ function randomNaturalArray(opt) {
 }
 exports.randomNaturalArray = randomNaturalArray;
 function shuffleArray(array) {
+    // copying
+    array = [...array];
     let currentIndex = array.length, randomIndex;
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
