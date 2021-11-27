@@ -1,4 +1,7 @@
 export declare function textLimitor(text: string, limit?: number, content?: string): string;
+export declare function toUpperCase(text: string, options?: {
+    handleUnderscore: boolean;
+}): string;
 export declare function toStartCase(text: string, options?: {
     handleUnderscore: boolean;
 }): string;

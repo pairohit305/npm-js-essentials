@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.onlyAlphanumeric = exports.toStartCase = exports.textLimitor = void 0;
+exports.onlyAlphanumeric = exports.toStartCase = exports.toUpperCase = exports.textLimitor = void 0;
 function textLimitor(text, limit = 60, content = "...") {
     if (text.length > limit) {
         return text.slice(0, limit) + content;
@@ -8,6 +8,14 @@ function textLimitor(text, limit = 60, content = "...") {
     return text;
 }
 exports.textLimitor = textLimitor;
+function toUpperCase(text, options) {
+    if (options === null || options === void 0 ? void 0 : options.handleUnderscore) {
+        text = text.split(" ").join("_");
+    }
+    text = text.toUpperCase();
+    return text;
+}
+exports.toUpperCase = toUpperCase;
 function toStartCase(text, options) {
     if (options === null || options === void 0 ? void 0 : options.handleUnderscore) {
         text = text.split("_").join(" ");

@@ -5,6 +5,17 @@ export function textLimitor(text: string, limit: number = 60, content = "...") {
   return text;
 }
 
+export function toUpperCase(
+  text: string,
+  options?: { handleUnderscore: boolean }
+) {
+  if (options?.handleUnderscore) {
+    text = text.split(" ").join("_");
+  }
+  text = text.toUpperCase();
+  return text;
+}
+
 export function toStartCase(
   text: string,
   options?: { handleUnderscore: boolean }
