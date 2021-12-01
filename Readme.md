@@ -16,8 +16,7 @@
 | HttpStatusCode | httpStatusCode        |
 | Math           | minmax                |
 | Text           | textLimitor           |
-|                | toUpperCase           |
-|                | toStartCase           |
+|                | Case                  |
 |                | onlyAlphanumeric      |
 | Time           | Dates                 |
 |                | lastseen              |

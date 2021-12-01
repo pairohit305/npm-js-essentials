@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.onlyAlphanumeric = exports.toStartCase = exports.toUpperCase = exports.textLimitor = void 0;
+exports.onlyAlphanumeric = exports.Case = exports.textLimitor = void 0;
 function textLimitor(text, limit = 60, content = "...") {
     if (text.length > limit) {
         return text.slice(0, limit) + content;
@@ -8,23 +8,113 @@ function textLimitor(text, limit = 60, content = "...") {
     return text;
 }
 exports.textLimitor = textLimitor;
-function toUpperCase(text, options) {
-    if (options === null || options === void 0 ? void 0 : options.handleUnderscore) {
-        text = text.split(" ").join("_");
+class Case {
+    constructor(sentence) {
+        this.sentence = sentence;
     }
-    text = text.toUpperCase();
-    return text;
-}
-exports.toUpperCase = toUpperCase;
-function toStartCase(text, options) {
-    if (options === null || options === void 0 ? void 0 : options.handleUnderscore) {
-        text = text.split("_").join(" ");
+    /**
+     * "type case" 👉 "TYPE CASE"
+     */
+    toUpperCase() {
+        this.sentence = this.sentence.toLocaleUpperCase();
+        return this;
     }
-    text = text.toLowerCase();
-    text = text.charAt(0).toUpperCase() + text.slice(1);
-    return text;
+    /**
+     * "tYpE cASE" 👉 type case"
+     */
+    toLowerCase() {
+        this.sentence = this.sentence.toLocaleLowerCase();
+        return this;
+    }
+    /**
+     * "tYpe cAse" 👉 "Type Case"
+     */
+    toStartCase() {
+        const words = this.sentence.split(" ");
+        let nSentence = "";
+        words.forEach((word, i, { length }) => {
+            nSentence +=
+                word.charAt(0).toLocaleUpperCase() + word.slice(1).toLocaleLowerCase();
+            const isLastWord = i === length - 1;
+            if (!isLastWord) {
+                nSentence += " "; // add space
+            }
+        });
+        this.sentence = nSentence;
+        return this;
+    }
+    /**
+     * "type cAsE" 👉 "typeCase"
+     */
+    toCamelCase() {
+        const words = this.sentence.split(" ");
+        let nSentence = "";
+        words.forEach((word, i) => {
+            // first word lower case
+            if (i == 0) {
+                nSentence += word.toLocaleLowerCase();
+            }
+            // second word onward start case
+            else {
+                nSentence +=
+                    word.charAt(0).toLocaleUpperCase() +
+                        word.slice(1).toLocaleLowerCase();
+            }
+        });
+        this.sentence = nSentence;
+        return this;
+    }
+    /**
+     * "tyPe cAsE" 👉 "TypeCase"
+     */
+    toPascalCase() {
+        const words = this.sentence.split(" ");
+        let nSentence = "";
+        words.forEach((word) => {
+            // every word start case
+            nSentence +=
+                word.charAt(0).toLocaleUpperCase() + word.slice(1).toLocaleLowerCase();
+        });
+        this.sentence = nSentence;
+        return this;
+    }
+    /**
+     * "tyPe cAsE" 👉 "type_case"
+     */
+    toSnakeCase() {
+        const words = this.sentence.split(" ");
+        let nSentence = "";
+        words.forEach((word, i, { length }) => {
+            nSentence += word.toLocaleLowerCase();
+            const isLastWord = i === length - 1;
+            if (!isLastWord) {
+                nSentence += "_"; // add _
+            }
+        });
+        this.sentence = nSentence;
+        return this;
+    }
+    /**
+     * "tyPe cAsE" 👉 "type-case"
+     */
+    toKebabCase() {
+        const words = this.sentence.split(" ");
+        let nSentence = "";
+        words.forEach((word, i, { length }) => {
+            nSentence += word.toLocaleLowerCase();
+            const isLastWord = i === length - 1;
+            if (!isLastWord) {
+                nSentence += "-"; // add -
+            }
+        });
+        this.sentence = nSentence;
+        return this;
+    }
+    get() {
+        return this.sentence;
+    }
 }
-exports.toStartCase = toStartCase;
+exports.Case = Case;
 function onlyAlphanumeric(text) {
     let f_text = "";
     for (let index = 0; index < text.length; index++) {
