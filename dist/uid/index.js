@@ -5,12 +5,12 @@ const uuid_1 = require("uuid");
 const random_1 = require("../random");
 // generate uid base on version uuid v5
 function genUniqueId(lock, key) {
-    let uid = uuid_1.v5(lock + key, uuid_1.v5.URL);
+    let uid = (0, uuid_1.v5)(lock + key, uuid_1.v5.URL);
     return uid;
 }
 exports.genUniqueId = genUniqueId;
 function genRandomUniqueId() {
-    return uuid_1.v5(random_1.randomInteger(Math.pow(2, 64)).toString(), uuid_1.v5.URL);
+    return (0, uuid_1.v5)((0, random_1.randomInteger)(Math.pow(2, 64)).toString(), uuid_1.v5.URL);
 }
 exports.genRandomUniqueId = genRandomUniqueId;
 //# sourceMappingURL=index.js.map

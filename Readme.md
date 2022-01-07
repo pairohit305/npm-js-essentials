@@ -35,7 +35,7 @@ d-> = depent on
 
 **Examples**
 
-[Timeline Demo](https://codesandbox.io/embed/tender-burnell-dbx3f?fontsize=14&hidenavigation=1&theme=dark")
+[Timeline Demo]("https://codesandbox.io/s/timeline-demo-9wq5m")
 
 ```
 

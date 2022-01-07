@@ -4,6 +4,9 @@ import {
   differenceInDays,
   parseISO,
   format as dfnsFormat,
+  getDate,
+  getWeek,
+  getMonth,
 } from "date-fns";
 
 export class Dates {
@@ -126,6 +129,20 @@ export class Dates {
     }
 
     return options?.inSecs ? Math.round(timestamp / 1000) : timestamp;
+  }
+
+  // => 11-02-01
+  static DWM() {
+    const D = getDate(new Date());
+    const W = getWeek(new Date());
+    const M = getMonth(new Date());
+
+    return `${D}-${W}-${M}`;
+  }
+  static parseDWM(DWM: string) {
+    const [D, W, M] = DWM.split("-");
+
+    return { D: Number(D) || "", W: Number(W) || "", M: Number(M) || "" };
   }
 
   // conversion

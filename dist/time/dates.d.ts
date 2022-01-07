@@ -10,6 +10,12 @@ export declare class Dates {
         inSecs?: boolean;
         alterBy?: number | "final" | "alpha";
     }): number;
+    static DWM(): string;
+    static parseDWM(DWM: string): {
+        D: string | number;
+        W: string | number;
+        M: string | number;
+    };
     static dateToTime(date: Date): string;
     static dimeToTimestamp(dime: string, options?: {
         inSecs?: boolean;

@@ -1,6 +1,6 @@
 {
   "name": "@pairohit/helper",
-  "version": "5.5.0",
+  "version": "5.6.01",
   "description": "Many Usefull Helper function to save time!",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -23,7 +23,7 @@
   "author": "PaiRohit",
   "license": "MIT",
   "dependencies": {
-    "date-fns": "^2.17.0",
+    "date-fns": "^2.28.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

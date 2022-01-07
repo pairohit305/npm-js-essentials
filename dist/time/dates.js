@@ -27,8 +27,8 @@ class Dates {
             d.setUTCHours(0, 0, 0, 0);
             utc =
                 options.alterBy > 0
-                    ? date_fns_1.addDays(d, options.alterBy).toUTCString()
-                    : date_fns_1.subDays(d, -options.alterBy).toUTCString();
+                    ? (0, date_fns_1.addDays)(d, options.alterBy).toUTCString()
+                    : (0, date_fns_1.subDays)(d, -options.alterBy).toUTCString();
         }
         else {
             utc = new Date().toUTCString();
@@ -59,8 +59,8 @@ class Dates {
             d.setUTCHours(0, 0, 0, 0);
             _iso =
                 options.alterBy > 0
-                    ? date_fns_1.addDays(d, options.alterBy).toISOString()
-                    : date_fns_1.subDays(d, -options.alterBy).toISOString();
+                    ? (0, date_fns_1.addDays)(d, options.alterBy).toISOString()
+                    : (0, date_fns_1.subDays)(d, -options.alterBy).toISOString();
         }
         else {
             _iso = new Date().toISOString();
@@ -99,13 +99,24 @@ class Dates {
             d.setUTCHours(0, 0, 0, 0);
             timestamp =
                 options.alterBy > 0
-                    ? date_fns_1.addDays(d, options.alterBy).getTime()
-                    : date_fns_1.subDays(d, -options.alterBy).getTime();
+                    ? (0, date_fns_1.addDays)(d, options.alterBy).getTime()
+                    : (0, date_fns_1.subDays)(d, -options.alterBy).getTime();
         }
         else {
             timestamp = Date.now();
         }
         return (options === null || options === void 0 ? void 0 : options.inSecs) ? Math.round(timestamp / 1000) : timestamp;
+    }
+    // => 11-02-01
+    static DWM() {
+        const D = (0, date_fns_1.getDate)(new Date());
+        const W = (0, date_fns_1.getWeek)(new Date());
+        const M = (0, date_fns_1.getMonth)(new Date());
+        return `${D}-${W}-${M}`;
+    }
+    static parseDWM(DWM) {
+        const [D, W, M] = DWM.split("-");
+        return { D: Number(D) || "", W: Number(W) || "", M: Number(M) || "" };
     }
     // conversion
     static dateToTime(date) {
@@ -126,16 +137,16 @@ class Dates {
         return time.split("T")[0];
     }
     static timeToDate(time) {
-        return date_fns_1.parseISO(time);
+        return (0, date_fns_1.parseISO)(time);
     }
     static timeToInputDate(time) {
-        return date_fns_1.parseISO(time).toISOString().slice(0, 10);
+        return (0, date_fns_1.parseISO)(time).toISOString().slice(0, 10);
     }
     static timeToInputDateTime(time) {
-        return date_fns_1.parseISO(time).toISOString().slice(0, 16);
+        return (0, date_fns_1.parseISO)(time).toISOString().slice(0, 16);
     }
     static timeToTimestamp(time, options) {
-        const timestamp = date_fns_1.parseISO(time).getTime();
+        const timestamp = (0, date_fns_1.parseISO)(time).getTime();
         return (options === null || options === void 0 ? void 0 : options.inSecs) ? Math.round(timestamp / 1000) : timestamp;
     }
     static timestampToTime(timestamp) {
@@ -150,11 +161,11 @@ class Dates {
         return iso;
     }
     static timeAlterBy(time, alterBy) {
-        const d = date_fns_1.parseISO(time);
+        const d = (0, date_fns_1.parseISO)(time);
         let iso = "";
         const _iso = alterBy > 0
-            ? date_fns_1.addDays(d, alterBy).toISOString()
-            : date_fns_1.subDays(d, -alterBy).toISOString();
+            ? (0, date_fns_1.addDays)(d, alterBy).toISOString()
+            : (0, date_fns_1.subDays)(d, -alterBy).toISOString();
         for (const char of _iso) {
             if (char === ":" || char === "-")
                 continue;
@@ -168,7 +179,7 @@ class Dates {
             this.timeToTimestamp(time1, { inSecs: true }));
     }
     static differenceInDays(LTimestamp, RTimestamp) {
-        return Math.abs(date_fns_1.differenceInDays(LTimestamp, RTimestamp));
+        return Math.abs((0, date_fns_1.differenceInDays)(LTimestamp, RTimestamp));
     }
     // => 20210225
     static dime(options) {
@@ -177,13 +188,13 @@ class Dates {
     /** convert iso / gmt to the local  */
     static beautify(time, format = "ISO", withTime) {
         if (format === "ISO") {
-            return date_fns_1.format(date_fns_1.parseISO(time), withTime ? "do MMM, yyyy - hh:mm a" : "do MMM, yyyy");
+            return (0, date_fns_1.format)((0, date_fns_1.parseISO)(time), withTime ? "do MMM, yyyy - hh:mm a" : "do MMM, yyyy");
         }
         else if (format === "dime") {
-            return date_fns_1.format(date_fns_1.parseISO(time), "do MMM, yyyy");
+            return (0, date_fns_1.format)((0, date_fns_1.parseISO)(time), "do MMM, yyyy");
         }
         else if (format === "UTC") {
-            return date_fns_1.format(new Date(time), withTime ? "do MMM, yyyy - hh:mm a" : "do MMM, yyyy");
+            return (0, date_fns_1.format)(new Date(time), withTime ? "do MMM, yyyy - hh:mm a" : "do MMM, yyyy");
         }
         else
             return " - ";

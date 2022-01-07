@@ -8,7 +8,7 @@ This package contains type definitions for uuid (https://github.com/uuidjs/uuid)
 Files were exported from https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/uuid.
 
 ### Additional Details
- * Last updated: Wed, 12 Aug 2020 06:13:39 GMT
+ * Last updated: Wed, 17 Nov 2021 21:31:28 GMT
  * Dependencies: none
  * Global values: none
 

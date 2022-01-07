@@ -49,9 +49,9 @@ function randomNaturalArray(opt) {
     // err checking
     if (exclude &&
         (exclude === null || exclude === void 0 ? void 0 : exclude.length) >= 2 &&
-        (!array_1.isDistinctiveArray(exclude) ||
-            array_1.minArray(exclude) < 1 ||
-            array_1.maxArray(exclude) > upper ||
+        (!(0, array_1.isDistinctiveArray)(exclude) ||
+            (0, array_1.minArray)(exclude) < 1 ||
+            (0, array_1.maxArray)(exclude) > upper ||
             exclude.length === upper)) {
         throw new Error(`randomNaturalArray function expect values of exclude to be = {x∈ N | x≤ count}`);
     }
@@ -64,7 +64,7 @@ function randomNaturalArray(opt) {
             let random;
             while (true) {
                 random = randomInteger(upper, 1);
-                if (!array_1.containsInArray(array, random)) {
+                if (!(0, array_1.containsInArray)(array, random)) {
                     break;
                 }
             }
@@ -78,7 +78,7 @@ function randomNaturalArray(opt) {
             let random;
             while (true) {
                 random = randomInteger(upper, 1);
-                if (!array_1.containsInArray(array, random) && !exclude.includes(random)) {
+                if (!(0, array_1.containsInArray)(array, random) && !exclude.includes(random)) {
                     break;
                 }
             }
