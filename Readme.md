@@ -16,6 +16,7 @@
 | HttpStatusCode | httpStatusCode        |
 | Math           | minmax                |
 | Text           | textLimitor           |
+|                | humanReadableNumber   |
 |                | Case                  |
 |                | onlyAlphanumeric      |
 | Time           | Dates                 |

@@ -5,6 +5,21 @@ export function textLimitor(text: string, limit: number = 60, content = "...") {
   return text;
 }
 
+export function humanReadableNumber(number: number, suffixed?: boolean) {
+  if (suffixed) {
+    let x = ("" + number).length,
+      p = Math.pow,
+      d = 10;
+    x -= x % 3;
+    return Math.round((number * d) / p(10, x)) / d + " kMGTPE"[x / 3];
+  }
+
+  return number
+    .toFixed(1)
+    .replace(/\d(?=(\d{3})+\.)/g, "$& ")
+    .slice(0, -2);
+}
+
 export class Case {
   constructor(private sentence: string) {}
 
