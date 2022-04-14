@@ -1,4 +1,5 @@
 export declare function textLimitor(text: string, limit?: number, content?: string): string;
+export declare function humanReadableNumber(number: number, suffixed?: boolean): string;
 export declare class Case {
     private sentence;
     constructor(sentence: string);

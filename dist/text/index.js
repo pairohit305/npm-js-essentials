@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.onlyAlphanumeric = exports.Case = exports.textLimitor = void 0;
+exports.onlyAlphanumeric = exports.Case = exports.humanReadableNumber = exports.textLimitor = void 0;
 function textLimitor(text, limit = 60, content = "...") {
     if (text.length > limit) {
         return text.slice(0, limit) + content;
@@ -8,6 +8,18 @@ function textLimitor(text, limit = 60, content = "...") {
     return text;
 }
 exports.textLimitor = textLimitor;
+function humanReadableNumber(number, suffixed) {
+    if (suffixed) {
+        let x = ("" + number).length, p = Math.pow, d = 10;
+        x -= x % 3;
+        return Math.round((number * d) / p(10, x)) / d + " kMGTPE"[x / 3];
+    }
+    return number
+        .toFixed(1)
+        .replace(/\d(?=(\d{3})+\.)/g, "$& ")
+        .slice(0, -2);
+}
+exports.humanReadableNumber = humanReadableNumber;
 class Case {
     constructor(sentence) {
         this.sentence = sentence;

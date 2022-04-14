@@ -20,7 +20,6 @@
 |                | Case                  |
 |                | onlyAlphanumeric      |
 | Time           | Dates                 |
-|                | lastseen              |
 |                | Timeline              |
 | Uid            | genUniqueId           |
 |                | genRandomUniqueId     |
