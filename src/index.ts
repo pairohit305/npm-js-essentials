@@ -1,5 +1,4 @@
 export * from "./array";
-export * from "./email";
 export * from "./halt";
 export * from "./httpStatusCode";
 export * from "./math";

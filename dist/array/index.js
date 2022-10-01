@@ -5,7 +5,7 @@
  * @param into slice into how many parts
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.swapElmArray = exports.maxArray = exports.minArray = exports.isDistinctiveArray = exports.containsInArray = exports.arrayElmCounter = exports.splitArrayInto = void 0;
+exports.swapElmArray = exports.maxArray = exports.minArray = exports.isUniqueArray = exports.containsInArray = exports.arrayElmCounter = exports.splitArrayInto = void 0;
 function splitArrayInto(array, into) {
     const array2d = [];
     let loopCount = Math.ceil(array.length / into);
@@ -47,12 +47,12 @@ function containsInArray(array, val) {
     }
 }
 exports.containsInArray = containsInArray;
-function isDistinctiveArray(array) {
+function isUniqueArray(array) {
     return !array.some((value) => {
         return arrayElmCounter(array, value) > 1;
     });
 }
-exports.isDistinctiveArray = isDistinctiveArray;
+exports.isUniqueArray = isUniqueArray;
 /**
  * Find the minimum interger in an array
  * @param array

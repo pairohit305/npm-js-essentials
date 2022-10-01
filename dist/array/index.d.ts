@@ -15,7 +15,7 @@ export declare function containsInArray(array: number[], val: {
     searchElements: number[];
     exact: boolean;
 } | number): boolean;
-export declare function isDistinctiveArray(array: any[]): boolean;
+export declare function isUniqueArray(array: any[]): boolean;
 /**
  * Find the minimum interger in an array
  * @param array

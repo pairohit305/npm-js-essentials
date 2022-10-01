@@ -49,7 +49,7 @@ function randomNaturalArray(opt) {
     // err checking
     if (exclude &&
         (exclude === null || exclude === void 0 ? void 0 : exclude.length) >= 2 &&
-        (!(0, array_1.isDistinctiveArray)(exclude) ||
+        (!(0, array_1.isUniqueArray)(exclude) ||
             (0, array_1.minArray)(exclude) < 1 ||
             (0, array_1.maxArray)(exclude) > upper ||
             exclude.length === upper)) {

@@ -26,7 +26,7 @@ function sleep(timeout,
  */
 clearTimeoutRef) {
     return __awaiter(this, void 0, void 0, function* () {
-        return yield new Promise((resolve) => {
+        return new Promise((resolve) => {
             clearTimeoutRef = setTimeout(() => {
                 resolve(1);
             }, timeout);

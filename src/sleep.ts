@@ -15,7 +15,7 @@ export async function sleep(
    */
   clearTimeoutRef?: any
 ) {
-  return await new Promise((resolve) => {
+  return new Promise((resolve) => {
     clearTimeoutRef = setTimeout(() => {
       resolve(1);
     }, timeout);

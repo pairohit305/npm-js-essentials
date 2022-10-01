@@ -49,7 +49,7 @@ export function containsInArray(
   }
 }
 
-export function isDistinctiveArray(array: any[]) {
+export function isUniqueArray(array: any[]) {
   return !array.some((value) => {
     return arrayElmCounter(array, value) > 1;
   });

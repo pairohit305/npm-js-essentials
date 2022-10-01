@@ -1,9 +1,4 @@
-import {
-  containsInArray,
-  isDistinctiveArray,
-  maxArray,
-  minArray,
-} from "./array";
+import { containsInArray, isUniqueArray, maxArray, minArray } from "./array";
 
 export function randomInteger(upper: number, lower = 0) {
   // error checking
@@ -58,7 +53,7 @@ export function randomNaturalArray(opt: {
   if (
     exclude &&
     exclude?.length >= 2 &&
-    (!isDistinctiveArray(exclude) ||
+    (!isUniqueArray(exclude) ||
       minArray(exclude) < 1 ||
       maxArray(exclude) > upper ||
       exclude.length === upper)

@@ -1,41 +1,26 @@
-export declare class Dates {
-    static UTC(options?: {
-        alterBy?: number | "final" | "alpha";
-    }): string;
+export declare class DateII {
     static ISO(options?: {
-        representation?: "complete" | "date";
-        alterBy?: number | "final" | "alpha";
+        time?: string;
+        representation?: `time` | `dime`;
+        modifier?: `alter-by-(${number})-days` | `start-of-month` | `end-of-month`;
     }): string;
     static timestamp(options?: {
-        inSecs?: boolean;
-        alterBy?: number | "final" | "alpha";
+        modifier?: `alter-by-(${number})-days` | `start-of-month` | `end-of-month`;
     }): number;
     static DWM(): string;
     static parseDWM(DWM: string): {
-        D: string | number;
-        W: string | number;
-        M: string | number;
+        D: number;
+        W: number;
+        M: number;
     };
     static dateToTime(date: Date): string;
-    static dimeToTimestamp(dime: string, options?: {
-        inSecs?: boolean;
-    }): number;
+    static dimeToTimestamp(dime: string): number;
     static timeToDime(time: string): string;
     static timeToDate(time: string): Date;
     static timeToInputDate(time: string): string;
     static timeToInputDateTime(time: string): string;
-    static timeToTimestamp(time: string, options?: {
-        inSecs?: boolean;
-    }): number;
+    static timeToTimestamp(time: string): number;
     static timestampToTime(timestamp: number): string;
-    static timeAlterBy(time: string, alterBy: number): string;
-    static remainingTimeInSecs(time1: string, time2?: string): number;
-    static differenceInDays(LTimestamp: number, RTimestamp: number): number;
-    static dime(options?: {
-        alterBy?: number | "final" | "alpha";
-    }): string;
-    /** convert iso / gmt to the local  */
-    static beautify(time: string, form?: "short" | "full"): string;
 }
 export declare const TIMELINE_STATUS: {
     NOT_STARTED: number;
@@ -61,62 +46,5 @@ export declare const TIMELINE_STATUS: {
  *     and so on ...
  */
 export declare class Timeline {
-    /** It is time when it switches from 60s interval to 1s interval
-     *  and this gives awesome ux, so if you provide value 120 it means
-     * if 120 or less seconds remaining then update every 1s
-     */
-    private SWITCH_SECONDS;
-    private replacer;
-    private STATUS;
-    private time;
-    private interval;
-    private timeString;
-    private start_time;
-    private finish_time;
-    private intervaler;
-    constructor(start_time: string, finish_time: string, 
-    /** It is time when it switches from 60s interval to 1s interval
-     *  and this gives awesome ux, so if you provide value 120 it means
-     * if 120 or less seconds remaining then update every 1s
-     */
-    SWITCH_SECONDS?: number, replacer?: string[]);
-    private sleep;
-    private start;
-    private update;
-    private finish;
-    restart(start_time: string, finish_time: string): void;
-    /** Call this function to stop the timeline
-     *  and clear all timers
-     */
-    private kill;
-    private _onStart?;
-    onStart(callback: Function): {
-        onUpdate: (callback: (result: {
-            time: string;
-            status: number;
-        }) => any) => {
-            onFinish: (callback: Function) => {
-                start: (nolog?: boolean) => () => void;
-            };
-            start: () => () => void;
-        };
-        start: () => () => void;
-    };
-    private _onUpdate?;
-    onUpdate(callback: (result: {
-        time: string;
-        status: number;
-    }) => any): {
-        onFinish: (callback: Function) => {
-            start: (nolog?: boolean) => () => void;
-        };
-        start: () => () => void;
-    };
-    private _onFinish?;
-    onFinish(callback: Function): {
-        start: (nolog?: boolean) => () => void;
-    };
-    private toDoubleDigit;
-    static getStatus(start_time: string, finish_time: string): number;
 }
 //# sourceMappingURL=index.d.ts.map
