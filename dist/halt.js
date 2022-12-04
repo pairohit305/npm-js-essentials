@@ -9,47 +9,49 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.HaltCounter = exports.halt = void 0;
+exports.HaltTracker = exports.halt = void 0;
 /**
  * Halt the function till the counter becomes expected value, for more details see example folder
- * @param couter counter class to keep a eye on
- * @param tobe what you expect counter to be
- * @param options option controls
+ * @param tracker tracker class to keep a eye on
+ * @param config option controls
  */
-function halt(couter, tobe, options) {
+function halt(tracker, config = {
+    timeout: -1,
+    every: 1000,
+}) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve, reject) => {
-            let totalTimepassed = 0;
-            let timeout = (options === null || options === void 0 ? void 0 : options.every) || 1000;
+            let waitTime = 0;
             let loop = setInterval(() => {
-                totalTimepassed += timeout;
-                // if maxtimeout has passed reject it
-                if ((options === null || options === void 0 ? void 0 : options.maxTimeout) && totalTimepassed >= options.maxTimeout) {
+                waitTime += config.every;
+                // if timeout has passed reject it
+                if (config.timeout !== -1 &&
+                    config.timeout &&
+                    waitTime >= config.timeout) {
                     clearInterval(loop);
-                    return reject(-1);
+                    return reject(false);
                 }
-                // the moment the we get expected it's resolved.
-                if (couter.count === tobe) {
+                // the moment we get expected it's resolved.
+                if (tracker.status) {
                     clearInterval(loop);
-                    return resolve(1);
+                    return resolve(true);
                 }
-            }, timeout);
+            }, config.every);
         });
     });
 }
 exports.halt = halt;
-// since js don't support referenc variable we need to use class
-class HaltCounter {
-    constructor(initCount) {
-        this.initCount = initCount;
-        this.index = initCount;
+// since js don't support reference variable we need to use class
+class HaltTracker {
+    constructor() {
+        this._status = false;
     }
-    get count() {
-        return this.index;
+    get status() {
+        return this._status;
     }
-    set count(value) {
-        this.index = value;
+    stop() {
+        this._status = true;
     }
 }
-exports.HaltCounter = HaltCounter;
+exports.HaltTracker = HaltTracker;
 //# sourceMappingURL=halt.js.map

@@ -1,25 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.onlyAlphanumeric = exports.Case = exports.humanReadableNumber = exports.textLimitor = void 0;
-function textLimitor(text, limit = 60, content = "...") {
+exports.alphaNumericConvertor = exports.Case = exports.ellipsize = void 0;
+function ellipsize(text, limit = 60, content = "...") {
     if (text.length > limit) {
         return text.slice(0, limit) + content;
     }
     return text;
 }
-exports.textLimitor = textLimitor;
-function humanReadableNumber(number, suffixed) {
-    if (suffixed) {
-        let x = ("" + number).length, p = Math.pow, d = 10;
-        x -= x % 3;
-        return Math.round((number * d) / p(10, x)) / d + " kMGTPE"[x / 3];
-    }
-    return number
-        .toFixed(1)
-        .replace(/\d(?=(\d{3})+\.)/g, "$& ")
-        .slice(0, -2);
-}
-exports.humanReadableNumber = humanReadableNumber;
+exports.ellipsize = ellipsize;
 class Case {
     constructor(sentence) {
         this.sentence = sentence;
@@ -127,12 +115,17 @@ class Case {
     }
 }
 exports.Case = Case;
-function onlyAlphanumeric(text) {
+/**
+ * a0b#z 👉 a0b35z
+ *
+ * Char that are not alpha numeric, will be replaced with its char code
+ * eg. # => 35
+ */
+function alphaNumericConvertor(text) {
     let f_text = "";
     for (let index = 0; index < text.length; index++) {
         const char = text[index];
         const isAlphaNumeric = char.match(/^[0-9a-zA-Z]/);
-        // if no alpha numberic then replace it with its char code
         if (!isAlphaNumeric) {
             f_text += char.charCodeAt(0) + "";
         }
@@ -142,5 +135,5 @@ function onlyAlphanumeric(text) {
     }
     return f_text;
 }
-exports.onlyAlphanumeric = onlyAlphanumeric;
+exports.alphaNumericConvertor = alphaNumericConvertor;
 //# sourceMappingURL=index.js.map

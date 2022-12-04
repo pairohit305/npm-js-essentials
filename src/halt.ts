@@ -1,50 +1,49 @@
 /**
  * Halt the function till the counter becomes expected value, for more details see example folder
- * @param couter counter class to keep a eye on
- * @param tobe what you expect counter to be
- * @param options option controls
+ * @param tracker tracker class to keep a eye on
+ * @param config option controls
  */
 export async function halt(
-  couter: HaltCounter,
-  tobe: number,
-  options?: {
-    maxTimeout?: number;
-    every?: number;
+  tracker: HaltTracker,
+  config = {
+    timeout: -1,
+    every: 1000,
   }
 ) {
   return new Promise((resolve, reject) => {
-    let totalTimepassed = 0;
-    let timeout = options?.every || 1000;
+    let waitTime = 0;
 
     let loop = setInterval(() => {
-      totalTimepassed += timeout;
-      // if maxtimeout has passed reject it
-      if (options?.maxTimeout && totalTimepassed >= options.maxTimeout) {
+      waitTime += config.every;
+
+      // if timeout has passed reject it
+      if (
+        config.timeout !== -1 &&
+        config.timeout &&
+        waitTime >= config.timeout
+      ) {
         clearInterval(loop);
-        return reject(-1);
+        return reject(false);
       }
 
-      // the moment the we get expected it's resolved.
-      if (couter.count === tobe) {
+      // the moment we get expected it's resolved.
+      if (tracker.status) {
         clearInterval(loop);
-        return resolve(1);
+        return resolve(true);
       }
-    }, timeout);
+    }, config.every);
   });
 }
 
-// since js don't support referenc variable we need to use class
-export class HaltCounter {
-  private index: number;
-  constructor(private initCount: number) {
-    this.index = initCount;
+// since js don't support reference variable we need to use class
+export class HaltTracker {
+  private _status = false;
+
+  get status() {
+    return this._status;
   }
 
-  get count() {
-    return this.index;
-  }
-
-  set count(value: number) {
-    this.index = value;
+  stop() {
+    this._status = true;
   }
 }

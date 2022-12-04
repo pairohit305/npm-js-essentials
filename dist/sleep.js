@@ -10,24 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sleep = void 0;
-function sleep(timeout, 
-/** If you want to clear the internal setTimeout pass the variable here
- *  to avoid memory leaks!
- *
- * @example
- * let timeoutTimer;
- * async function yourFunction() {
- * await sleep(150_000, timeoutTimer);
- * // ...
- * }
- * function onExit() {
- * clearTimeout(timeoutTimer);
- * }
- */
-clearTimeoutRef) {
+function sleep(timeout) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve) => {
-            clearTimeoutRef = setTimeout(() => {
+            setTimeout(() => {
                 resolve(1);
             }, timeout);
         });

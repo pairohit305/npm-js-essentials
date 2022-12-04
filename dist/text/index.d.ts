@@ -1,5 +1,4 @@
-export declare function textLimitor(text: string, limit?: number, content?: string): string;
-export declare function humanReadableNumber(number: number, suffixed?: boolean): string;
+export declare function ellipsize(text: string, limit?: number, content?: string): string;
 export declare class Case {
     private sentence;
     constructor(sentence: string);
@@ -33,5 +32,11 @@ export declare class Case {
     toKebabCase(): this;
     get(): string;
 }
-export declare function onlyAlphanumeric(text: string): string;
+/**
+ * a0b#z 👉 a0b35z
+ *
+ * Char that are not alpha numeric, will be replaced with its char code
+ * eg. # => 35
+ */
+export declare function alphaNumericConvertor(text: string): string;
 //# sourceMappingURL=index.d.ts.map

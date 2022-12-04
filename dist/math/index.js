@@ -1,17 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.minmax = void 0;
+exports.range = void 0;
 /**
  *
- * @param num input
- * @param min if not provide it will default to NEGATIVE_INFINITY
- * @param max if not provide it will default to POSITIVE_INFINITY
+ * @param number input
+ * @param min if not provide it will default to Number.NEGATIVE_INFINITY
+ * @param max if not provide it will default to Number.POSITIVE_INFINITY
  * @returns
  */
-function minmax(num, min, max) {
-    min = min === undefined ? Number.NEGATIVE_INFINITY : min;
-    max = max === undefined ? Number.POSITIVE_INFINITY : max;
-    return Math.min(max, Math.max(min, num));
+function range(number, min, max) {
+    return Math.min(max !== null && max !== void 0 ? max : Number.POSITIVE_INFINITY, Math.max(min !== null && min !== void 0 ? min : Number.NEGATIVE_INFINITY, number));
 }
-exports.minmax = minmax;
+exports.range = range;
 //# sourceMappingURL=index.js.map

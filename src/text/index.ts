@@ -1,23 +1,8 @@
-export function textLimitor(text: string, limit: number = 60, content = "...") {
+export function ellipsize(text: string, limit: number = 60, content = "...") {
   if (text.length > limit) {
     return text.slice(0, limit) + content;
   }
   return text;
-}
-
-export function humanReadableNumber(number: number, suffixed?: boolean) {
-  if (suffixed) {
-    let x = ("" + number).length,
-      p = Math.pow,
-      d = 10;
-    x -= x % 3;
-    return Math.round((number * d) / p(10, x)) / d + " kMGTPE"[x / 3];
-  }
-
-  return number
-    .toFixed(1)
-    .replace(/\d(?=(\d{3})+\.)/g, "$& ")
-    .slice(0, -2);
 }
 
 export class Case {
@@ -147,14 +132,19 @@ export class Case {
   }
 }
 
-export function onlyAlphanumeric(text: string) {
+/**
+ * a0b#z 👉 a0b35z
+ *
+ * Char that are not alpha numeric, will be replaced with its char code
+ * eg. # => 35
+ */
+export function alphaNumericConvertor(text: string) {
   let f_text = "";
 
   for (let index = 0; index < text.length; index++) {
     const char = text[index];
     const isAlphaNumeric = char.match(/^[0-9a-zA-Z]/);
 
-    // if no alpha numberic then replace it with its char code
     if (!isAlphaNumeric) {
       f_text += char.charCodeAt(0) + "";
     } else {
