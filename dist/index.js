@@ -21,4 +21,5 @@ __exportStar(require("./random"), exports);
 __exportStar(require("./sleep"), exports);
 __exportStar(require("./text"), exports);
 __exportStar(require("./time"), exports);
+__exportStar(require("./object-hash"), exports);
 //# sourceMappingURL=index.js.map

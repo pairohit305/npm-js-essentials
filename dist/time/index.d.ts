@@ -1,4 +1,4 @@
-declare type ISO = string;
+type ISO = string;
 export declare const DateII: {
     getISO(options?: {
         reference?: ISO;

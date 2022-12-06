@@ -1,9 +1,8 @@
 {
   "name": "@pairohit305/js-essentials",
-  "version": "0.0.10014",
+  "version": "0.0.10020",
   "description": "Many Essentials Functions Out of Box!",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist",
   "scripts": {
     "build": "tsc"
   },
@@ -27,12 +26,11 @@
   "dependencies": {
     "date-fns": "^2.29.3",
     "object-hash": "^3.0.0",
-    "uuid": "^9.0.0"
+    "nanoid": "4.0.0"
   },
   "devDependencies": {
-    "@types/node": "^14.10.1",
-    "@types/object-hash": "^3.0.0",
-    "@types/uuid": "^8.0.0",
-    "typescript": "^4.8.3"
+    "@types/node": "^18.11.11",
+    "@types/object-hash": "^3.0.1",
+    "typescript": "^4.9.3"
   }
 }

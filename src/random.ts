@@ -1,15 +1,7 @@
-import { v5 as uuidv5 } from "uuid";
 import { shuffleArray } from "./array";
 
 export function randomInteger(config: { min: number; max: number }) {
   return config.min + Math.floor(Math.random() * config.max + 1 - config.min);
-}
-
-export function randomUUID() {
-  return uuidv5(
-    randomInteger({ max: Math.pow(2, 64), min: 0 }) + "",
-    uuidv5.URL
-  );
 }
 
 /**
