@@ -6,4 +6,5 @@ export * from "./sleep";
 export * from "./text";
 export * from "./time";
 export * from "./object-hash";
+export * from "./nanoid";
 //# sourceMappingURL=index.d.ts.map

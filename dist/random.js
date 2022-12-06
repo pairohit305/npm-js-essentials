@@ -1,16 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RandomWeightedIndex = exports.randomUUID = exports.randomInteger = void 0;
-const uuid_1 = require("uuid");
+exports.RandomWeightedIndex = exports.randomInteger = void 0;
 const array_1 = require("./array");
 function randomInteger(config) {
     return config.min + Math.floor(Math.random() * config.max + 1 - config.min);
 }
 exports.randomInteger = randomInteger;
-function randomUUID() {
-    return (0, uuid_1.v5)(randomInteger({ max: Math.pow(2, 64), min: 0 }) + "", uuid_1.v5.URL);
-}
-exports.randomUUID = randomUUID;
 /**
  *
  * @param dropRates

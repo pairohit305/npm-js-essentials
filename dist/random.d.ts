@@ -2,7 +2,6 @@ export declare function randomInteger(config: {
     min: number;
     max: number;
 }): number;
-export declare function randomUUID(): string;
 /**
  *
  * @param dropRates
