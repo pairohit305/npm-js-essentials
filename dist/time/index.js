@@ -23,11 +23,8 @@ exports.DateII = {
     convertTimestampToISO(timestamp) {
         return new Date(timestamp).toISOString();
     },
-    getInputDate(ISO) {
-        return (0, date_fns_1.parseISO)(ISO).toISOString().slice(0, 10);
-    },
-    getInputDateTime(ISO) {
-        return (0, date_fns_1.parseISO)(ISO).toISOString().slice(0, 16);
+    formatISO(ISO, format) {
+        return (0, date_fns_1.format)((0, date_fns_1.parseISO)(ISO), format);
     },
 };
 //# sourceMappingURL=index.js.map

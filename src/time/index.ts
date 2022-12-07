@@ -1,4 +1,4 @@
-import { parseISO } from "date-fns";
+import { parseISO, format as fnsFormat } from "date-fns";
 
 type ISO = string;
 export const DateII = {
@@ -29,11 +29,7 @@ export const DateII = {
     return new Date(timestamp).toISOString();
   },
 
-  getInputDate(ISO: string) {
-    return parseISO(ISO).toISOString().slice(0, 10);
-  },
-
-  getInputDateTime(ISO: string) {
-    return parseISO(ISO).toISOString().slice(0, 16);
+  formatISO(ISO: string, format: string) {
+    return fnsFormat(parseISO(ISO), format);
   },
 };

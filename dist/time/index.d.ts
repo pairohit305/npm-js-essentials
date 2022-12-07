@@ -6,8 +6,7 @@ export declare const DateII: {
         representation?: `time` | `dime` | `timestamp`;
     }): string;
     convertTimestampToISO(timestamp: number): string;
-    getInputDate(ISO: string): string;
-    getInputDateTime(ISO: string): string;
+    formatISO(ISO: string, format: string): string;
 };
 export {};
 //# sourceMappingURL=index.d.ts.map
