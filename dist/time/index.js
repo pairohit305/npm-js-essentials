@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DateII = void 0;
-const date_fns_1 = require("date-fns");
+var date_fns_1 = require("date-fns");
 exports.DateII = {
-    getISO(options) {
+    getISO: function (options) {
         var _a, _b;
-        let ISO = (_a = options === null || options === void 0 ? void 0 : options.reference) !== null && _a !== void 0 ? _a : new Date().toISOString();
+        var ISO = (_a = options === null || options === void 0 ? void 0 : options.reference) !== null && _a !== void 0 ? _a : new Date().toISOString();
         if ((options === null || options === void 0 ? void 0 : options.modifier) === "start-of-month") {
         }
         else if ((options === null || options === void 0 ? void 0 : options.modifier) === "end-of-month") {
@@ -20,11 +20,10 @@ exports.DateII = {
         }
         return ISO;
     },
-    convertTimestampToISO(timestamp) {
+    convertTimestampToISO: function (timestamp) {
         return new Date(timestamp).toISOString();
     },
-    formatISO(ISO, format) {
+    formatISO: function (ISO, format) {
         return (0, date_fns_1.format)((0, date_fns_1.parseISO)(ISO), format);
     },
 };
-//# sourceMappingURL=index.js.map

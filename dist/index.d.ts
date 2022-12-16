@@ -7,4 +7,5 @@ export * from "./text";
 export * from "./time";
 export * from "./object-hash";
 export * from "./nanoid";
-//# sourceMappingURL=index.d.ts.map
+export * from "./immer";
+export * from "./color";

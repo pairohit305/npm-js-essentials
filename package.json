@@ -1,6 +1,6 @@
 {
   "name": "@pairohit305/js-essentials",
-  "version": "0.0.10025",
+  "version": "0.0.25",
   "description": "Many Essentials Functions Out of Box!",
   "main": "dist",
   "scripts": {
@@ -24,13 +24,16 @@
   },
   "license": "MIT",
   "dependencies": {
+    "color": "^4.2.3",
     "date-fns": "^2.29.3",
-    "object-hash": "^3.0.0",
-    "nanoid": "4.0.0"
+    "immer": "^9.0.16",
+    "nanoid": "^3.3.4",
+    "object-hash": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.11",
     "@types/object-hash": "^3.0.1",
+    "@types/color": "3.0.3",
     "typescript": "^4.9.3"
   }
 }

@@ -23,4 +23,5 @@ __exportStar(require("./text"), exports);
 __exportStar(require("./time"), exports);
 __exportStar(require("./object-hash"), exports);
 __exportStar(require("./nanoid"), exports);
-//# sourceMappingURL=index.js.map
+__exportStar(require("./immer"), exports);
+__exportStar(require("./color"), exports);

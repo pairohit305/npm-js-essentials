@@ -1,2 +1,2 @@
-export { nanoid } from "nanoid";
-//# sourceMappingURL=nanoid.d.ts.map
+import { nanoid } from "nanoid";
+export { nanoid };
