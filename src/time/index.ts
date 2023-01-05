@@ -1,4 +1,10 @@
-import { parseISO, format as fnsFormat } from "date-fns";
+import {
+  parseISO,
+  format as fnsFormat,
+  differenceInHours,
+  differenceInDays,
+  differenceInMonths,
+} from "date-fns";
 
 type ISO = string;
 export const DateII = {
@@ -31,5 +37,19 @@ export const DateII = {
 
   formatISO(ISO: string, format: string) {
     return fnsFormat(parseISO(ISO), format);
+  },
+
+  getISOdifferenceIn(
+    leftISO: string,
+    rightISO: string,
+    options: { differenceIn: "hours" | "days" | "months" }
+  ): number {
+    if (options.differenceIn === "hours") {
+      return differenceInHours(parseISO(leftISO), parseISO(rightISO));
+    } else if (options.differenceIn === "days") {
+      return differenceInDays(parseISO(leftISO), parseISO(rightISO));
+    } else if (options.differenceIn === "months") {
+      return differenceInMonths(parseISO(leftISO), parseISO(rightISO));
+    } else return 0;
   },
 };

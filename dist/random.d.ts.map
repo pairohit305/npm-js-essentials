@@ -1,1 +1,0 @@
-{"version":3,"file":"random.d.ts","sourceRoot":"","sources":["../src/random.ts"],"names":[],"mappings":"AAEA,wBAAgB,aAAa,CAAC,MAAM,EAAE;IAAE,GAAG,EAAE,MAAM,CAAC;IAAC,GAAG,EAAE,MAAM,CAAA;CAAE,UAEjE;AAED;;;;;;;GAOG;AACH,qBAAa,mBAAmB;IAC9B,OAAO,CAAC,WAAW,CAAgB;IACnC,OAAO,CAAC,OAAO,CAAa;gBAEhB,SAAS,EAAE,MAAM,EAAE;IAaxB,GAAG;CAaX"}

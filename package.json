@@ -1,10 +1,10 @@
 {
   "name": "@pairohit305/js-essentials",
-  "version": "0.0.25",
+  "version": "0.0.30",
   "description": "Many Essentials Functions Out of Box!",
   "main": "dist",
   "scripts": {
-    "build": "tsc"
+    "build": "rm -rf ./dist && tsc"
   },
   "homepage": "https://github.com/pairohit305/npm-js-essentials",
   "maintainers": [

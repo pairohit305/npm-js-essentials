@@ -26,4 +26,17 @@ exports.DateII = {
     formatISO: function (ISO, format) {
         return (0, date_fns_1.format)((0, date_fns_1.parseISO)(ISO), format);
     },
+    getISOdifferenceIn: function (leftISO, rightISO, options) {
+        if (options.differenceIn === "hours") {
+            return (0, date_fns_1.differenceInHours)((0, date_fns_1.parseISO)(leftISO), (0, date_fns_1.parseISO)(rightISO));
+        }
+        else if (options.differenceIn === "days") {
+            return (0, date_fns_1.differenceInDays)((0, date_fns_1.parseISO)(leftISO), (0, date_fns_1.parseISO)(rightISO));
+        }
+        else if (options.differenceIn === "months") {
+            return (0, date_fns_1.differenceInMonths)((0, date_fns_1.parseISO)(leftISO), (0, date_fns_1.parseISO)(rightISO));
+        }
+        else
+            return 0;
+    },
 };

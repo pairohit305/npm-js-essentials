@@ -1,1 +1,4 @@
-export declare function range(number: number, min?: number, max?: number): number;
+export declare function clampInt(number: number, opts?: {
+    min?: number;
+    max?: number;
+}): number;
