@@ -1,10 +1,5 @@
-export declare function randomInteger(config: {
+export declare function randomInt(config: {
     min: number;
     max: number;
 }): number;
-export declare class RandomWeightedIndex {
-    private dropIndexes;
-    private pointer;
-    constructor(dropRates: number[]);
-    get(): number;
-}
+export declare function pickIndexByWeight(dropRates: number[]): number;
