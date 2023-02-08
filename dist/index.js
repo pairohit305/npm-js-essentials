@@ -25,3 +25,4 @@ __exportStar(require("./object-hash"), exports);
 __exportStar(require("./nanoid"), exports);
 __exportStar(require("./immer"), exports);
 __exportStar(require("./color"), exports);
+__exportStar(require("./lodash"), exports);

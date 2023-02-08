@@ -9,3 +9,4 @@ export * from "./object-hash";
 export * from "./nanoid";
 export * from "./immer";
 export * from "./color";
+export * from "./lodash";
