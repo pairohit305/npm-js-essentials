@@ -12,50 +12,33 @@ import {
   subMonths,
 } from "date-fns";
 
-/**
- * Format: `1970-01-01T00:00:00.000Z`
- */
-type ISO = string;
-
 export const DateII = {
-  getISO() {
-    return new Date().toISOString();
-  },
-
-  getTimestamp() {
+  now() {
     return Date.now();
   },
 
-  convertTimestampToISO(timestamp: number) {
-    return new Date(timestamp).toISOString();
-  },
-
-  formatISO(ISO: ISO, format: string) {
-    return fnsFormat(parseISO(ISO), format);
-  },
-
-  formatTimestamp(timestamp: number, format: string) {
+  format(timestamp: number, format: string) {
     return fnsFormat(timestamp, format);
   },
 
-  getISOdifferenceIn(
-    leftISO: string,
-    rightISO: string,
+  calculateDifferenceIn(
+    left: number,
+    right: number,
     options: { differenceIn: "hours" | "days" | "months" }
   ): number {
     if (options.differenceIn === "hours") {
-      return differenceInHours(parseISO(leftISO), parseISO(rightISO));
+      return differenceInHours(left, right);
     } else if (options.differenceIn === "days") {
-      return differenceInDays(parseISO(leftISO), parseISO(rightISO));
+      return differenceInDays(left, right);
     } else if (options.differenceIn === "months") {
-      return differenceInMonths(parseISO(leftISO), parseISO(rightISO));
+      return differenceInMonths(left, right);
     } else return 0;
   },
 
   modifyISO(
-    ISO: string,
+    timestamp: number,
     modifier: `alter-by-(${number})-${"hours" | "days" | "months"}`
   ) {
-    return ISO;
+    return 0;
   },
 };

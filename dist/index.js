@@ -26,3 +26,4 @@ __exportStar(require("./nanoid"), exports);
 __exportStar(require("./immer"), exports);
 __exportStar(require("./color"), exports);
 __exportStar(require("./lodash"), exports);
+__exportStar(require("./mime-types"), exports);

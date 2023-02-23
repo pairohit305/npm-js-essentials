@@ -10,3 +10,4 @@ export * from "./nanoid";
 export * from "./immer";
 export * from "./color";
 export * from "./lodash";
+export * from "./mime-types";

@@ -1,11 +1,8 @@
 export declare const DateII: {
-    getISO(): string;
-    getTimestamp(): number;
-    convertTimestampToISO(timestamp: number): string;
-    formatISO(ISO: string, format: string): string;
-    formatTimestamp(timestamp: number, format: string): string;
-    getISOdifferenceIn(leftISO: string, rightISO: string, options: {
+    now(): number;
+    format(timestamp: number, format: string): string;
+    calculateDifferenceIn(left: number, right: number, options: {
         differenceIn: "hours" | "days" | "months";
     }): number;
-    modifyISO(ISO: string, modifier: `alter-by-(${number})-${"hours" | "days" | "months"}`): string;
+    modifyISO(timestamp: number, modifier: `alter-by-(${number})-${"hours" | "days" | "months"}`): number;
 };
