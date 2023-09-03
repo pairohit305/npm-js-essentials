@@ -17,11 +17,7 @@ export async function halt(
       waitTime += config.every;
 
       // if timeout has passed reject it
-      if (
-        config.timeout !== -1 &&
-        config.timeout &&
-        waitTime >= config.timeout
-      ) {
+      if (config.timeout !== -1 && waitTime >= config.timeout) {
         clearInterval(loop);
         return reject(false);
       }
@@ -41,6 +37,10 @@ export class HaltTracker {
 
   get status() {
     return this._status;
+  }
+
+  restart() {
+    this._status = false;
   }
 
   stop() {

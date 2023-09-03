@@ -48,9 +48,7 @@ function halt(tracker, config) {
                     var waitTime = 0;
                     var loop = setInterval(function () {
                         waitTime += config.every;
-                        if (config.timeout !== -1 &&
-                            config.timeout &&
-                            waitTime >= config.timeout) {
+                        if (config.timeout !== -1 && waitTime >= config.timeout) {
                             clearInterval(loop);
                             return reject(false);
                         }
@@ -75,6 +73,9 @@ var HaltTracker = (function () {
         enumerable: false,
         configurable: true
     });
+    HaltTracker.prototype.restart = function () {
+        this._status = false;
+    };
     HaltTracker.prototype.stop = function () {
         this._status = true;
     };

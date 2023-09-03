@@ -1,6 +1,6 @@
 {
   "name": "@pairohit305/js-essentials",
-  "version": "0.0.45",
+  "version": "0.0.452",
   "description": "Many Essentials Functions Out of Box!",
   "main": "dist/index.js",
   "scripts": {

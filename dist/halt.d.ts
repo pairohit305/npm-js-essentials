@@ -5,5 +5,6 @@ export declare function halt(tracker: HaltTracker, config?: {
 export declare class HaltTracker {
     private _status;
     get status(): boolean;
+    restart(): void;
     stop(): void;
 }
