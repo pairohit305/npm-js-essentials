@@ -70,6 +70,8 @@ export const DateII = {
     if (mode === "end-of-month") {
       return endOfMonth(date).getTime();
     }
+
+    return 0;
   },
 
   format(date: number, format: string) {

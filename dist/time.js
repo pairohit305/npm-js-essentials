@@ -31,6 +31,7 @@ exports.DateII = {
         if (mode === "end-of-month") {
             return (0, date_fns_1.endOfMonth)(date).getTime();
         }
+        return 0;
     },
     format: function (date, format) {
         return (0, date_fns_1.format)(date, format);
