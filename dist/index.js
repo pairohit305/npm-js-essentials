@@ -22,6 +22,7 @@ __exportStar(require("./lodash"), exports);
 __exportStar(require("./math"), exports);
 __exportStar(require("./nanoid"), exports);
 __exportStar(require("./object-hash"), exports);
+__exportStar(require("./object"), exports);
 __exportStar(require("./random"), exports);
 __exportStar(require("./sleep"), exports);
 __exportStar(require("./text"), exports);

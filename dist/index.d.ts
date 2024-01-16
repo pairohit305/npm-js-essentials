@@ -6,6 +6,7 @@ export * from "./lodash";
 export * from "./math";
 export * from "./nanoid";
 export * from "./object-hash";
+export * from "./object";
 export * from "./random";
 export * from "./sleep";
 export * from "./text";
