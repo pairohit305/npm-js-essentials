@@ -37,26 +37,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HaltTracker = exports.halt = void 0;
-function halt(tracker, config) {
-    if (config === void 0) { config = {
-        timeout: -1,
-        every: 1000,
-    }; }
+function halt(tracker) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            return [2, new Promise(function (resolve, reject) {
-                    var waitTime = 0;
-                    var loop = setInterval(function () {
-                        waitTime += config.every;
-                        if (config.timeout !== -1 && waitTime >= config.timeout) {
-                            clearInterval(loop);
-                            return reject(false);
-                        }
-                        if (tracker.status) {
-                            clearInterval(loop);
-                            return resolve(true);
-                        }
-                    }, config.every);
+            return [2, new Promise(function (resolve) {
+                    tracker._resolveFn = resolve;
                 })];
         });
     });
@@ -64,20 +49,12 @@ function halt(tracker, config) {
 exports.halt = halt;
 var HaltTracker = (function () {
     function HaltTracker() {
-        this._status = false;
+        this._resolveFn = null;
     }
-    Object.defineProperty(HaltTracker.prototype, "status", {
-        get: function () {
-            return this._status;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    HaltTracker.prototype.restart = function () {
-        this._status = false;
-    };
     HaltTracker.prototype.stop = function () {
-        this._status = true;
+        if (this._resolveFn) {
+            this._resolveFn();
+        }
     };
     return HaltTracker;
 }());
