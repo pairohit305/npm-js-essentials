@@ -6,6 +6,7 @@
 | ----------- | --------------------- |
 | Array       | splitArrayInto        |
 |             | shuffleArray          |
+| Change-Case |                       |
 | Color       |                       |
 | Halt        | halt d -> HaltCounter |
 | Immer       |                       |
@@ -18,7 +19,6 @@
 |             | pickIndexByWeight     |
 | Sleep       | sleep                 |
 | Text        | ellipsize             |
-|             | Case                  |
 |             | alphaNumericConvertor |
 | Time        | DateII                |
 

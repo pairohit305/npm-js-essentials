@@ -15,6 +15,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./array"), exports);
+__exportStar(require("./change-case"), exports);
 __exportStar(require("./color"), exports);
 __exportStar(require("./halt"), exports);
 __exportStar(require("./immer"), exports);

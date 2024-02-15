@@ -1,4 +1,5 @@
 export * from "./array";
+export * from "./change-case";
 export * from "./color";
 export * from "./halt";
 export * from "./immer";
