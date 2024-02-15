@@ -1,88 +1,85 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.DateII = void 0;
-var date_fns_1 = require("date-fns");
-exports.DateII = {
-    now: function () {
+import { format as fnsFormat, differenceInMinutes, differenceInHours, differenceInDays, differenceInMonths, addMinutes, addHours, addDays, addMonths, subMinutes, subHours, subDays, subMonths, startOfMinute, startOfHour, startOfDay, startOfMonth, endOfMinute, endOfHour, endOfDay, endOfMonth, } from "date-fns";
+export const DateII = {
+    now() {
         return Date.now();
     },
-    util: function (date, mode) {
+    util(date, mode) {
         if (mode === "start-of-minute") {
-            return (0, date_fns_1.startOfMinute)(date).getTime();
+            return startOfMinute(date).getTime();
         }
         if (mode === "start-of-hour") {
-            return (0, date_fns_1.startOfHour)(date).getTime();
+            return startOfHour(date).getTime();
         }
         if (mode === "start-of-day") {
-            return (0, date_fns_1.startOfDay)(date).getTime();
+            return startOfDay(date).getTime();
         }
         if (mode === "start-of-month") {
-            return (0, date_fns_1.startOfMonth)(date).getTime();
+            return startOfMonth(date).getTime();
         }
         if (mode === "end-of-minute") {
-            return (0, date_fns_1.endOfMinute)(date).getTime();
+            return endOfMinute(date).getTime();
         }
         if (mode === "end-of-hour") {
-            return (0, date_fns_1.endOfHour)(date).getTime();
+            return endOfHour(date).getTime();
         }
         if (mode === "end-of-day") {
-            return (0, date_fns_1.endOfDay)(date).getTime();
+            return endOfDay(date).getTime();
         }
         if (mode === "end-of-month") {
-            return (0, date_fns_1.endOfMonth)(date).getTime();
+            return endOfMonth(date).getTime();
         }
         return 0;
     },
-    format: function (date, format) {
-        return (0, date_fns_1.format)(date, format);
+    format(date, format) {
+        return fnsFormat(date, format);
     },
-    calculate: function (leftDate, rightDate, options) {
+    calculate(leftDate, rightDate, options) {
         if (options.differenceIn === "minutes") {
-            return (0, date_fns_1.differenceInMinutes)(leftDate, rightDate);
+            return differenceInMinutes(leftDate, rightDate);
         }
         if (options.differenceIn === "hours") {
-            return (0, date_fns_1.differenceInHours)(leftDate, rightDate);
+            return differenceInHours(leftDate, rightDate);
         }
         if (options.differenceIn === "days") {
-            return (0, date_fns_1.differenceInDays)(leftDate, rightDate);
+            return differenceInDays(leftDate, rightDate);
         }
         if (options.differenceIn === "months") {
-            return (0, date_fns_1.differenceInMonths)(leftDate, rightDate);
+            return differenceInMonths(leftDate, rightDate);
         }
         return 0;
     },
-    modify: function (date, modifier) {
+    modify(date, modifier) {
         if (modifier.match(/^alter-by-\(-?\d+\)-minutes$/)) {
-            var minutes = +modifier.match(/^alter-by-\((-?\d+)\)-minutes$/)[1];
+            const minutes = +modifier.match(/^alter-by-\((-?\d+)\)-minutes$/)[1];
             if (minutes === 0)
                 return date;
             return minutes > 0
-                ? (0, date_fns_1.addMinutes)(date, minutes).getTime()
-                : (0, date_fns_1.subMinutes)(date, Math.abs(minutes)).getTime();
+                ? addMinutes(date, minutes).getTime()
+                : subMinutes(date, Math.abs(minutes)).getTime();
         }
         if (modifier.match(/^alter-by-\(-?\d+\)-hours$/)) {
-            var hours = +modifier.match(/^alter-by-\((-?\d+)\)-hours$/)[1];
+            const hours = +modifier.match(/^alter-by-\((-?\d+)\)-hours$/)[1];
             if (hours === 0)
                 return date;
             return hours > 0
-                ? (0, date_fns_1.addHours)(date, hours).getTime()
-                : (0, date_fns_1.subHours)(date, Math.abs(hours)).getTime();
+                ? addHours(date, hours).getTime()
+                : subHours(date, Math.abs(hours)).getTime();
         }
         if (modifier.match(/^alter-by-\(-?\d+\)-days$/)) {
-            var days = +modifier.match(/^alter-by-\((-?\d+)\)-days$/)[1];
+            const days = +modifier.match(/^alter-by-\((-?\d+)\)-days$/)[1];
             if (days === 0)
                 return date;
             return days > 0
-                ? (0, date_fns_1.addDays)(date, days).getTime()
-                : (0, date_fns_1.subDays)(date, Math.abs(days)).getTime();
+                ? addDays(date, days).getTime()
+                : subDays(date, Math.abs(days)).getTime();
         }
         if (modifier.match(/^alter-by-\(-?\d+\)-months$/)) {
-            var months = +modifier.match(/^alter-by-\((-?\d+)\)-months$/)[1];
+            const months = +modifier.match(/^alter-by-\((-?\d+)\)-months$/)[1];
             if (months === 0)
                 return date;
             return months > 0
-                ? (0, date_fns_1.addMonths)(date, months).getTime()
-                : (0, date_fns_1.subMonths)(date, Math.abs(months)).getTime();
+                ? addMonths(date, months).getTime()
+                : subMonths(date, Math.abs(months)).getTime();
         }
         return 0;
     },

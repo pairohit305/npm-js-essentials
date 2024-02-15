@@ -1,11 +1,11 @@
 {
   "name": "@pairohit305/js-essentials",
-  "version": "0.0.85",
+  "version": "0.0.88",
   "description": "Many Essentials Functions Out of Box!",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
-    "build": "npm i && rm -rf ./dist && tsc",
-    "npm:publish": "yarn publish"
+    "build": "npm i && rm -rf ./dist && tsc"
   },
   "homepage": "https://github.com/pairohit305/npm-js-essentials",
   "maintainers": [
@@ -30,14 +30,14 @@
     "@types/object-hash": "3.0.6",
     "color": "4.2.3",
     "change-case": "5.4.3",
-    "date-fns": "3.2.0",
+    "date-fns": "3.3.1",
     "immer": "10.0.3",
     "lodash": "4.17.21",
-    "nanoid": "3.3.4",
+    "nanoid": "5.0.5",
     "object-hash": "3.0.0"
   },
   "devDependencies": {
-    "@types/node": "20.11.4",
+    "@types/node": "20.11.19",
     "typescript": "5.3.3"
   }
 }
