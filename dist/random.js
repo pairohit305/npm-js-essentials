@@ -1,5 +1,5 @@
 export function randomInt(config) {
-    return config.min + Math.floor(Math.random() * config.max + 1 - config.min);
+    return Math.floor(Math.random() * (config.max - config.min + 1)) + config.min;
 }
 export function pickIndexByWeight(dropRates) {
     let reservoir = 0;
